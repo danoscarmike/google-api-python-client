@@ -1,0 +1,189 @@
+<html><body>
+<style>
+
+body, h1, h2, h3, div, span, p, pre, a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  font-size: 13px;
+  padding: 1em;
+}
+
+h1 {
+  font-size: 26px;
+  margin-bottom: 1em;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 1em;
+}
+
+h3 {
+  font-size: 20px;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+pre, code {
+  line-height: 1.5;
+  font-family: Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Lucida Console', monospace;
+}
+
+pre {
+  margin-top: 0.5em;
+}
+
+h1, h2, h3, p {
+  font-family: Arial, sans serif;
+}
+
+h1, h2, h3 {
+  border-bottom: solid #CCC 1px;
+}
+
+.toc_element {
+  margin-top: 0.5em;
+}
+
+.firstline {
+  margin-left: 2 em;
+}
+
+.method  {
+  margin-top: 1em;
+  border: solid 1px #CCC;
+  padding: 1em;
+  background: #EEE;
+}
+
+.details {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+</style>
+
+<h1><a href="apigee_v1.html">Apigee API</a> . <a href="apigee_v1.organizations.html">organizations</a> . <a href="apigee_v1.organizations.consumerresources.html">consumerresources</a></h1>
+<h2>Instance Methods</h2>
+<p class="toc_element">
+  <code><a href="#apis">apis(parent, zmsId=None, q=None, x__xgafv=None)</a></code></p>
+<p class="firstline">List all API docs in a ZMS zone that match the given query.</p>
+<p class="toc_element">
+  <code><a href="#getResourcetypes">getResourcetypes(parent, x__xgafv=None)</a></code></p>
+<p class="firstline">Get all consumer resource types managed by this API.</p>
+<p class="toc_element">
+  <code><a href="#pages">pages(parent, zmsId=None, q=None, x__xgafv=None)</a></code></p>
+<p class="firstline">List all pages in a ZMS zone that match the query string.</p>
+<h3>Method Details</h3>
+<div class="method">
+    <code class="details" id="apis">apis(parent, zmsId=None, q=None, x__xgafv=None)</code>
+  <pre>List all API docs in a ZMS zone that match the given query.
+Not a recognized rest pattern
+
+Args:
+  parent: string, Required. Must be of the form `organizations/{organization_id}` (required)
+  zmsId: string, A parameter
+  q: string, A parameter
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "type": "A String",
+    "resources": [
+      {
+        "id": "A String",
+        "type": "A String",
+        "name": "A String",
+        "description": "A String",
+      },
+    ],
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="getResourcetypes">getResourcetypes(parent, x__xgafv=None)</code>
+  <pre>Get all consumer resource types managed by this API.
+
+Args:
+  parent: string, Required. Must be of the form `organizations/{organization_id}` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "resourceTypes": [
+      {
+        "description": "A String",
+        "defaultActions": [
+          "A String",
+        ],
+        "actions": [
+          {
+            "dependentActions": [
+              "A String",
+            ],
+            "description": "A String",
+            "type": "A String",
+            "id": "A String",
+            "name": "A String",
+          },
+        ],
+        "collection": "A String",
+        "type": "A String",
+        "id": "A String",
+        "name": "A String",
+      },
+    ],
+    "type": "A String",
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="pages">pages(parent, zmsId=None, q=None, x__xgafv=None)</code>
+  <pre>List all pages in a ZMS zone that match the query string.
+Not a recognized rest pattern
+
+Args:
+  parent: string, Required. Must be of the form `organizations/{organization_id}` (required)
+  zmsId: string, A parameter
+  q: string, A parameter
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "type": "A String",
+    "resources": [
+      {
+        "id": "A String",
+        "type": "A String",
+        "name": "A String",
+        "description": "A String",
+      },
+    ],
+  }</pre>
+</div>
+
+</body></html>

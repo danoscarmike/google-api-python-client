@@ -1,0 +1,458 @@
+<html><body>
+<style>
+
+body, h1, h2, h3, div, span, p, pre, a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  font-size: 13px;
+  padding: 1em;
+}
+
+h1 {
+  font-size: 26px;
+  margin-bottom: 1em;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 1em;
+}
+
+h3 {
+  font-size: 20px;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+pre, code {
+  line-height: 1.5;
+  font-family: Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Lucida Console', monospace;
+}
+
+pre {
+  margin-top: 0.5em;
+}
+
+h1, h2, h3, p {
+  font-family: Arial, sans serif;
+}
+
+h1, h2, h3 {
+  border-bottom: solid #CCC 1px;
+}
+
+.toc_element {
+  margin-top: 0.5em;
+}
+
+.firstline {
+  margin-left: 2 em;
+}
+
+.method  {
+  margin-top: 1em;
+  border: solid 1px #CCC;
+  padding: 1em;
+  background: #EEE;
+}
+
+.details {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+</style>
+
+<h1><a href="apigee_v1.html">Apigee API</a> . <a href="apigee_v1.organizations.html">organizations</a> . <a href="apigee_v1.organizations.sites.html">sites</a> . <a href="apigee_v1.organizations.sites.pages.html">pages</a></h1>
+<h2>Instance Methods</h2>
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.sites.pages.menutypes.html">menutypes()</a></code>
+</p>
+<p class="firstline">Returns the menutypes Resource.</p>
+
+<p class="toc_element">
+  <code><a href="#content">content(parent, body=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Updates the draft content of a page on the portal.</p>
+<p class="toc_element">
+  <code><a href="#create">create(parent, body=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Creates a new page on the portal.</p>
+<p class="toc_element">
+  <code><a href="#delete">delete(name, x__xgafv=None)</a></code></p>
+<p class="firstline">Deletes a page from the portal.</p>
+<p class="toc_element">
+  <code><a href="#get">get(name, x__xgafv=None)</a></code></p>
+<p class="firstline">Gets a page on the portal.</p>
+<p class="toc_element">
+  <code><a href="#list">list(parent, x__xgafv=None)</a></code></p>
+<p class="firstline">Lists the pages on the portal.</p>
+<p class="toc_element">
+  <code><a href="#publish">publish(parent, x__xgafv=None)</a></code></p>
+<p class="firstline">Publishes a page on the portal.</p>
+<p class="toc_element">
+  <code><a href="#unpublish">unpublish(parent, x__xgafv=None)</a></code></p>
+<p class="firstline">Unpublishes a page on the portal.</p>
+<p class="toc_element">
+  <code><a href="#update">update(name, body=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Updates a page on the portal.</p>
+<h3>Method Details</h3>
+<div class="method">
+    <code class="details" id="content">content(parent, body=None, x__xgafv=None)</code>
+  <pre>Updates the draft content of a page on the portal.
+
+Args:
+  parent: string, Required. Name of the page. Use the following structure in your request:
+ `organizations/{org}/sites/{site}/pages/{page}` (required)
+  body: object, The request body.
+    The object takes the form of:
+
+{
+    "content": "A String", # Contents of page.
+  }
+
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "status": "A String", # Status of the operation.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "message": "A String", # Description of the operation.
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="create">create(parent, body=None, x__xgafv=None)</code>
+  <pre>Creates a new page on the portal.
+
+Args:
+  parent: string, Required. Name of the portal. Use the following structure in your request:
+ `organizations/{org}/sites/{site}` (required)
+  body: object, The request body.
+    The object takes the form of:
+
+{
+  "layout": "A String", # Page layout. (Internal use only.)
+  "description": "A String", # Description of the page.
+  "created": "A String", # Time the page was created in milliseconds since epoch.
+  "friendlyId": "A String", # User-friendly page ID (page URL).
+  "siteId": "A String", # ID of the portal.
+  "modified": "A String", # Time the page was last modified in milliseconds since epoch.
+  "name": "A String", # Title of the page.
+  "content": "A String", # Published contents of the page.
+  "anonAllowed": True or False, # Boolean flag that specifies whether all or only registered
+      # users can access the page.
+  "generatedContent": [ # Reserved for future use.
+    "A String",
+  ],
+  "modifiedBy": "A String", # Not used by Apigee hybrid.
+  "systemGenerated": True or False, # System-generated page. (Internal use only.)
+  "draft": "A String", # Draft content of the page.
+  "published": "A String", # Time the page was last published in milliseconds since epoch.
+  "active": True or False, # Boolean flag that specifies whether the page is published.
+  "submenuId": "A String", # Not used by Apigee hybrid.
+  "publishedBy": "A String", # Not used by Apigee hybrid.
+  "type": "A String", # Reserved for future use.
+  "id": "A String", # ID of the page.
+  "apiProduct": "A String", # Name of the API product.
+}
+
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "status": "A String", # Status of the operation.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "message": "A String", # Description of the operation.
+    "data": { # Details of page.
+      "layout": "A String", # Page layout. (Internal use only.)
+      "description": "A String", # Description of the page.
+      "created": "A String", # Time the page was created in milliseconds since epoch.
+      "friendlyId": "A String", # User-friendly page ID (page URL).
+      "siteId": "A String", # ID of the portal.
+      "modified": "A String", # Time the page was last modified in milliseconds since epoch.
+      "name": "A String", # Title of the page.
+      "content": "A String", # Published contents of the page.
+      "anonAllowed": True or False, # Boolean flag that specifies whether all or only registered
+          # users can access the page.
+      "generatedContent": [ # Reserved for future use.
+        "A String",
+      ],
+      "modifiedBy": "A String", # Not used by Apigee hybrid.
+      "systemGenerated": True or False, # System-generated page. (Internal use only.)
+      "draft": "A String", # Draft content of the page.
+      "published": "A String", # Time the page was last published in milliseconds since epoch.
+      "active": True or False, # Boolean flag that specifies whether the page is published.
+      "submenuId": "A String", # Not used by Apigee hybrid.
+      "publishedBy": "A String", # Not used by Apigee hybrid.
+      "type": "A String", # Reserved for future use.
+      "id": "A String", # ID of the page.
+      "apiProduct": "A String", # Name of the API product.
+    },
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="delete">delete(name, x__xgafv=None)</code>
+  <pre>Deletes a page from the portal.
+
+Args:
+  name: string, Required. Name of the page. Use the following structure in your request:
+ `organizations/{org}/sites/{site}/pages/{page}` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "status": "A String", # Status of the operation.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "message": "A String", # Description of the operation.
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="get">get(name, x__xgafv=None)</code>
+  <pre>Gets a page on the portal.
+
+Args:
+  name: string, Required. Name of the page. Use the following structure in your request:
+ `organizations/{org}/sites/{site}/pages/{page}` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "status": "A String", # Status of the operation.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "message": "A String", # Description of the operation.
+    "data": { # Details of page.
+      "layout": "A String", # Page layout. (Internal use only.)
+      "description": "A String", # Description of the page.
+      "created": "A String", # Time the page was created in milliseconds since epoch.
+      "friendlyId": "A String", # User-friendly page ID (page URL).
+      "siteId": "A String", # ID of the portal.
+      "modified": "A String", # Time the page was last modified in milliseconds since epoch.
+      "name": "A String", # Title of the page.
+      "content": "A String", # Published contents of the page.
+      "anonAllowed": True or False, # Boolean flag that specifies whether all or only registered
+          # users can access the page.
+      "generatedContent": [ # Reserved for future use.
+        "A String",
+      ],
+      "modifiedBy": "A String", # Not used by Apigee hybrid.
+      "systemGenerated": True or False, # System-generated page. (Internal use only.)
+      "draft": "A String", # Draft content of the page.
+      "published": "A String", # Time the page was last published in milliseconds since epoch.
+      "active": True or False, # Boolean flag that specifies whether the page is published.
+      "submenuId": "A String", # Not used by Apigee hybrid.
+      "publishedBy": "A String", # Not used by Apigee hybrid.
+      "type": "A String", # Reserved for future use.
+      "id": "A String", # ID of the page.
+      "apiProduct": "A String", # Name of the API product.
+    },
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="list">list(parent, x__xgafv=None)</code>
+  <pre>Lists the pages on the portal.
+
+Args:
+  parent: string, Required. Name of the portal. Use the following structure in your request:
+ `organizations/{org}/sites/{site}` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "status": "A String", # Status of the operation.
+    "message": "A String", # Description of the operation.
+    "data": [ # Details for all pages.
+      {
+        "layout": "A String", # Page layout. (Internal use only.)
+        "description": "A String", # Description of the page.
+        "created": "A String", # Time the page was created in milliseconds since epoch.
+        "friendlyId": "A String", # User-friendly page ID (page URL).
+        "siteId": "A String", # ID of the portal.
+        "modified": "A String", # Time the page was last modified in milliseconds since epoch.
+        "name": "A String", # Title of the page.
+        "content": "A String", # Published contents of the page.
+        "anonAllowed": True or False, # Boolean flag that specifies whether all or only registered
+            # users can access the page.
+        "generatedContent": [ # Reserved for future use.
+          "A String",
+        ],
+        "modifiedBy": "A String", # Not used by Apigee hybrid.
+        "systemGenerated": True or False, # System-generated page. (Internal use only.)
+        "draft": "A String", # Draft content of the page.
+        "published": "A String", # Time the page was last published in milliseconds since epoch.
+        "active": True or False, # Boolean flag that specifies whether the page is published.
+        "submenuId": "A String", # Not used by Apigee hybrid.
+        "publishedBy": "A String", # Not used by Apigee hybrid.
+        "type": "A String", # Reserved for future use.
+        "id": "A String", # ID of the page.
+        "apiProduct": "A String", # Name of the API product.
+      },
+    ],
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="publish">publish(parent, x__xgafv=None)</code>
+  <pre>Publishes a page on the portal.
+
+Args:
+  parent: string, Required. Name of the page. Use the following structure in your request:
+ `organizations/{org}/sites/{site}/pages/{page}` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "status": "A String", # Status of the operation.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "message": "A String", # Description of the operation.
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="unpublish">unpublish(parent, x__xgafv=None)</code>
+  <pre>Unpublishes a page on the portal.
+
+Args:
+  parent: string, Required. Name of the page. Use the following structure in your request:
+ `organizations/{org}/sites/{site}/pages/{page}` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "status": "A String", # Status of the operation.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "message": "A String", # Description of the operation.
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="update">update(name, body=None, x__xgafv=None)</code>
+  <pre>Updates a page on the portal.
+
+Args:
+  name: string, Required. Name of the page. Use the following structure in your request:
+ `organizations/{org}/sites/{site}/pages/{page}` (required)
+  body: object, The request body.
+    The object takes the form of:
+
+{
+  "layout": "A String", # Page layout. (Internal use only.)
+  "description": "A String", # Description of the page.
+  "created": "A String", # Time the page was created in milliseconds since epoch.
+  "friendlyId": "A String", # User-friendly page ID (page URL).
+  "siteId": "A String", # ID of the portal.
+  "modified": "A String", # Time the page was last modified in milliseconds since epoch.
+  "name": "A String", # Title of the page.
+  "content": "A String", # Published contents of the page.
+  "anonAllowed": True or False, # Boolean flag that specifies whether all or only registered
+      # users can access the page.
+  "generatedContent": [ # Reserved for future use.
+    "A String",
+  ],
+  "modifiedBy": "A String", # Not used by Apigee hybrid.
+  "systemGenerated": True or False, # System-generated page. (Internal use only.)
+  "draft": "A String", # Draft content of the page.
+  "published": "A String", # Time the page was last published in milliseconds since epoch.
+  "active": True or False, # Boolean flag that specifies whether the page is published.
+  "submenuId": "A String", # Not used by Apigee hybrid.
+  "publishedBy": "A String", # Not used by Apigee hybrid.
+  "type": "A String", # Reserved for future use.
+  "id": "A String", # ID of the page.
+  "apiProduct": "A String", # Name of the API product.
+}
+
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "status": "A String", # Status of the operation.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "message": "A String", # Description of the operation.
+    "data": { # Details of page.
+      "layout": "A String", # Page layout. (Internal use only.)
+      "description": "A String", # Description of the page.
+      "created": "A String", # Time the page was created in milliseconds since epoch.
+      "friendlyId": "A String", # User-friendly page ID (page URL).
+      "siteId": "A String", # ID of the portal.
+      "modified": "A String", # Time the page was last modified in milliseconds since epoch.
+      "name": "A String", # Title of the page.
+      "content": "A String", # Published contents of the page.
+      "anonAllowed": True or False, # Boolean flag that specifies whether all or only registered
+          # users can access the page.
+      "generatedContent": [ # Reserved for future use.
+        "A String",
+      ],
+      "modifiedBy": "A String", # Not used by Apigee hybrid.
+      "systemGenerated": True or False, # System-generated page. (Internal use only.)
+      "draft": "A String", # Draft content of the page.
+      "published": "A String", # Time the page was last published in milliseconds since epoch.
+      "active": True or False, # Boolean flag that specifies whether the page is published.
+      "submenuId": "A String", # Not used by Apigee hybrid.
+      "publishedBy": "A String", # Not used by Apigee hybrid.
+      "type": "A String", # Reserved for future use.
+      "id": "A String", # ID of the page.
+      "apiProduct": "A String", # Name of the API product.
+    },
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+</body></html>

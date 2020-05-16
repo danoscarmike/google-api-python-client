@@ -1,0 +1,966 @@
+<html><body>
+<style>
+
+body, h1, h2, h3, div, span, p, pre, a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  font-size: 13px;
+  padding: 1em;
+}
+
+h1 {
+  font-size: 26px;
+  margin-bottom: 1em;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 1em;
+}
+
+h3 {
+  font-size: 20px;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+pre, code {
+  line-height: 1.5;
+  font-family: Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Lucida Console', monospace;
+}
+
+pre {
+  margin-top: 0.5em;
+}
+
+h1, h2, h3, p {
+  font-family: Arial, sans serif;
+}
+
+h1, h2, h3 {
+  border-bottom: solid #CCC 1px;
+}
+
+.toc_element {
+  margin-top: 0.5em;
+}
+
+.firstline {
+  margin-left: 2 em;
+}
+
+.method  {
+  margin-top: 1em;
+  border: solid 1px #CCC;
+  padding: 1em;
+  background: #EEE;
+}
+
+.details {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+</style>
+
+<h1><a href="apigee_v1.html">Apigee API</a> . <a href="apigee_v1.organizations.html">organizations</a> . <a href="apigee_v1.organizations.sites.html">sites</a></h1>
+<h2>Instance Methods</h2>
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.sites.apidocs.html">apidocs()</a></code>
+</p>
+<p class="firstline">Returns the apidocs Resource.</p>
+
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.sites.customcss.html">customcss()</a></code>
+</p>
+<p class="firstline">Returns the customcss Resource.</p>
+
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.sites.dns.html">dns()</a></code>
+</p>
+<p class="firstline">Returns the dns Resource.</p>
+
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.sites.drafttoken.html">drafttoken()</a></code>
+</p>
+<p class="firstline">Returns the drafttoken Resource.</p>
+
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.sites.email.html">email()</a></code>
+</p>
+<p class="firstline">Returns the email Resource.</p>
+
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.sites.file.html">file()</a></code>
+</p>
+<p class="firstline">Returns the file Resource.</p>
+
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.sites.menuitems.html">menuitems()</a></code>
+</p>
+<p class="firstline">Returns the menuitems Resource.</p>
+
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.sites.menutypes.html">menutypes()</a></code>
+</p>
+<p class="firstline">Returns the menutypes Resource.</p>
+
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.sites.pages.html">pages()</a></code>
+</p>
+<p class="firstline">Returns the pages Resource.</p>
+
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.sites.site.html">site()</a></code>
+</p>
+<p class="firstline">Returns the site Resource.</p>
+
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.sites.smtp.html">smtp()</a></code>
+</p>
+<p class="firstline">Returns the smtp Resource.</p>
+
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.sites.specs.html">specs()</a></code>
+</p>
+<p class="firstline">Returns the specs Resource.</p>
+
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.sites.zones.html">zones()</a></code>
+</p>
+<p class="firstline">Returns the zones Resource.</p>
+
+<p class="toc_element">
+  <code><a href="#create">create(parent, body=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Creates a new portal.</p>
+<p class="toc_element">
+  <code><a href="#getConfig">getConfig(parent, x__xgafv=None)</a></code></p>
+<p class="firstline">Gets the portal configuration.</p>
+<p class="toc_element">
+  <code><a href="#getCustomcss">getCustomcss(parent, x__xgafv=None)</a></code></p>
+<p class="firstline">Gets the custom CSS for a portal.</p>
+<p class="toc_element">
+  <code><a href="#getDrafttoken">getDrafttoken(parent, x__xgafv=None)</a></code></p>
+<p class="firstline">Gets the draft token for a portal.</p>
+<p class="toc_element">
+  <code><a href="#getKeystores">getKeystores(parent, x__xgafv=None)</a></code></p>
+<p class="firstline">Lists the keystores and certs that are available for TLS configuration.</p>
+<p class="toc_element">
+  <code><a href="#getOrgtype">getOrgtype(parent, x__xgafv=None)</a></code></p>
+<p class="firstline">Gets the organization type for a portal.</p>
+<p class="toc_element">
+  <code><a href="#getPortal">getPortal(parent, x__xgafv=None)</a></code></p>
+<p class="firstline">Gets the details for a portal.</p>
+<p class="toc_element">
+  <code><a href="#getPublishedapis">getPublishedapis(parent, x__xgafv=None, filter=None)</a></code></p>
+<p class="firstline">Lists all published APIs.</p>
+<p class="toc_element">
+  <code><a href="#getSmtp">getSmtp(parent, x__xgafv=None)</a></code></p>
+<p class="firstline">Gets the SMTP configuration for a portal.</p>
+<p class="toc_element">
+  <code><a href="#render">render(parent, pageId=None, draft=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Gets the title and contents of the page on the portal.</p>
+<p class="toc_element">
+  <code><a href="#send_test_email">send_test_email(parent, body=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Sends a test email using the email template.</p>
+<p class="toc_element">
+  <code><a href="#trash">trash(parent, x__xgafv=None)</a></code></p>
+<p class="firstline">Deletes a portal.</p>
+<p class="toc_element">
+  <code><a href="#updateCustomcss">updateCustomcss(parent, body=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Updates the custom CSS for a portal.</p>
+<p class="toc_element">
+  <code><a href="#updatePortal">updatePortal(parent, body=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Updates a portal.</p>
+<p class="toc_element">
+  <code><a href="#updateSmtp">updateSmtp(parent, body=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Updates the SMTP configuration for a portal.</p>
+<h3>Method Details</h3>
+<div class="method">
+    <code class="details" id="create">create(parent, body=None, x__xgafv=None)</code>
+  <pre>Creates a new portal.
+
+Args:
+  parent: string, Required. Name of the Apigee organization. Use the following structure in your
+request:
+  `organizations/{org}` (required)
+  body: object, The request body.
+    The object takes the form of:
+
+{
+  "currentURL": "A String", # URL currently in use by the portal.
+  "altLogoUrl": "A String", # Logo image used on mobile devices.
+  "analyticsScript": "A String", # Custom HTML/JS analytics script added before the &lt;body&gt; tag on all pages
+      # of the site.
+  "orgName": "A String", # Name of the Apigee organization.
+  "customDomain": "A String", # Custom domain (if applicable).
+  "iconUrl": "A String", # Not used by Apigee hybrid.
+  "trashedOn": "A String", # Time the portal was deleted in milliseconds since epoch.
+  "migrationSrcSiteId": "A String", # Not used by Apigee hybrid.
+  "migrationDestSiteId": "A String", # Not used by Apigee hybrid.
+  "anonAllowedByDefault": True or False, # Boolean flag that sets the default visibility for pages and API products
+      # that are published on the portal. When set to`true`, allows access by
+      # all users (public).
+  "iconBg": "A String", # Not used by Apigee hybrid.
+  "itSecretKey": "A String", # Not used by Apigee hybrid.
+  "id": "A String", # ID of the portal.
+  "analyticsTrackingId": "A String",
+  "zoneId": "A String", # ID of the identity zone.
+  "themeVersion": "A String", # Version of the theme used by the portal. (Internal use only.)
+  "theme": "A String", # Name of the theme used on the portal (apigee).
+  "https": True or False, # Boolean flag that specifies whether the URL will be HTTPS.
+  "stylesheetDirty": True or False, # Boolean flag that specifies whether the custom CSS needs to be
+      # recalculated.
+  "siteDomainSuffix": "A String", # Suffix for the portal domain. By default, this is set to ".apigee.io".
+  "customDomainEnabled": True or False, # Not used currently by Apigee hybrid.
+  "status": "A String", # Status of the portal indicating whether the portal is published (Active) or
+      # unpublished (Inactive).
+  "direction": "A String", # Type of writing system, such as left-to-right (ltr).
+  "description": "A String", # Description of the portal.
+  "defaultURL": "A String", # Default URL to access the portal.
+  "trashedBy": "A String", # Name of the user that deleted the portal.
+  "idpEnabled": True or False, # Boolean flag that specifies whether an identity provider has been enabled.
+  "showSettings": True or False, # Not used by Apigee hybrid.
+  "defaultDomain": "A String", # Default domain for the portal.
+  "name": "A String", # Name of the portal.
+  "approvedEmails": "A String", # List of emails that are allowed to sign up on the portal.
+  "portalVersion": 42, # Version of the portal.
+  "lastLogin": "A String", # Time that a user last signed in to the portal in milliseconds since epoch.
+  "language": "A String", # Language for the portal (such as "en").
+  "created": "A String", # Time the portal was created in milliseconds since epoch.
+  "lastModified": "A String", # Time the portal was last modified in milliseconds since epoch.
+  "teams": [ # Not used by Apigee hybrid.
+    "A String",
+  ],
+  "lastPublished": "A String", # Time the portal was last published in milliseconds since epoch.
+  "trashed": True or False, # Boolean flag that specifies whether the portal has been deleted.
+  "currentDomain": "A String", # Domain name currently in use by the portal.
+  "logoUrl": "A String", # Logo image used on desktop devices.
+  "timeZone": "A String", # Time zone.
+  "customerId": "A String", # Not used by Apigee hybrid.
+  "fileLimit": 42, # Maximimum number of file assets that can be uploaded.
+}
+
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "status": "A String", # Status of the operation.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "message": "A String", # Description of the operation.
+    "data": { # Details for the portal.
+      "currentURL": "A String", # URL currently in use by the portal.
+      "altLogoUrl": "A String", # Logo image used on mobile devices.
+      "analyticsScript": "A String", # Custom HTML/JS analytics script added before the &lt;body&gt; tag on all pages
+          # of the site.
+      "orgName": "A String", # Name of the Apigee organization.
+      "customDomain": "A String", # Custom domain (if applicable).
+      "iconUrl": "A String", # Not used by Apigee hybrid.
+      "trashedOn": "A String", # Time the portal was deleted in milliseconds since epoch.
+      "migrationSrcSiteId": "A String", # Not used by Apigee hybrid.
+      "migrationDestSiteId": "A String", # Not used by Apigee hybrid.
+      "anonAllowedByDefault": True or False, # Boolean flag that sets the default visibility for pages and API products
+          # that are published on the portal. When set to`true`, allows access by
+          # all users (public).
+      "iconBg": "A String", # Not used by Apigee hybrid.
+      "itSecretKey": "A String", # Not used by Apigee hybrid.
+      "id": "A String", # ID of the portal.
+      "analyticsTrackingId": "A String",
+      "zoneId": "A String", # ID of the identity zone.
+      "themeVersion": "A String", # Version of the theme used by the portal. (Internal use only.)
+      "theme": "A String", # Name of the theme used on the portal (apigee).
+      "https": True or False, # Boolean flag that specifies whether the URL will be HTTPS.
+      "stylesheetDirty": True or False, # Boolean flag that specifies whether the custom CSS needs to be
+          # recalculated.
+      "siteDomainSuffix": "A String", # Suffix for the portal domain. By default, this is set to ".apigee.io".
+      "customDomainEnabled": True or False, # Not used currently by Apigee hybrid.
+      "status": "A String", # Status of the portal indicating whether the portal is published (Active) or
+          # unpublished (Inactive).
+      "direction": "A String", # Type of writing system, such as left-to-right (ltr).
+      "description": "A String", # Description of the portal.
+      "defaultURL": "A String", # Default URL to access the portal.
+      "trashedBy": "A String", # Name of the user that deleted the portal.
+      "idpEnabled": True or False, # Boolean flag that specifies whether an identity provider has been enabled.
+      "showSettings": True or False, # Not used by Apigee hybrid.
+      "defaultDomain": "A String", # Default domain for the portal.
+      "name": "A String", # Name of the portal.
+      "approvedEmails": "A String", # List of emails that are allowed to sign up on the portal.
+      "portalVersion": 42, # Version of the portal.
+      "lastLogin": "A String", # Time that a user last signed in to the portal in milliseconds since epoch.
+      "language": "A String", # Language for the portal (such as "en").
+      "created": "A String", # Time the portal was created in milliseconds since epoch.
+      "lastModified": "A String", # Time the portal was last modified in milliseconds since epoch.
+      "teams": [ # Not used by Apigee hybrid.
+        "A String",
+      ],
+      "lastPublished": "A String", # Time the portal was last published in milliseconds since epoch.
+      "trashed": True or False, # Boolean flag that specifies whether the portal has been deleted.
+      "currentDomain": "A String", # Domain name currently in use by the portal.
+      "logoUrl": "A String", # Logo image used on desktop devices.
+      "timeZone": "A String", # Time zone.
+      "customerId": "A String", # Not used by Apigee hybrid.
+      "fileLimit": 42, # Maximimum number of file assets that can be uploaded.
+    },
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="getConfig">getConfig(parent, x__xgafv=None)</code>
+  <pre>Gets the portal configuration.
+
+Args:
+  parent: string, Required. Name of the Apigee organization. Use the following structure in
+your request:
+  `organizations/{org}` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "status": "A String", # Status of the operation.
+    "message": "A String", # Description of the operation.
+    "data": { # Details of the portal configuration.
+      "domainSuffix": "A String", # Domain suffix.
+      "proxyDomainSuffix": "A String", # Proxy domain suffix.
+    },
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="getCustomcss">getCustomcss(parent, x__xgafv=None)</code>
+  <pre>Gets the custom CSS for a portal.
+
+Args:
+  parent: string, Required. Name of the portal. Use the following structure in your request:
+  `organizations/{org}/sites/{site}` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "status": "A String", # Status of the operation.
+    "message": "A String", # Description of the operation.
+    "data": { # Details of the custom CSS.
+      "overridesPublished": "A String", # Variable overrides (published).
+      "editorModePublished": "A String", # Editor mode (published).
+      "faviconUrlPublished": "A String", # URL for favicon (published).
+      "editorModeDraft": "A String", # Editor mode (draft).
+      "id": 42, # ID of the custom CSS.
+      "customScssPublished": "A String", # Custom style overrides (published).
+      "customScssDraft": "A String", # Custom style overrides (draft).
+      "mobileLogoUrlPublished": "A String", # URL for mobile logo (published).
+      "mobileLogoUrlDraft": "A String", # URL for mobile logo (draft).
+      "compilationError": "A String", # Compilation error, if applicable.
+      "logoUrlDraft": "A String", # URL for desktop logo (draft).
+      "css": "A String", # CSS content of the portal.
+      "variablesDraft": "A String", # Basic style settings (draft).
+      "siteId": "A String", # Name of the portal.
+      "logoUrlPublished": "A String", # URL for desktop logo (published).
+      "variablesPublished": "A String", # Basic style settings (published).
+      "created": "A String", # Time the custom CSS was created in milliseconds since epoch.
+      "enabled": True or False, # Boolean flag that specifies whether the custom CSS is enabled.
+      "modified": "A String", # Time the custom CSS was last updated in milliseconds since epoch.
+      "overridesDraft": "A String", # Variable overrides (draft).
+      "published": "A String", # Time the custom CSS was last published in milliseconds since epoch.
+      "faviconUrlDraft": "A String", # URL for favicon (draft).
+      "migrationState": "A String", # Migration status of portal.
+      "isThemeEditorEnabled": True or False, # Boolean flag that specifies whether theme editor is enabled.
+    },
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="getDrafttoken">getDrafttoken(parent, x__xgafv=None)</code>
+  <pre>Gets the draft token for a portal.
+
+Args:
+  parent: string, Required. Name of the portal. Use the following structure in your request:
+  `organizations/{org}/sites/{site}` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "status": "A String", # Status of the operation.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "message": "A String", # Description of the operation.
+    "data": "A String", # Details of the operation.
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="getKeystores">getKeystores(parent, x__xgafv=None)</code>
+  <pre>Lists the keystores and certs that are available for TLS configuration.
+
+Args:
+  parent: string, Required. Name of the portal. Use the following structure in your request:
+  `organizations/{org}/sites/{site}` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "status": "A String", # Status of the operation.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "message": "A String", # Description of the operation.
+    "data": [ # Details for the keystores.
+      {
+        "name": "A String", # Name of the keystore.
+        "aliases": [ # Aliases for the keystore.
+          {
+            "alias": "A String", # Alias for the keystore.
+            "expiryDate": "A String", # Expiration date.
+            "valid": True or False, # Boolean flag that specifies whether the keystore alias is valid.
+            "domainNames": [ # Domains names bound to the subject of the certificate.
+              "A String",
+            ],
+          },
+        ],
+      },
+    ],
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="getOrgtype">getOrgtype(parent, x__xgafv=None)</code>
+  <pre>Gets the organization type for a portal.
+
+Args:
+  parent: string, Required. Name of the portal. Use the following structure in your request:
+  `organizations/{org}/sites/{site}` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "status": "A String", # Status of the operation.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "message": "A String", # Description of the operation.
+    "data": "A String", # Details of the operation.
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="getPortal">getPortal(parent, x__xgafv=None)</code>
+  <pre>Gets the details for a portal.
+
+Args:
+  parent: string, Required. Name of the portal. Use the following structure in your request:
+  `organizations/{org}/sites/{site}` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "status": "A String", # Status of the operation.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "message": "A String", # Description of the operation.
+    "data": { # Details for the portal.
+      "currentURL": "A String", # URL currently in use by the portal.
+      "altLogoUrl": "A String", # Logo image used on mobile devices.
+      "analyticsScript": "A String", # Custom HTML/JS analytics script added before the &lt;body&gt; tag on all pages
+          # of the site.
+      "orgName": "A String", # Name of the Apigee organization.
+      "customDomain": "A String", # Custom domain (if applicable).
+      "iconUrl": "A String", # Not used by Apigee hybrid.
+      "trashedOn": "A String", # Time the portal was deleted in milliseconds since epoch.
+      "migrationSrcSiteId": "A String", # Not used by Apigee hybrid.
+      "migrationDestSiteId": "A String", # Not used by Apigee hybrid.
+      "anonAllowedByDefault": True or False, # Boolean flag that sets the default visibility for pages and API products
+          # that are published on the portal. When set to`true`, allows access by
+          # all users (public).
+      "iconBg": "A String", # Not used by Apigee hybrid.
+      "itSecretKey": "A String", # Not used by Apigee hybrid.
+      "id": "A String", # ID of the portal.
+      "analyticsTrackingId": "A String",
+      "zoneId": "A String", # ID of the identity zone.
+      "themeVersion": "A String", # Version of the theme used by the portal. (Internal use only.)
+      "theme": "A String", # Name of the theme used on the portal (apigee).
+      "https": True or False, # Boolean flag that specifies whether the URL will be HTTPS.
+      "stylesheetDirty": True or False, # Boolean flag that specifies whether the custom CSS needs to be
+          # recalculated.
+      "siteDomainSuffix": "A String", # Suffix for the portal domain. By default, this is set to ".apigee.io".
+      "customDomainEnabled": True or False, # Not used currently by Apigee hybrid.
+      "status": "A String", # Status of the portal indicating whether the portal is published (Active) or
+          # unpublished (Inactive).
+      "direction": "A String", # Type of writing system, such as left-to-right (ltr).
+      "description": "A String", # Description of the portal.
+      "defaultURL": "A String", # Default URL to access the portal.
+      "trashedBy": "A String", # Name of the user that deleted the portal.
+      "idpEnabled": True or False, # Boolean flag that specifies whether an identity provider has been enabled.
+      "showSettings": True or False, # Not used by Apigee hybrid.
+      "defaultDomain": "A String", # Default domain for the portal.
+      "name": "A String", # Name of the portal.
+      "approvedEmails": "A String", # List of emails that are allowed to sign up on the portal.
+      "portalVersion": 42, # Version of the portal.
+      "lastLogin": "A String", # Time that a user last signed in to the portal in milliseconds since epoch.
+      "language": "A String", # Language for the portal (such as "en").
+      "created": "A String", # Time the portal was created in milliseconds since epoch.
+      "lastModified": "A String", # Time the portal was last modified in milliseconds since epoch.
+      "teams": [ # Not used by Apigee hybrid.
+        "A String",
+      ],
+      "lastPublished": "A String", # Time the portal was last published in milliseconds since epoch.
+      "trashed": True or False, # Boolean flag that specifies whether the portal has been deleted.
+      "currentDomain": "A String", # Domain name currently in use by the portal.
+      "logoUrl": "A String", # Logo image used on desktop devices.
+      "timeZone": "A String", # Time zone.
+      "customerId": "A String", # Not used by Apigee hybrid.
+      "fileLimit": 42, # Maximimum number of file assets that can be uploaded.
+    },
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="getPublishedapis">getPublishedapis(parent, x__xgafv=None, filter=None)</code>
+  <pre>Lists all published APIs.
+
+Args:
+  parent: string, Required. Name of the portal. Use the following structure in your request:
+  `organizations/{org}/sites/{site}` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+  filter: string, A parameter
+
+Returns:
+  An object of the form:
+
+    {
+    "status": "A String", # Status of the operation.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "message": "A String", # Description of the operation.
+    "data": { # Details for the published API.
+      "html": "A String", # Page contents for the published API.
+    },
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="getSmtp">getSmtp(parent, x__xgafv=None)</code>
+  <pre>Gets the SMTP configuration for a portal.
+
+Args:
+  parent: string, Required. Name of the portal. Use the following structure in your request:
+  `organizations/{org}/sites/{site}` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "status": "A String", # Status of the operation.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "message": "A String", # Description of the operation.
+    "data": { # Details for the SMTP configuration.
+        "username": "A String", # SMTP username.
+        "authType": "A String", # Authorization type. Valid values include SSL, TLS, or blank (no auth).
+        "secure": True or False, # Boolean flag that specifies whether to use a secure connection to the
+            # SMTP server.
+        "securePassword": "A String", # SMTP secure password.
+        "id": 42, # ID of the SMTP configuration.
+        "fromEmail": "A String", # Email address used as the sender.
+        "host": "A String", # Host URL of the SMTP server.
+        "siteId": "A String", # ID of the portal.
+        "password": "A String", # SMTP password.
+        "port": "A String", # Port number for the SMTP server. Supported values include:
+            # 465 (SSL), 587 (TLS), and 25 (open, no authorization).
+      },
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="render">render(parent, pageId=None, draft=None, x__xgafv=None)</code>
+  <pre>Gets the title and contents of the page on the portal.
+
+Args:
+  parent: string, Required. Name of the portal. Use the following structure in your request:
+  `organizations/{org}/sites/{site}` (required)
+  pageId: string, A parameter
+  draft: string, A parameter
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "status": "A String", # Status of the operation.
+    "message": "A String", # Description of the operation.
+    "data": { # Page content.
+      "html": "A String", # Page content in HTML.
+      "title": "A String", # Page title.
+    },
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="send_test_email">send_test_email(parent, body=None, x__xgafv=None)</code>
+  <pre>Sends a test email using the email template.
+
+Args:
+  parent: string, Required. Name of the portal. Use the following structure in your request:
+  `organizations/{org}/sites/{site}` (required)
+  body: object, The request body.
+    The object takes the form of:
+
+{
+    "to": "A String", # Email address to which the test email is sent.
+    "emailTemplateId": "A String", # ID of the email template.
+  }
+
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "status": "A String", # Status of the operation.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "message": "A String", # Description of the operation.
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="trash">trash(parent, x__xgafv=None)</code>
+  <pre>Deletes a portal.
+
+Args:
+  parent: string, Required. Name of the portal. Use the following structure in your request:
+  `organizations/{org}/sites/{site}` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "status": "A String", # Status of the operation.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "message": "A String", # Description of the operation.
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="updateCustomcss">updateCustomcss(parent, body=None, x__xgafv=None)</code>
+  <pre>Updates the custom CSS for a portal.
+
+Args:
+  parent: string, Required. Name of the portal. Use the following structure in your request:
+  `organizations/{org}/sites/{site}` (required)
+  body: object, The request body.
+    The object takes the form of:
+
+{
+    "cssEditorPayload": {
+      "content": "A String", # Custom editor update payload that contains the update type and
+          # the relevant data.
+      "kind": "A String", # Type of payload.
+    },
+    "themeEditorPayload": {
+      "kind": "A String", # Set to "theme-editor-update".
+      "variables": "A String", # Basic style settings.
+      "favicon": "A String", # Favicon image (base64-encoded string).
+      "mobileLogo": "A String", # Mobile logo image (base64-encoded string).
+      "editorMode": "A String", # Theme editor mode.
+      "logo": "A String", # Desktop logo image (base64-encoded string).
+      "overrides": "A String", # Variable overrides.
+      "customScss": "A String", # Custom style overrides.
+    },
+  }
+
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "status": "A String", # Status of the operation.
+    "message": "A String", # Description of the operation.
+    "data": { # Details of the custom CSS.
+      "overridesPublished": "A String", # Variable overrides (published).
+      "editorModePublished": "A String", # Editor mode (published).
+      "faviconUrlPublished": "A String", # URL for favicon (published).
+      "editorModeDraft": "A String", # Editor mode (draft).
+      "id": 42, # ID of the custom CSS.
+      "customScssPublished": "A String", # Custom style overrides (published).
+      "customScssDraft": "A String", # Custom style overrides (draft).
+      "mobileLogoUrlPublished": "A String", # URL for mobile logo (published).
+      "mobileLogoUrlDraft": "A String", # URL for mobile logo (draft).
+      "compilationError": "A String", # Compilation error, if applicable.
+      "logoUrlDraft": "A String", # URL for desktop logo (draft).
+      "css": "A String", # CSS content of the portal.
+      "variablesDraft": "A String", # Basic style settings (draft).
+      "siteId": "A String", # Name of the portal.
+      "logoUrlPublished": "A String", # URL for desktop logo (published).
+      "variablesPublished": "A String", # Basic style settings (published).
+      "created": "A String", # Time the custom CSS was created in milliseconds since epoch.
+      "enabled": True or False, # Boolean flag that specifies whether the custom CSS is enabled.
+      "modified": "A String", # Time the custom CSS was last updated in milliseconds since epoch.
+      "overridesDraft": "A String", # Variable overrides (draft).
+      "published": "A String", # Time the custom CSS was last published in milliseconds since epoch.
+      "faviconUrlDraft": "A String", # URL for favicon (draft).
+      "migrationState": "A String", # Migration status of portal.
+      "isThemeEditorEnabled": True or False, # Boolean flag that specifies whether theme editor is enabled.
+    },
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="updatePortal">updatePortal(parent, body=None, x__xgafv=None)</code>
+  <pre>Updates a portal.
+
+Args:
+  parent: string, Required. Name of the portal. Use the following structure in your request:
+  `organizations/{org}/sites/{site}` (required)
+  body: object, The request body.
+    The object takes the form of:
+
+{
+  "currentURL": "A String", # URL currently in use by the portal.
+  "altLogoUrl": "A String", # Logo image used on mobile devices.
+  "analyticsScript": "A String", # Custom HTML/JS analytics script added before the &lt;body&gt; tag on all pages
+      # of the site.
+  "orgName": "A String", # Name of the Apigee organization.
+  "customDomain": "A String", # Custom domain (if applicable).
+  "iconUrl": "A String", # Not used by Apigee hybrid.
+  "trashedOn": "A String", # Time the portal was deleted in milliseconds since epoch.
+  "migrationSrcSiteId": "A String", # Not used by Apigee hybrid.
+  "migrationDestSiteId": "A String", # Not used by Apigee hybrid.
+  "anonAllowedByDefault": True or False, # Boolean flag that sets the default visibility for pages and API products
+      # that are published on the portal. When set to`true`, allows access by
+      # all users (public).
+  "iconBg": "A String", # Not used by Apigee hybrid.
+  "itSecretKey": "A String", # Not used by Apigee hybrid.
+  "id": "A String", # ID of the portal.
+  "analyticsTrackingId": "A String",
+  "zoneId": "A String", # ID of the identity zone.
+  "themeVersion": "A String", # Version of the theme used by the portal. (Internal use only.)
+  "theme": "A String", # Name of the theme used on the portal (apigee).
+  "https": True or False, # Boolean flag that specifies whether the URL will be HTTPS.
+  "stylesheetDirty": True or False, # Boolean flag that specifies whether the custom CSS needs to be
+      # recalculated.
+  "siteDomainSuffix": "A String", # Suffix for the portal domain. By default, this is set to ".apigee.io".
+  "customDomainEnabled": True or False, # Not used currently by Apigee hybrid.
+  "status": "A String", # Status of the portal indicating whether the portal is published (Active) or
+      # unpublished (Inactive).
+  "direction": "A String", # Type of writing system, such as left-to-right (ltr).
+  "description": "A String", # Description of the portal.
+  "defaultURL": "A String", # Default URL to access the portal.
+  "trashedBy": "A String", # Name of the user that deleted the portal.
+  "idpEnabled": True or False, # Boolean flag that specifies whether an identity provider has been enabled.
+  "showSettings": True or False, # Not used by Apigee hybrid.
+  "defaultDomain": "A String", # Default domain for the portal.
+  "name": "A String", # Name of the portal.
+  "approvedEmails": "A String", # List of emails that are allowed to sign up on the portal.
+  "portalVersion": 42, # Version of the portal.
+  "lastLogin": "A String", # Time that a user last signed in to the portal in milliseconds since epoch.
+  "language": "A String", # Language for the portal (such as "en").
+  "created": "A String", # Time the portal was created in milliseconds since epoch.
+  "lastModified": "A String", # Time the portal was last modified in milliseconds since epoch.
+  "teams": [ # Not used by Apigee hybrid.
+    "A String",
+  ],
+  "lastPublished": "A String", # Time the portal was last published in milliseconds since epoch.
+  "trashed": True or False, # Boolean flag that specifies whether the portal has been deleted.
+  "currentDomain": "A String", # Domain name currently in use by the portal.
+  "logoUrl": "A String", # Logo image used on desktop devices.
+  "timeZone": "A String", # Time zone.
+  "customerId": "A String", # Not used by Apigee hybrid.
+  "fileLimit": 42, # Maximimum number of file assets that can be uploaded.
+}
+
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "status": "A String", # Status of the operation.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "message": "A String", # Description of the operation.
+    "data": { # Details for the portal.
+      "currentURL": "A String", # URL currently in use by the portal.
+      "altLogoUrl": "A String", # Logo image used on mobile devices.
+      "analyticsScript": "A String", # Custom HTML/JS analytics script added before the &lt;body&gt; tag on all pages
+          # of the site.
+      "orgName": "A String", # Name of the Apigee organization.
+      "customDomain": "A String", # Custom domain (if applicable).
+      "iconUrl": "A String", # Not used by Apigee hybrid.
+      "trashedOn": "A String", # Time the portal was deleted in milliseconds since epoch.
+      "migrationSrcSiteId": "A String", # Not used by Apigee hybrid.
+      "migrationDestSiteId": "A String", # Not used by Apigee hybrid.
+      "anonAllowedByDefault": True or False, # Boolean flag that sets the default visibility for pages and API products
+          # that are published on the portal. When set to`true`, allows access by
+          # all users (public).
+      "iconBg": "A String", # Not used by Apigee hybrid.
+      "itSecretKey": "A String", # Not used by Apigee hybrid.
+      "id": "A String", # ID of the portal.
+      "analyticsTrackingId": "A String",
+      "zoneId": "A String", # ID of the identity zone.
+      "themeVersion": "A String", # Version of the theme used by the portal. (Internal use only.)
+      "theme": "A String", # Name of the theme used on the portal (apigee).
+      "https": True or False, # Boolean flag that specifies whether the URL will be HTTPS.
+      "stylesheetDirty": True or False, # Boolean flag that specifies whether the custom CSS needs to be
+          # recalculated.
+      "siteDomainSuffix": "A String", # Suffix for the portal domain. By default, this is set to ".apigee.io".
+      "customDomainEnabled": True or False, # Not used currently by Apigee hybrid.
+      "status": "A String", # Status of the portal indicating whether the portal is published (Active) or
+          # unpublished (Inactive).
+      "direction": "A String", # Type of writing system, such as left-to-right (ltr).
+      "description": "A String", # Description of the portal.
+      "defaultURL": "A String", # Default URL to access the portal.
+      "trashedBy": "A String", # Name of the user that deleted the portal.
+      "idpEnabled": True or False, # Boolean flag that specifies whether an identity provider has been enabled.
+      "showSettings": True or False, # Not used by Apigee hybrid.
+      "defaultDomain": "A String", # Default domain for the portal.
+      "name": "A String", # Name of the portal.
+      "approvedEmails": "A String", # List of emails that are allowed to sign up on the portal.
+      "portalVersion": 42, # Version of the portal.
+      "lastLogin": "A String", # Time that a user last signed in to the portal in milliseconds since epoch.
+      "language": "A String", # Language for the portal (such as "en").
+      "created": "A String", # Time the portal was created in milliseconds since epoch.
+      "lastModified": "A String", # Time the portal was last modified in milliseconds since epoch.
+      "teams": [ # Not used by Apigee hybrid.
+        "A String",
+      ],
+      "lastPublished": "A String", # Time the portal was last published in milliseconds since epoch.
+      "trashed": True or False, # Boolean flag that specifies whether the portal has been deleted.
+      "currentDomain": "A String", # Domain name currently in use by the portal.
+      "logoUrl": "A String", # Logo image used on desktop devices.
+      "timeZone": "A String", # Time zone.
+      "customerId": "A String", # Not used by Apigee hybrid.
+      "fileLimit": 42, # Maximimum number of file assets that can be uploaded.
+    },
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="updateSmtp">updateSmtp(parent, body=None, x__xgafv=None)</code>
+  <pre>Updates the SMTP configuration for a portal.
+
+Args:
+  parent: string, Required. Name of the portal. Use the following structure in your request:
+  `organizations/{org}/sites/{site}` (required)
+  body: object, The request body.
+    The object takes the form of:
+
+{
+    "username": "A String", # SMTP username.
+    "authType": "A String", # Authorization type. Valid values include SSL, TLS, or blank (no auth).
+    "secure": True or False, # Boolean flag that specifies whether to use a secure connection to the
+        # SMTP server.
+    "securePassword": "A String", # SMTP secure password.
+    "id": 42, # ID of the SMTP configuration.
+    "fromEmail": "A String", # Email address used as the sender.
+    "host": "A String", # Host URL of the SMTP server.
+    "siteId": "A String", # ID of the portal.
+    "password": "A String", # SMTP password.
+    "port": "A String", # Port number for the SMTP server. Supported values include:
+        # 465 (SSL), 587 (TLS), and 25 (open, no authorization).
+  }
+
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "status": "A String", # Status of the operation.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "message": "A String", # Description of the operation.
+    "data": { # Details for the SMTP configuration.
+        "username": "A String", # SMTP username.
+        "authType": "A String", # Authorization type. Valid values include SSL, TLS, or blank (no auth).
+        "secure": True or False, # Boolean flag that specifies whether to use a secure connection to the
+            # SMTP server.
+        "securePassword": "A String", # SMTP secure password.
+        "id": 42, # ID of the SMTP configuration.
+        "fromEmail": "A String", # Email address used as the sender.
+        "host": "A String", # Host URL of the SMTP server.
+        "siteId": "A String", # ID of the portal.
+        "password": "A String", # SMTP password.
+        "port": "A String", # Port number for the SMTP server. Supported values include:
+            # 465 (SSL), 587 (TLS), and 25 (open, no authorization).
+      },
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+</body></html>

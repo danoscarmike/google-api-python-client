@@ -1,0 +1,355 @@
+<html><body>
+<style>
+
+body, h1, h2, h3, div, span, p, pre, a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  font-size: 13px;
+  padding: 1em;
+}
+
+h1 {
+  font-size: 26px;
+  margin-bottom: 1em;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 1em;
+}
+
+h3 {
+  font-size: 20px;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+pre, code {
+  line-height: 1.5;
+  font-family: Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Lucida Console', monospace;
+}
+
+pre {
+  margin-top: 0.5em;
+}
+
+h1, h2, h3, p {
+  font-family: Arial, sans serif;
+}
+
+h1, h2, h3 {
+  border-bottom: solid #CCC 1px;
+}
+
+.toc_element {
+  margin-top: 0.5em;
+}
+
+.firstline {
+  margin-left: 2 em;
+}
+
+.method  {
+  margin-top: 1em;
+  border: solid 1px #CCC;
+  padding: 1em;
+  background: #EEE;
+}
+
+.details {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+</style>
+
+<h1><a href="admob_v1.html">AdMob API</a> . <a href="admob_v1.accounts.html">accounts</a> . <a href="admob_v1.accounts.networkReport.html">networkReport</a></h1>
+<h2>Instance Methods</h2>
+<p class="toc_element">
+  <code><a href="#generate">generate(parent, body=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Generates an AdMob Network report based on the provided report</p>
+<h3>Method Details</h3>
+<div class="method">
+    <code class="details" id="generate">generate(parent, body=None, x__xgafv=None)</code>
+  <pre>Generates an AdMob Network report based on the provided report
+specification.
+
+Args:
+  parent: string, Resource name of the account to generate the report for.
+Example: accounts/pub-9876543210987654 (required)
+  body: object, The request body.
+    The object takes the form of:
+
+{ # Request to generate an AdMob Network report.
+    "reportSpec": { # The specification for generating an AdMob Network report. # Network report specification.
+        # For example, the specification to get clicks and estimated earnings for only
+        # the 'US' and 'CN' countries can look like the following example:
+        #
+        #     {
+        #       'date_range': {
+        #         'start_date': {'year': 2018, 'month': 9, 'day': 1},
+        #         'end_date': {'year': 2018, 'month': 9, 'day': 30}
+        #       },
+        #       'dimensions': ['DATE', 'APP', 'COUNTRY'],
+        #       'metrics': ['CLICKS', 'ESTIMATED_EARNINGS'],
+        #       'dimension_filters': [
+        #         {
+        #           'dimension': 'COUNTRY',
+        #           'matches_any': {'values': [{'value': 'US', 'value': 'CN'}]}
+        #         }
+        #       ],
+        #       'sort_conditions': [
+        #         {'dimension':'APP', order: 'ASCENDING'},
+        #         {'metric':'CLICKS', order: 'DESCENDING'}
+        #       ],
+        #       'localization_settings': {
+        #         'currency_code': 'USD',
+        #         'language_code': 'en-US'
+        #       }
+        #     }
+        #
+        # For a better understanding, you can treat the preceding specification like
+        # the following pseudo SQL:
+        #
+        #     SELECT DATE, APP, COUNTRY, CLICKS, ESTIMATED_EARNINGS
+        #     FROM NETWORK_REPORT
+        #     WHERE DATE &gt;= '2018-09-01' AND DATE &lt;= '2018-09-30'
+        #         AND COUNTRY IN ('US', 'CN')
+        #     GROUP BY DATE, APP, COUNTRY
+        #     ORDER BY APP ASC, CLICKS DESC;
+      "metrics": [ # List of metrics of the report. A report must specify at least one metric.
+        "A String",
+      ],
+      "dimensions": [ # List of dimensions of the report. The value combination of these dimensions
+          # determines the row of the report. If no dimensions are specified, the
+          # report returns a single row of requested metrics for the entire account.
+        "A String",
+      ],
+      "maxReportRows": 42, # Maximum number of report data rows to return. If the value is not set, the
+          # API returns as many rows as possible, up to 100000. Acceptable values are
+          # 1-100000, inclusive. Any other values are treated as 100000.
+      "dateRange": { # Specification of a single date range. Both dates are inclusive. # The date range for which the report is generated.
+        "startDate": { # Represents a whole or partial calendar date, e.g. a birthday. The time of day # Start date of the date range, inclusive. Must be less than or equal to the
+            # end date.
+            # and time zone are either specified elsewhere or are not significant. The date
+            # is relative to the Proleptic Gregorian Calendar. This can represent:
+            #
+            # * A full date, with non-zero year, month and day values
+            # * A month and day value, with a zero year, e.g. an anniversary
+            # * A year on its own, with zero month and day values
+            # * A year and month value, with a zero day, e.g. a credit card expiration date
+            #
+            # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+          "month": 42, # Month of year. Must be from 1 to 12, or 0 if specifying a year without a
+              # month and day.
+          "day": 42, # Day of month. Must be from 1 to 31 and valid for the year and month, or 0
+              # if specifying a year by itself or a year and month where the day is not
+              # significant.
+          "year": 42, # Year of date. Must be from 1 to 9999, or 0 if specifying a date without
+              # a year.
+        },
+        "endDate": { # Represents a whole or partial calendar date, e.g. a birthday. The time of day # End date of the date range, inclusive. Must be greater than or equal to the
+            # start date.
+            # and time zone are either specified elsewhere or are not significant. The date
+            # is relative to the Proleptic Gregorian Calendar. This can represent:
+            #
+            # * A full date, with non-zero year, month and day values
+            # * A month and day value, with a zero year, e.g. an anniversary
+            # * A year on its own, with zero month and day values
+            # * A year and month value, with a zero day, e.g. a credit card expiration date
+            #
+            # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+          "month": 42, # Month of year. Must be from 1 to 12, or 0 if specifying a year without a
+              # month and day.
+          "day": 42, # Day of month. Must be from 1 to 31 and valid for the year and month, or 0
+              # if specifying a year by itself or a year and month where the day is not
+              # significant.
+          "year": 42, # Year of date. Must be from 1 to 9999, or 0 if specifying a date without
+              # a year.
+        },
+      },
+      "dimensionFilters": [ # Describes which report rows to match based on their dimension values.
+        { # Describes which report rows to match based on their dimension values.
+          "matchesAny": { # List of string values. # Matches a row if its value for the specified dimension is in one of the
+              # values specified in this condition.
+            "values": [ # The string values.
+              "A String",
+            ],
+          },
+          "dimension": "A String", # Applies the filter criterion to the specified dimension.
+        },
+      ],
+      "localizationSettings": { # Localization settings for reports, such as currency and language. It affects # Localization settings of the report.
+          # how metrics are calculated.
+        "languageCode": "A String", # Language used for any localized text, such as some dimension value display
+            # labels. The language tag defined in the IETF BCP47. Defaults to 'en-US' if
+            # unspecified.
+        "currencyCode": "A String", # Currency code of the earning related metrics, which is the 3-letter code
+            # defined in ISO 4217. The daily average rate is used for the currency
+            # conversion. Defaults to the account currency code if unspecified.
+      },
+      "sortConditions": [ # Describes the sorting of report rows. The order of the condition in the
+          # list defines its precedence; the earlier the condition, the higher its
+          # precedence. If no sort conditions are specified, the row ordering is
+          # undefined.
+        { # Sorting direction to be applied on a dimension or a metric.
+          "metric": "A String", # Sort by the specified metric.
+          "order": "A String", # Sorting order of the dimension or metric.
+          "dimension": "A String", # Sort by the specified dimension.
+        },
+      ],
+      "timeZone": "A String", # A report time zone. Accepts an IANA TZ name values, such as
+          # "America/Los_Angeles."  If no time zone is defined, the account default
+          # takes effect. Check default value by the get account action.
+          #
+          # **Warning:** The "America/Los_Angeles" is the only supported value at
+          # the moment.
+    },
+  }
+
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    { # The streaming response for the AdMob Network report where the first response
+      # contains the report header, then a stream of row responses, and finally a
+      # footer as the last response message.
+      #
+      # For example:
+      #
+      #     [{
+      #       "header": {
+      #         "dateRange": {
+      #           "startDate": {"year": 2018, "month": 9, "day": 1},
+      #           "endDate": {"year": 2018, "month": 9, "day": 30}
+      #         }
+      #         "localizationSettings": {
+      #           "currencyCode": "USD",
+      #           "languageCode": "en-US"
+      #         }
+      #       }
+      #     },
+      #     {
+      #       "row": {
+      #         "dimensionValues": {
+      #           "DATE": {"value": "20180918"},
+      #           "APP": {
+      #             "value": "ca-app-pub-8123415297019784~1001342552",
+      #              displayLabel: "My app name!"
+      #           }
+      #         },
+      #         "metricValues": {
+      #           "ESTIMATED_EARNINGS": {"microsValue": 6500000}
+      #         }
+      #       }
+      #     },
+      #     ...
+      #     {
+      #       "footer": {"matchingRowCount": 5}
+      #     }]
+    "header": { # Groups data helps to treat the generated report. Always sent as a first # Report generation settings that describes the report contents, such as
+        # the report date range and localization settings.
+        # message in the stream response.
+      "localizationSettings": { # Localization settings for reports, such as currency and language. It affects # Localization settings of the report. This is identical to the settings
+          # in the report request.
+          # how metrics are calculated.
+        "languageCode": "A String", # Language used for any localized text, such as some dimension value display
+            # labels. The language tag defined in the IETF BCP47. Defaults to 'en-US' if
+            # unspecified.
+        "currencyCode": "A String", # Currency code of the earning related metrics, which is the 3-letter code
+            # defined in ISO 4217. The daily average rate is used for the currency
+            # conversion. Defaults to the account currency code if unspecified.
+      },
+      "dateRange": { # Specification of a single date range. Both dates are inclusive. # The date range for which the report is generated. This is identical to the
+          # range specified in the report request.
+        "startDate": { # Represents a whole or partial calendar date, e.g. a birthday. The time of day # Start date of the date range, inclusive. Must be less than or equal to the
+            # end date.
+            # and time zone are either specified elsewhere or are not significant. The date
+            # is relative to the Proleptic Gregorian Calendar. This can represent:
+            #
+            # * A full date, with non-zero year, month and day values
+            # * A month and day value, with a zero year, e.g. an anniversary
+            # * A year on its own, with zero month and day values
+            # * A year and month value, with a zero day, e.g. a credit card expiration date
+            #
+            # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+          "month": 42, # Month of year. Must be from 1 to 12, or 0 if specifying a year without a
+              # month and day.
+          "day": 42, # Day of month. Must be from 1 to 31 and valid for the year and month, or 0
+              # if specifying a year by itself or a year and month where the day is not
+              # significant.
+          "year": 42, # Year of date. Must be from 1 to 9999, or 0 if specifying a date without
+              # a year.
+        },
+        "endDate": { # Represents a whole or partial calendar date, e.g. a birthday. The time of day # End date of the date range, inclusive. Must be greater than or equal to the
+            # start date.
+            # and time zone are either specified elsewhere or are not significant. The date
+            # is relative to the Proleptic Gregorian Calendar. This can represent:
+            #
+            # * A full date, with non-zero year, month and day values
+            # * A month and day value, with a zero year, e.g. an anniversary
+            # * A year on its own, with zero month and day values
+            # * A year and month value, with a zero day, e.g. a credit card expiration date
+            #
+            # Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.
+          "month": 42, # Month of year. Must be from 1 to 12, or 0 if specifying a year without a
+              # month and day.
+          "day": 42, # Day of month. Must be from 1 to 31 and valid for the year and month, or 0
+              # if specifying a year by itself or a year and month where the day is not
+              # significant.
+          "year": 42, # Year of date. Must be from 1 to 9999, or 0 if specifying a date without
+              # a year.
+        },
+      },
+      "reportingTimeZone": "A String", # The report time zone. The value is a time-zone ID as specified by the CLDR
+          # project, for example, "America/Los_Angeles".
+    },
+    "footer": { # Groups data available after report generation, for example, warnings and row # Additional information about the generated report, such as warnings about
+        # the data.
+        # counts. Always sent as the last message in the stream response.
+      "matchingRowCount": "A String", # Total number of rows that did match the request.
+      "warnings": [ # Warnings associated with generation of the report.
+        { # Warnings associated with generation of the report.
+          "type": "A String", # Type of the warning.
+          "description": "A String", # Describes the details of the warning message, in English.
+        },
+      ],
+    },
+    "row": { # A row of the returning report. # Actual report data.
+      "dimensionValues": { # Map of dimension values in a row, with keys as enum name of the dimensions.
+        "a_key": { # Representation of a dimension value.
+          "displayLabel": "A String", # The localized string representation of the value. If unspecified, the
+              # display label should be derived from the value.
+          "value": "A String", # Dimension value in the format specified in the report's spec Dimension
+              # enum.
+        },
+      },
+      "metricValues": { # Map of metric values in a row, with keys as enum name of the metrics. If
+          # a metric being requested has no value returned, the map will not include
+          # it.
+        "a_key": { # Representation of a metric value.
+          "doubleValue": 3.14, # Double precision (approximate) decimal values. Rates are from 0 to 1.
+          "integerValue": "A String", # Metric integer value.
+          "microsValue": "A String", # Amount in micros. One million is equivalent to one unit. Currency value
+              # is in the unit (USD, EUR or other) specified by the request.
+              # For example, $6.50 whould be represented as 6500000 micros.
+        },
+      },
+    },
+  }</pre>
+</div>
+
+</body></html>

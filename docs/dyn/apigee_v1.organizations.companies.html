@@ -1,0 +1,350 @@
+<html><body>
+<style>
+
+body, h1, h2, h3, div, span, p, pre, a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  font-size: 13px;
+  padding: 1em;
+}
+
+h1 {
+  font-size: 26px;
+  margin-bottom: 1em;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 1em;
+}
+
+h3 {
+  font-size: 20px;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+pre, code {
+  line-height: 1.5;
+  font-family: Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Lucida Console', monospace;
+}
+
+pre {
+  margin-top: 0.5em;
+}
+
+h1, h2, h3, p {
+  font-family: Arial, sans serif;
+}
+
+h1, h2, h3 {
+  border-bottom: solid #CCC 1px;
+}
+
+.toc_element {
+  margin-top: 0.5em;
+}
+
+.firstline {
+  margin-left: 2 em;
+}
+
+.method  {
+  margin-top: 1em;
+  border: solid 1px #CCC;
+  padding: 1em;
+  background: #EEE;
+}
+
+.details {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+</style>
+
+<h1><a href="apigee_v1.html">Apigee API</a> . <a href="apigee_v1.organizations.html">organizations</a> . <a href="apigee_v1.organizations.companies.html">companies</a></h1>
+<h2>Instance Methods</h2>
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.companies.apps.html">apps()</a></code>
+</p>
+<p class="firstline">Returns the apps Resource.</p>
+
+<p class="toc_element">
+  <code><a href="#create">create(parent, body=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Creates an app for a company. Note that you must first create a profile</p>
+<p class="toc_element">
+  <code><a href="#delete">delete(name, x__xgafv=None)</a></code></p>
+<p class="firstline">Deletes an existing company.</p>
+<p class="toc_element">
+  <code><a href="#get">get(name, x__xgafv=None)</a></code></p>
+<p class="firstline">List details for a company.</p>
+<p class="toc_element">
+  <code><a href="#list">list(parent, count=None, startKey=None, includeDevelopers=None, x__xgafv=None, expand=None)</a></code></p>
+<p class="firstline">List all companies in an organization, and optionally returns an</p>
+<p class="toc_element">
+  <code><a href="#update">update(name, body=None, x__xgafv=None, action=None)</a></code></p>
+<p class="firstline">Updates an existing company.</p>
+<h3>Method Details</h3>
+<div class="method">
+    <code class="details" id="create">create(parent, body=None, x__xgafv=None)</code>
+  <pre>Creates an app for a company. Note that you must first create a profile
+for the company in your organization before you can register apps that
+are associated with the company.
+
+Args:
+  parent: string, Name of org that the company will be created in
+`{parent=organizations/*}` (required)
+  body: object, The request body.
+    The object takes the form of:
+
+{
+    "status": "A String", # The status of the company
+    "displayName": "A String", # company name displayed in the UI
+    "name": "A String", # Name of the company. Characters you can use in the name are restricted to:
+        # A-Z0-9._\-$ %.
+    "apps": [
+      "A String",
+    ],
+    "lastModifiedAt": "A String", # Output only. Modified time as milliseconds since epoch.
+        # json key: lastModifiedAt
+    "organization": "A String", # the org that the company is created
+    "attributes": [ # A list of attributes
+      { # Key-value pair to store extra metadata.
+        "name": "A String", # API key of the attribute.
+        "value": "A String", # Value of the attribute.
+      },
+    ],
+    "createdAt": "A String", # Output only. Created time as milliseconds since epoch.
+        # json key: createdAt
+  }
+
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+      "status": "A String", # The status of the company
+      "displayName": "A String", # company name displayed in the UI
+      "name": "A String", # Name of the company. Characters you can use in the name are restricted to:
+          # A-Z0-9._\-$ %.
+      "apps": [
+        "A String",
+      ],
+      "lastModifiedAt": "A String", # Output only. Modified time as milliseconds since epoch.
+          # json key: lastModifiedAt
+      "organization": "A String", # the org that the company is created
+      "attributes": [ # A list of attributes
+        { # Key-value pair to store extra metadata.
+          "name": "A String", # API key of the attribute.
+          "value": "A String", # Value of the attribute.
+        },
+      ],
+      "createdAt": "A String", # Output only. Created time as milliseconds since epoch.
+          # json key: createdAt
+    }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="delete">delete(name, x__xgafv=None)</code>
+  <pre>Deletes an existing company.
+
+Args:
+  name: string, The company resource name
+`organizations/{org}/companies/{company}` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+      "status": "A String", # The status of the company
+      "displayName": "A String", # company name displayed in the UI
+      "name": "A String", # Name of the company. Characters you can use in the name are restricted to:
+          # A-Z0-9._\-$ %.
+      "apps": [
+        "A String",
+      ],
+      "lastModifiedAt": "A String", # Output only. Modified time as milliseconds since epoch.
+          # json key: lastModifiedAt
+      "organization": "A String", # the org that the company is created
+      "attributes": [ # A list of attributes
+        { # Key-value pair to store extra metadata.
+          "name": "A String", # API key of the attribute.
+          "value": "A String", # Value of the attribute.
+        },
+      ],
+      "createdAt": "A String", # Output only. Created time as milliseconds since epoch.
+          # json key: createdAt
+    }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="get">get(name, x__xgafv=None)</code>
+  <pre>List details for a company.
+
+Args:
+  name: string, The company resource name
+`organizations/{org}/companies/{company}` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+      "status": "A String", # The status of the company
+      "displayName": "A String", # company name displayed in the UI
+      "name": "A String", # Name of the company. Characters you can use in the name are restricted to:
+          # A-Z0-9._\-$ %.
+      "apps": [
+        "A String",
+      ],
+      "lastModifiedAt": "A String", # Output only. Modified time as milliseconds since epoch.
+          # json key: lastModifiedAt
+      "organization": "A String", # the org that the company is created
+      "attributes": [ # A list of attributes
+        { # Key-value pair to store extra metadata.
+          "name": "A String", # API key of the attribute.
+          "value": "A String", # Value of the attribute.
+        },
+      ],
+      "createdAt": "A String", # Output only. Created time as milliseconds since epoch.
+          # json key: createdAt
+    }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="list">list(parent, count=None, startKey=None, includeDevelopers=None, x__xgafv=None, expand=None)</code>
+  <pre>List all companies in an organization, and optionally returns an
+expanded list of companies, displaying a full profile for each company in
+the organization.
+
+Args:
+  parent: string, The parent organization name
+`organizations/{org}` (required)
+  count: string, Limits the list to the number you specify. The limit is 100.
+  startKey: string, To filter the keys that are returned, enter the email of a developer
+that the list will start with.
+  includeDevelopers: boolean, Optional. include developers in the response.
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+  expand: boolean, Set expand to true to return a full profile for each company.
+
+Returns:
+  An object of the form:
+
+    {
+    "company": [ # A list of company.
+      {
+          "status": "A String", # The status of the company
+          "displayName": "A String", # company name displayed in the UI
+          "name": "A String", # Name of the company. Characters you can use in the name are restricted to:
+              # A-Z0-9._\-$ %.
+          "apps": [
+            "A String",
+          ],
+          "lastModifiedAt": "A String", # Output only. Modified time as milliseconds since epoch.
+              # json key: lastModifiedAt
+          "organization": "A String", # the org that the company is created
+          "attributes": [ # A list of attributes
+            { # Key-value pair to store extra metadata.
+              "name": "A String", # API key of the attribute.
+              "value": "A String", # Value of the attribute.
+            },
+          ],
+          "createdAt": "A String", # Output only. Created time as milliseconds since epoch.
+              # json key: createdAt
+        },
+    ],
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="update">update(name, body=None, x__xgafv=None, action=None)</code>
+  <pre>Updates an existing company.
+Send the complete company record as a payload with any changes you want to
+make. Note that to change the status of the Company you use Set the Status
+of a Company. The attributes in the sample payload below apply to company
+configuration in monetization. For non-monetized companies, you need send
+only displayName.
+
+Args:
+  name: string, Name of the company to be updated.
+`{name=organizations/*/companies/*}` (required)
+  body: object, The request body.
+    The object takes the form of:
+
+{
+    "status": "A String", # The status of the company
+    "displayName": "A String", # company name displayed in the UI
+    "name": "A String", # Name of the company. Characters you can use in the name are restricted to:
+        # A-Z0-9._\-$ %.
+    "apps": [
+      "A String",
+    ],
+    "lastModifiedAt": "A String", # Output only. Modified time as milliseconds since epoch.
+        # json key: lastModifiedAt
+    "organization": "A String", # the org that the company is created
+    "attributes": [ # A list of attributes
+      { # Key-value pair to store extra metadata.
+        "name": "A String", # API key of the attribute.
+        "value": "A String", # Value of the attribute.
+      },
+    ],
+    "createdAt": "A String", # Output only. Created time as milliseconds since epoch.
+        # json key: createdAt
+  }
+
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+  action: string, Specify the status as active or inactive.
+
+Returns:
+  An object of the form:
+
+    {
+      "status": "A String", # The status of the company
+      "displayName": "A String", # company name displayed in the UI
+      "name": "A String", # Name of the company. Characters you can use in the name are restricted to:
+          # A-Z0-9._\-$ %.
+      "apps": [
+        "A String",
+      ],
+      "lastModifiedAt": "A String", # Output only. Modified time as milliseconds since epoch.
+          # json key: lastModifiedAt
+      "organization": "A String", # the org that the company is created
+      "attributes": [ # A list of attributes
+        { # Key-value pair to store extra metadata.
+          "name": "A String", # API key of the attribute.
+          "value": "A String", # Value of the attribute.
+        },
+      ],
+      "createdAt": "A String", # Output only. Created time as milliseconds since epoch.
+          # json key: createdAt
+    }</pre>
+</div>
+
+</body></html>

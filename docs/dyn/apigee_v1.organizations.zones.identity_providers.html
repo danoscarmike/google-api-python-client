@@ -1,0 +1,485 @@
+<html><body>
+<style>
+
+body, h1, h2, h3, div, span, p, pre, a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  font-size: 13px;
+  padding: 1em;
+}
+
+h1 {
+  font-size: 26px;
+  margin-bottom: 1em;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 1em;
+}
+
+h3 {
+  font-size: 20px;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+pre, code {
+  line-height: 1.5;
+  font-family: Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Lucida Console', monospace;
+}
+
+pre {
+  margin-top: 0.5em;
+}
+
+h1, h2, h3, p {
+  font-family: Arial, sans serif;
+}
+
+h1, h2, h3 {
+  border-bottom: solid #CCC 1px;
+}
+
+.toc_element {
+  margin-top: 0.5em;
+}
+
+.firstline {
+  margin-left: 2 em;
+}
+
+.method  {
+  margin-top: 1em;
+  border: solid 1px #CCC;
+  padding: 1em;
+  background: #EEE;
+}
+
+.details {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+</style>
+
+<h1><a href="apigee_v1.html">Apigee API</a> . <a href="apigee_v1.organizations.html">organizations</a> . <a href="apigee_v1.organizations.zones.html">zones</a> . <a href="apigee_v1.organizations.zones.identity_providers.html">identity_providers</a></h1>
+<h2>Instance Methods</h2>
+<p class="toc_element">
+  <code><a href="#create">create(parent, body=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Creates an identity provider in a zone.</p>
+<p class="toc_element">
+  <code><a href="#get">get(name, x__xgafv=None)</a></code></p>
+<p class="firstline">Gets an identity provider in a zone.</p>
+<p class="toc_element">
+  <code><a href="#list">list(parent, x__xgafv=None)</a></code></p>
+<p class="firstline">Lists the identity providers in a zone.</p>
+<p class="toc_element">
+  <code><a href="#patch">patch(name, body=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Updates an identity provider in a zone.</p>
+<p class="toc_element">
+  <code><a href="#updateCertificate">updateCertificate(parent, body=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Updates the certificate for an identity provider.</p>
+<p class="toc_element">
+  <code><a href="#updateConfig">updateConfig(parent, body=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Updates the configuration for an identity provider.</p>
+<h3>Method Details</h3>
+<div class="method">
+    <code class="details" id="create">create(parent, body=None, x__xgafv=None)</code>
+  <pre>Creates an identity provider in a zone.
+
+Args:
+  parent: string, Required. Name of the zone. Use the following structure in your request:
+  `organizations/{org}/zones/{zone}` (required)
+  body: object, The request body.
+    The object takes the form of:
+
+{ # Identity provider for a zone.
+  "name": "A String", # User-defined name of the identity provider.
+  "created": "A String", # Time the identity provider was created in milliseconds since epoch.
+  "config": { # Configuration for an identity provider. # Configuration for the identity provider.
+    "spMetadataUrl": "A String", # URL to the identity provider metadata.
+    "entityId": "A String", # ID of an entity that provides SAML-based services.
+    "logoutUrl": "A String", # URL used for sign out using this identity provider.
+    "loginUrl": "A String", # URL used for sign in using this identity provider.
+    "certificate": { # SAML certificate and metadata. # Certificate for the identity provider.
+      "certificate": "A String", # SAML certificate.
+      "issuer": "A String", # Issuer of the SAML certificate.
+      "validTo": "A String", # Time the certificate expires in milliseconds since epoch.
+      "valid": True or False, # Boolean flag that specifies whether the certificate is valid.
+      "fingerprint": { # Fingerprint details of a SAML certificate. # Fingerprint of this SAML certificate.
+        "sha256": "A String", # SHA256 fingerprint.
+        "sha1": "A String", # SHA1 fingerprint.
+      },
+      "message": "A String", # Message from the issuer.
+      "validFrom": "A String", # Time the certificate is valid in milliseconds since epoch.
+      "subject": "A String", # Subject of the message from the issuer.
+    },
+  },
+  "modified": "A String", # Time the identity provider was last modified in milliseconds since epoch.
+  "active": True or False, # Boolean flag that specifies whether the identity provider is active.
+  "type": "A String", # Type of the identity provider.
+  "id": "A String", # ID of the identity provider.
+}
+
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    { # Response message for the CreateIdentityProvider RPC.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "status": "A String", # Status of the operation.
+    "message": "A String", # Description of the operation.
+    "data": { # Identity provider for a zone. # Identity provider created by the request
+      "name": "A String", # User-defined name of the identity provider.
+      "created": "A String", # Time the identity provider was created in milliseconds since epoch.
+      "config": { # Configuration for an identity provider. # Configuration for the identity provider.
+        "spMetadataUrl": "A String", # URL to the identity provider metadata.
+        "entityId": "A String", # ID of an entity that provides SAML-based services.
+        "logoutUrl": "A String", # URL used for sign out using this identity provider.
+        "loginUrl": "A String", # URL used for sign in using this identity provider.
+        "certificate": { # SAML certificate and metadata. # Certificate for the identity provider.
+          "certificate": "A String", # SAML certificate.
+          "issuer": "A String", # Issuer of the SAML certificate.
+          "validTo": "A String", # Time the certificate expires in milliseconds since epoch.
+          "valid": True or False, # Boolean flag that specifies whether the certificate is valid.
+          "fingerprint": { # Fingerprint details of a SAML certificate. # Fingerprint of this SAML certificate.
+            "sha256": "A String", # SHA256 fingerprint.
+            "sha1": "A String", # SHA1 fingerprint.
+          },
+          "message": "A String", # Message from the issuer.
+          "validFrom": "A String", # Time the certificate is valid in milliseconds since epoch.
+          "subject": "A String", # Subject of the message from the issuer.
+        },
+      },
+      "modified": "A String", # Time the identity provider was last modified in milliseconds since epoch.
+      "active": True or False, # Boolean flag that specifies whether the identity provider is active.
+      "type": "A String", # Type of the identity provider.
+      "id": "A String", # ID of the identity provider.
+    },
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="get">get(name, x__xgafv=None)</code>
+  <pre>Gets an identity provider in a zone.
+
+Args:
+  name: string, Required. Name of the identity provider. Use the following structure in
+your request:
+  `organizations/{org}/zones/{zone}/identity_providers/{identity_provider}` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    { # Response message for the GetIdentityProvider RPC.
+    "status": "A String", # Status of the operation.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "message": "A String", # Description of the operation.
+    "data": { # Identity provider for a zone. # Details of the identity provider.
+      "name": "A String", # User-defined name of the identity provider.
+      "created": "A String", # Time the identity provider was created in milliseconds since epoch.
+      "config": { # Configuration for an identity provider. # Configuration for the identity provider.
+        "spMetadataUrl": "A String", # URL to the identity provider metadata.
+        "entityId": "A String", # ID of an entity that provides SAML-based services.
+        "logoutUrl": "A String", # URL used for sign out using this identity provider.
+        "loginUrl": "A String", # URL used for sign in using this identity provider.
+        "certificate": { # SAML certificate and metadata. # Certificate for the identity provider.
+          "certificate": "A String", # SAML certificate.
+          "issuer": "A String", # Issuer of the SAML certificate.
+          "validTo": "A String", # Time the certificate expires in milliseconds since epoch.
+          "valid": True or False, # Boolean flag that specifies whether the certificate is valid.
+          "fingerprint": { # Fingerprint details of a SAML certificate. # Fingerprint of this SAML certificate.
+            "sha256": "A String", # SHA256 fingerprint.
+            "sha1": "A String", # SHA1 fingerprint.
+          },
+          "message": "A String", # Message from the issuer.
+          "validFrom": "A String", # Time the certificate is valid in milliseconds since epoch.
+          "subject": "A String", # Subject of the message from the issuer.
+        },
+      },
+      "modified": "A String", # Time the identity provider was last modified in milliseconds since epoch.
+      "active": True or False, # Boolean flag that specifies whether the identity provider is active.
+      "type": "A String", # Type of the identity provider.
+      "id": "A String", # ID of the identity provider.
+    },
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="list">list(parent, x__xgafv=None)</code>
+  <pre>Lists the identity providers in a zone.
+Underscore in URL
+
+Args:
+  parent: string, Required. Name of the zone. Use the following structure in your request:
+  `organizations/{org}/zones/{zone}` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    { # Response message for the ListIdentityProviders RPC.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "status": "A String", # Status of the operation.
+    "message": "A String", # Description of the operation.
+    "data": { # Wrapper message for a list of identity providers. # List of identity providers.
+      "providers": [ # List of identity providers.
+        { # Identity provider for a zone.
+          "name": "A String", # User-defined name of the identity provider.
+          "created": "A String", # Time the identity provider was created in milliseconds since epoch.
+          "config": { # Configuration for an identity provider. # Configuration for the identity provider.
+            "spMetadataUrl": "A String", # URL to the identity provider metadata.
+            "entityId": "A String", # ID of an entity that provides SAML-based services.
+            "logoutUrl": "A String", # URL used for sign out using this identity provider.
+            "loginUrl": "A String", # URL used for sign in using this identity provider.
+            "certificate": { # SAML certificate and metadata. # Certificate for the identity provider.
+              "certificate": "A String", # SAML certificate.
+              "issuer": "A String", # Issuer of the SAML certificate.
+              "validTo": "A String", # Time the certificate expires in milliseconds since epoch.
+              "valid": True or False, # Boolean flag that specifies whether the certificate is valid.
+              "fingerprint": { # Fingerprint details of a SAML certificate. # Fingerprint of this SAML certificate.
+                "sha256": "A String", # SHA256 fingerprint.
+                "sha1": "A String", # SHA1 fingerprint.
+              },
+              "message": "A String", # Message from the issuer.
+              "validFrom": "A String", # Time the certificate is valid in milliseconds since epoch.
+              "subject": "A String", # Subject of the message from the issuer.
+            },
+          },
+          "modified": "A String", # Time the identity provider was last modified in milliseconds since epoch.
+          "active": True or False, # Boolean flag that specifies whether the identity provider is active.
+          "type": "A String", # Type of the identity provider.
+          "id": "A String", # ID of the identity provider.
+        },
+      ],
+    },
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="patch">patch(name, body=None, x__xgafv=None)</code>
+  <pre>Updates an identity provider in a zone.
+
+Args:
+  name: string, Required. Name of the identity provider. Use the following structure in
+your request:
+  `organizations/{org}/zones/{zone}/identity_providers/{identity_provider}` (required)
+  body: object, The request body.
+    The object takes the form of:
+
+{ # Identity provider for a zone.
+  "name": "A String", # User-defined name of the identity provider.
+  "created": "A String", # Time the identity provider was created in milliseconds since epoch.
+  "config": { # Configuration for an identity provider. # Configuration for the identity provider.
+    "spMetadataUrl": "A String", # URL to the identity provider metadata.
+    "entityId": "A String", # ID of an entity that provides SAML-based services.
+    "logoutUrl": "A String", # URL used for sign out using this identity provider.
+    "loginUrl": "A String", # URL used for sign in using this identity provider.
+    "certificate": { # SAML certificate and metadata. # Certificate for the identity provider.
+      "certificate": "A String", # SAML certificate.
+      "issuer": "A String", # Issuer of the SAML certificate.
+      "validTo": "A String", # Time the certificate expires in milliseconds since epoch.
+      "valid": True or False, # Boolean flag that specifies whether the certificate is valid.
+      "fingerprint": { # Fingerprint details of a SAML certificate. # Fingerprint of this SAML certificate.
+        "sha256": "A String", # SHA256 fingerprint.
+        "sha1": "A String", # SHA1 fingerprint.
+      },
+      "message": "A String", # Message from the issuer.
+      "validFrom": "A String", # Time the certificate is valid in milliseconds since epoch.
+      "subject": "A String", # Subject of the message from the issuer.
+    },
+  },
+  "modified": "A String", # Time the identity provider was last modified in milliseconds since epoch.
+  "active": True or False, # Boolean flag that specifies whether the identity provider is active.
+  "type": "A String", # Type of the identity provider.
+  "id": "A String", # ID of the identity provider.
+}
+
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    { # Response message for the UpdateIdentityProvider RPC.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "status": "A String", # Status of the operation.
+    "message": "A String", # Description of the operation.
+    "data": { # Identity provider for a zone. # Details of the identity provider.
+      "name": "A String", # User-defined name of the identity provider.
+      "created": "A String", # Time the identity provider was created in milliseconds since epoch.
+      "config": { # Configuration for an identity provider. # Configuration for the identity provider.
+        "spMetadataUrl": "A String", # URL to the identity provider metadata.
+        "entityId": "A String", # ID of an entity that provides SAML-based services.
+        "logoutUrl": "A String", # URL used for sign out using this identity provider.
+        "loginUrl": "A String", # URL used for sign in using this identity provider.
+        "certificate": { # SAML certificate and metadata. # Certificate for the identity provider.
+          "certificate": "A String", # SAML certificate.
+          "issuer": "A String", # Issuer of the SAML certificate.
+          "validTo": "A String", # Time the certificate expires in milliseconds since epoch.
+          "valid": True or False, # Boolean flag that specifies whether the certificate is valid.
+          "fingerprint": { # Fingerprint details of a SAML certificate. # Fingerprint of this SAML certificate.
+            "sha256": "A String", # SHA256 fingerprint.
+            "sha1": "A String", # SHA1 fingerprint.
+          },
+          "message": "A String", # Message from the issuer.
+          "validFrom": "A String", # Time the certificate is valid in milliseconds since epoch.
+          "subject": "A String", # Subject of the message from the issuer.
+        },
+      },
+      "modified": "A String", # Time the identity provider was last modified in milliseconds since epoch.
+      "active": True or False, # Boolean flag that specifies whether the identity provider is active.
+      "type": "A String", # Type of the identity provider.
+      "id": "A String", # ID of the identity provider.
+    },
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="updateCertificate">updateCertificate(parent, body=None, x__xgafv=None)</code>
+  <pre>Updates the certificate for an identity provider.
+
+Args:
+  parent: string, Required. Name of the identity provider. Use the following structure in your
+request:
+  `organizations/{org}/zones/{zone}/identity_providers/{identity_provider}` (required)
+  body: object, The request body.
+    The object takes the form of:
+
+{ # SAML certificate and metadata.
+  "certificate": "A String", # SAML certificate.
+  "issuer": "A String", # Issuer of the SAML certificate.
+  "validTo": "A String", # Time the certificate expires in milliseconds since epoch.
+  "valid": True or False, # Boolean flag that specifies whether the certificate is valid.
+  "fingerprint": { # Fingerprint details of a SAML certificate. # Fingerprint of this SAML certificate.
+    "sha256": "A String", # SHA256 fingerprint.
+    "sha1": "A String", # SHA1 fingerprint.
+  },
+  "message": "A String", # Message from the issuer.
+  "validFrom": "A String", # Time the certificate is valid in milliseconds since epoch.
+  "subject": "A String", # Subject of the message from the issuer.
+}
+
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    { # Response message for the UpdateIdentityProviderCertificate RPC.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "status": "A String", # Status of the operation.
+    "message": "A String", # Description of the operation.
+    "data": { # SAML certificate and metadata. # Details of the certificate.
+      "certificate": "A String", # SAML certificate.
+      "issuer": "A String", # Issuer of the SAML certificate.
+      "validTo": "A String", # Time the certificate expires in milliseconds since epoch.
+      "valid": True or False, # Boolean flag that specifies whether the certificate is valid.
+      "fingerprint": { # Fingerprint details of a SAML certificate. # Fingerprint of this SAML certificate.
+        "sha256": "A String", # SHA256 fingerprint.
+        "sha1": "A String", # SHA1 fingerprint.
+      },
+      "message": "A String", # Message from the issuer.
+      "validFrom": "A String", # Time the certificate is valid in milliseconds since epoch.
+      "subject": "A String", # Subject of the message from the issuer.
+    },
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="updateConfig">updateConfig(parent, body=None, x__xgafv=None)</code>
+  <pre>Updates the configuration for an identity provider.
+
+Args:
+  parent: string, Required. Name of the identity provider. Use the following structure in
+your request:
+  `organizations/{org}/zones/{zone}/identity_providers/{identity_provider}` (required)
+  body: object, The request body.
+    The object takes the form of:
+
+{ # Configuration for an identity provider.
+  "spMetadataUrl": "A String", # URL to the identity provider metadata.
+  "entityId": "A String", # ID of an entity that provides SAML-based services.
+  "logoutUrl": "A String", # URL used for sign out using this identity provider.
+  "loginUrl": "A String", # URL used for sign in using this identity provider.
+  "certificate": { # SAML certificate and metadata. # Certificate for the identity provider.
+    "certificate": "A String", # SAML certificate.
+    "issuer": "A String", # Issuer of the SAML certificate.
+    "validTo": "A String", # Time the certificate expires in milliseconds since epoch.
+    "valid": True or False, # Boolean flag that specifies whether the certificate is valid.
+    "fingerprint": { # Fingerprint details of a SAML certificate. # Fingerprint of this SAML certificate.
+      "sha256": "A String", # SHA256 fingerprint.
+      "sha1": "A String", # SHA1 fingerprint.
+    },
+    "message": "A String", # Message from the issuer.
+    "validFrom": "A String", # Time the certificate is valid in milliseconds since epoch.
+    "subject": "A String", # Subject of the message from the issuer.
+  },
+}
+
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    { # Response message for the UpdateIdentityProviderConfig RPC.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "status": "A String", # Status of the operation.
+    "message": "A String", # Description of the operation.
+    "data": { # Configuration for an identity provider. # Details of the identity provider configuration.
+      "spMetadataUrl": "A String", # URL to the identity provider metadata.
+      "entityId": "A String", # ID of an entity that provides SAML-based services.
+      "logoutUrl": "A String", # URL used for sign out using this identity provider.
+      "loginUrl": "A String", # URL used for sign in using this identity provider.
+      "certificate": { # SAML certificate and metadata. # Certificate for the identity provider.
+        "certificate": "A String", # SAML certificate.
+        "issuer": "A String", # Issuer of the SAML certificate.
+        "validTo": "A String", # Time the certificate expires in milliseconds since epoch.
+        "valid": True or False, # Boolean flag that specifies whether the certificate is valid.
+        "fingerprint": { # Fingerprint details of a SAML certificate. # Fingerprint of this SAML certificate.
+          "sha256": "A String", # SHA256 fingerprint.
+          "sha1": "A String", # SHA1 fingerprint.
+        },
+        "message": "A String", # Message from the issuer.
+        "validFrom": "A String", # Time the certificate is valid in milliseconds since epoch.
+        "subject": "A String", # Subject of the message from the issuer.
+      },
+    },
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+</body></html>

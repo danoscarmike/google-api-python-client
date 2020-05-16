@@ -1,0 +1,621 @@
+<html><body>
+<style>
+
+body, h1, h2, h3, div, span, p, pre, a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  font-size: 13px;
+  padding: 1em;
+}
+
+h1 {
+  font-size: 26px;
+  margin-bottom: 1em;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 1em;
+}
+
+h3 {
+  font-size: 20px;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+pre, code {
+  line-height: 1.5;
+  font-family: Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Lucida Console', monospace;
+}
+
+pre {
+  margin-top: 0.5em;
+}
+
+h1, h2, h3, p {
+  font-family: Arial, sans serif;
+}
+
+h1, h2, h3 {
+  border-bottom: solid #CCC 1px;
+}
+
+.toc_element {
+  margin-top: 0.5em;
+}
+
+.firstline {
+  margin-left: 2 em;
+}
+
+.method  {
+  margin-top: 1em;
+  border: solid 1px #CCC;
+  padding: 1em;
+  background: #EEE;
+}
+
+.details {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+</style>
+
+<h1><a href="apigee_v1.html">Apigee API</a> . <a href="apigee_v1.organizations.html">organizations</a> . <a href="apigee_v1.organizations.sites.html">sites</a> . <a href="apigee_v1.organizations.sites.apidocs.html">apidocs</a></h1>
+<h2>Instance Methods</h2>
+<p class="toc_element">
+  <code><a href="#create">create(parent, body=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Publishes an API to the portal.</p>
+<p class="toc_element">
+  <code><a href="#delete">delete(name, x__xgafv=None)</a></code></p>
+<p class="firstline">Removes a published API from the portal.</p>
+<p class="toc_element">
+  <code><a href="#deleteSnapshot">deleteSnapshot(name, x__xgafv=None)</a></code></p>
+<p class="firstline">Removes the current OpenAPI Specification snapshot from the published API.</p>
+<p class="toc_element">
+  <code><a href="#get">get(name, x__xgafv=None)</a></code></p>
+<p class="firstline">Gets the details for a published API.</p>
+<p class="toc_element">
+  <code><a href="#list">list(parent, x__xgafv=None)</a></code></p>
+<p class="firstline">Lists the details for all published APIs.</p>
+<p class="toc_element">
+  <code><a href="#listPublishableProducts">listPublishableProducts(parent, x__xgafv=None)</a></code></p>
+<p class="firstline">Lists the APIs that can be published to the portal.</p>
+<p class="toc_element">
+  <code><a href="#snapshot">snapshot(name, body=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Uploads the contents of an OpenAPI Specification snapshot for</p>
+<p class="toc_element">
+  <code><a href="#update">update(name, body=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Updates the details or specification for a published API.</p>
+<h3>Method Details</h3>
+<div class="method">
+    <code class="details" id="create">create(parent, body=None, x__xgafv=None)</code>
+  <pre>Publishes an API to the portal.
+
+Args:
+  parent: string, Required. Name of the portal. Use the following structure in your request:
+ `organizations/{org}/sites/{site}` (required)
+  body: object, The request body.
+    The object takes the form of:
+
+{
+  "snapshotModified": "A String", # Time the snapshot of the OpenAPI Specification was last modified in
+      # milliseconds since epoch.
+  "snapshotExists": True or False, # Boolean flag that specifies whether a snapshot of the OpenAPI Specification
+      # that is used to render API reference documentation exists.
+  "specId": "A String", # ID of the OpenAPI Specification.
+  "productExists": True or False, # Boolean flag that specifies whether the API product exists.
+  "edgeAPIProductName": "A String", # Name of the associated API product.
+  "id": "A String", # ID of the API.
+  "snapshotState": "A String", # Status of the snapshot of the OpenAPI Specification that is used
+      # to render API reference documentation.
+  "specModified": "A String", # Time the OpenAPI Specification was last modified in milliseconds
+      # since epoch.
+  "title": "A String", # Title of the API.
+  "snapshotOutdated": True or False, # Boolean flag that specifies whether the snapshot of the OpenAPI
+      # Specification is out of date.
+  "snapshotSourceMissing": True or False, # Boolean flag that specifies whether the snapshot of the OpenAPI
+      # Specification is missing.
+  "description": "A String", # Description of the API.
+  "requireCallbackUrl": True or False, # Boolean flag that specifies whether a callback URL is required.
+  "apiId": "A String", # ID of the API.
+  "visibility": True or False, # Boolean flag that specifies whether the API is visible to all users
+      # (public).
+  "siteId": "A String", # Name of the portal.
+  "enrollment": "A String", # Not used by Apigee hybrid.
+  "modified": "A String", # Time the API was last modified in milliseconds since epoch.
+  "specTitle": "A String", # Title of the OpenAPI Specification.
+  "anonAllowed": True or False, # Boolean flag that specifies whether all or only registered
+      # users can access the API.
+  "imageUrl": "A String", # URL of the image used for the API in the API catalog.
+  "specContent": "A String", # OpenAPI Specification content.
+}
+
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "status": "A String", # Status of the operation.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "message": "A String", # Description of the operation.
+    "data": { # Details for the published API.
+      "snapshotModified": "A String", # Time the snapshot of the OpenAPI Specification was last modified in
+          # milliseconds since epoch.
+      "snapshotExists": True or False, # Boolean flag that specifies whether a snapshot of the OpenAPI Specification
+          # that is used to render API reference documentation exists.
+      "specId": "A String", # ID of the OpenAPI Specification.
+      "productExists": True or False, # Boolean flag that specifies whether the API product exists.
+      "edgeAPIProductName": "A String", # Name of the associated API product.
+      "id": "A String", # ID of the API.
+      "snapshotState": "A String", # Status of the snapshot of the OpenAPI Specification that is used
+          # to render API reference documentation.
+      "specModified": "A String", # Time the OpenAPI Specification was last modified in milliseconds
+          # since epoch.
+      "title": "A String", # Title of the API.
+      "snapshotOutdated": True or False, # Boolean flag that specifies whether the snapshot of the OpenAPI
+          # Specification is out of date.
+      "snapshotSourceMissing": True or False, # Boolean flag that specifies whether the snapshot of the OpenAPI
+          # Specification is missing.
+      "description": "A String", # Description of the API.
+      "requireCallbackUrl": True or False, # Boolean flag that specifies whether a callback URL is required.
+      "apiId": "A String", # ID of the API.
+      "visibility": True or False, # Boolean flag that specifies whether the API is visible to all users
+          # (public).
+      "siteId": "A String", # Name of the portal.
+      "enrollment": "A String", # Not used by Apigee hybrid.
+      "modified": "A String", # Time the API was last modified in milliseconds since epoch.
+      "specTitle": "A String", # Title of the OpenAPI Specification.
+      "anonAllowed": True or False, # Boolean flag that specifies whether all or only registered
+          # users can access the API.
+      "imageUrl": "A String", # URL of the image used for the API in the API catalog.
+      "specContent": "A String", # OpenAPI Specification content.
+    },
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="delete">delete(name, x__xgafv=None)</code>
+  <pre>Removes a published API from the portal.
+
+Args:
+  name: string, Required. ID of the published API. Use the following structure in
+your request:
+  `organizations/{org}/sites/{site}/apidocs/{apidoc}` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "status": "A String", # Status of the operation.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "message": "A String", # Description of the operation.
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="deleteSnapshot">deleteSnapshot(name, x__xgafv=None)</code>
+  <pre>Removes the current OpenAPI Specification snapshot from the published API.
+
+Args:
+  name: string, Required. ID of the published API. Must be of the form
+`organizations/{org}/sites/{site}/apidocs/{apidoc}` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "status": "A String", # Status of the operation.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "message": "A String", # Description of the operation.
+    "data": { # Details for the published API.
+      "snapshotModified": "A String", # Time the snapshot of the OpenAPI Specification was last modified in
+          # milliseconds since epoch.
+      "snapshotExists": True or False, # Boolean flag that specifies whether a snapshot of the OpenAPI Specification
+          # that is used to render API reference documentation exists.
+      "specId": "A String", # ID of the OpenAPI Specification.
+      "productExists": True or False, # Boolean flag that specifies whether the API product exists.
+      "edgeAPIProductName": "A String", # Name of the associated API product.
+      "id": "A String", # ID of the API.
+      "snapshotState": "A String", # Status of the snapshot of the OpenAPI Specification that is used
+          # to render API reference documentation.
+      "specModified": "A String", # Time the OpenAPI Specification was last modified in milliseconds
+          # since epoch.
+      "title": "A String", # Title of the API.
+      "snapshotOutdated": True or False, # Boolean flag that specifies whether the snapshot of the OpenAPI
+          # Specification is out of date.
+      "snapshotSourceMissing": True or False, # Boolean flag that specifies whether the snapshot of the OpenAPI
+          # Specification is missing.
+      "description": "A String", # Description of the API.
+      "requireCallbackUrl": True or False, # Boolean flag that specifies whether a callback URL is required.
+      "apiId": "A String", # ID of the API.
+      "visibility": True or False, # Boolean flag that specifies whether the API is visible to all users
+          # (public).
+      "siteId": "A String", # Name of the portal.
+      "enrollment": "A String", # Not used by Apigee hybrid.
+      "modified": "A String", # Time the API was last modified in milliseconds since epoch.
+      "specTitle": "A String", # Title of the OpenAPI Specification.
+      "anonAllowed": True or False, # Boolean flag that specifies whether all or only registered
+          # users can access the API.
+      "imageUrl": "A String", # URL of the image used for the API in the API catalog.
+      "specContent": "A String", # OpenAPI Specification content.
+    },
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="get">get(name, x__xgafv=None)</code>
+  <pre>Gets the details for a published API.
+
+Args:
+  name: string, Required. ID of the published API. Use the following structure in your request:
+  `organizations/{org}/sites/{site}/apidocs/{apidoc}` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "status": "A String", # Status of the operation.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "message": "A String", # Description of the operation.
+    "data": { # Details for the published API.
+      "snapshotModified": "A String", # Time the snapshot of the OpenAPI Specification was last modified in
+          # milliseconds since epoch.
+      "snapshotExists": True or False, # Boolean flag that specifies whether a snapshot of the OpenAPI Specification
+          # that is used to render API reference documentation exists.
+      "specId": "A String", # ID of the OpenAPI Specification.
+      "productExists": True or False, # Boolean flag that specifies whether the API product exists.
+      "edgeAPIProductName": "A String", # Name of the associated API product.
+      "id": "A String", # ID of the API.
+      "snapshotState": "A String", # Status of the snapshot of the OpenAPI Specification that is used
+          # to render API reference documentation.
+      "specModified": "A String", # Time the OpenAPI Specification was last modified in milliseconds
+          # since epoch.
+      "title": "A String", # Title of the API.
+      "snapshotOutdated": True or False, # Boolean flag that specifies whether the snapshot of the OpenAPI
+          # Specification is out of date.
+      "snapshotSourceMissing": True or False, # Boolean flag that specifies whether the snapshot of the OpenAPI
+          # Specification is missing.
+      "description": "A String", # Description of the API.
+      "requireCallbackUrl": True or False, # Boolean flag that specifies whether a callback URL is required.
+      "apiId": "A String", # ID of the API.
+      "visibility": True or False, # Boolean flag that specifies whether the API is visible to all users
+          # (public).
+      "siteId": "A String", # Name of the portal.
+      "enrollment": "A String", # Not used by Apigee hybrid.
+      "modified": "A String", # Time the API was last modified in milliseconds since epoch.
+      "specTitle": "A String", # Title of the OpenAPI Specification.
+      "anonAllowed": True or False, # Boolean flag that specifies whether all or only registered
+          # users can access the API.
+      "imageUrl": "A String", # URL of the image used for the API in the API catalog.
+      "specContent": "A String", # OpenAPI Specification content.
+    },
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="list">list(parent, x__xgafv=None)</code>
+  <pre>Lists the details for all published APIs.
+
+Args:
+  parent: string, Required. Name of the portal. Use the following structure in your request:
+  `organizations/{org}/sites/{site}` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "status": "A String", # Status of the operation.
+    "message": "A String", # Description of the operation.
+    "data": [ # Details for all published APIs.
+      {
+        "snapshotModified": "A String", # Time the snapshot of the OpenAPI Specification was last modified in
+            # milliseconds since epoch.
+        "snapshotExists": True or False, # Boolean flag that specifies whether a snapshot of the OpenAPI Specification
+            # that is used to render API reference documentation exists.
+        "specId": "A String", # ID of the OpenAPI Specification.
+        "productExists": True or False, # Boolean flag that specifies whether the API product exists.
+        "edgeAPIProductName": "A String", # Name of the associated API product.
+        "id": "A String", # ID of the API.
+        "snapshotState": "A String", # Status of the snapshot of the OpenAPI Specification that is used
+            # to render API reference documentation.
+        "specModified": "A String", # Time the OpenAPI Specification was last modified in milliseconds
+            # since epoch.
+        "title": "A String", # Title of the API.
+        "snapshotOutdated": True or False, # Boolean flag that specifies whether the snapshot of the OpenAPI
+            # Specification is out of date.
+        "snapshotSourceMissing": True or False, # Boolean flag that specifies whether the snapshot of the OpenAPI
+            # Specification is missing.
+        "description": "A String", # Description of the API.
+        "requireCallbackUrl": True or False, # Boolean flag that specifies whether a callback URL is required.
+        "apiId": "A String", # ID of the API.
+        "visibility": True or False, # Boolean flag that specifies whether the API is visible to all users
+            # (public).
+        "siteId": "A String", # Name of the portal.
+        "enrollment": "A String", # Not used by Apigee hybrid.
+        "modified": "A String", # Time the API was last modified in milliseconds since epoch.
+        "specTitle": "A String", # Title of the OpenAPI Specification.
+        "anonAllowed": True or False, # Boolean flag that specifies whether all or only registered
+            # users can access the API.
+        "imageUrl": "A String", # URL of the image used for the API in the API catalog.
+        "specContent": "A String", # OpenAPI Specification content.
+      },
+    ],
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="listPublishableProducts">listPublishableProducts(parent, x__xgafv=None)</code>
+  <pre>Lists the APIs that can be published to the portal.
+
+Args:
+  parent: string, Required. Use the following structure in your request:
+  `organizations/{org}/sites/{site}/apidocs:listPublishableProducts` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "status": "A String", # Status of the operation.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "message": "A String", # Description of the operation.
+    "data": [ # List of publishable API products.
+      {
+        "status": "A String", # Status of the API product.
+        "displayName": "A String", # Display name for the API product used in the UI.
+        "description": "A String", # Description of the API product.
+        "rights": "A String", # Not used by Apigee hybrid.
+        "isPublic": True or False, # Boolean flag that specifies whether the API product is public or private.
+        "isChecked": True or False, # Not used by Apigee hybrid.
+        "approvalType": "A String", # Approval type (automatic or manual).
+        "proxies": [ # List of API proxies available in the API product.
+          "A String",
+        ],
+        "name": "A String", # Name of the API product.
+      },
+    ],
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="snapshot">snapshot(name, body=None, x__xgafv=None)</code>
+  <pre>Uploads the contents of an OpenAPI Specification snapshot for
+a published API.
+
+Args:
+  name: string, Required. ID of the published API. Use the following structure in your request:
+  `organizations/{org}/sites/{site}/apidocs/{apidoc}` (required)
+  body: object, The request body.
+    The object takes the form of:
+
+{ # Message that represents an arbitrary HTTP body. It should only be used for
+      # payload formats that can't be represented as JSON, such as raw binary or
+      # an HTML page.
+      # 
+      # 
+      # This message can be used both in streaming and non-streaming API methods in
+      # the request as well as the response.
+      # 
+      # It can be used as a top-level request field, which is convenient if one
+      # wants to extract parameters from either the URL or HTTP template into the
+      # request fields and also want access to the raw HTTP body.
+      # 
+      # Example:
+      # 
+      #     message GetResourceRequest {
+      #       // A unique request id.
+      #       string request_id = 1;
+      # 
+      #       // The raw HTTP body is bound to this field.
+      #       google.api.HttpBody http_body = 2;
+      #     }
+      # 
+      #     service ResourceService {
+      #       rpc GetResource(GetResourceRequest) returns (google.api.HttpBody);
+      #       rpc UpdateResource(google.api.HttpBody) returns
+      #       (google.protobuf.Empty);
+      #     }
+      # 
+      # Example with streaming methods:
+      # 
+      #     service CaldavService {
+      #       rpc GetCalendar(stream google.api.HttpBody)
+      #         returns (stream google.api.HttpBody);
+      #       rpc UpdateCalendar(stream google.api.HttpBody)
+      #         returns (stream google.api.HttpBody);
+      #     }
+      # 
+      # Use of this type only changes how the request and response bodies are
+      # handled, all other features will continue to work unchanged.
+    "extensions": [ # Application specific response metadata. Must be set in the first response
+        # for streaming APIs.
+      {
+        "a_key": "", # Properties of the object. Contains field @type with type URL.
+      },
+    ],
+    "contentType": "A String", # The HTTP Content-Type header value specifying the content type of the body.
+    "data": "A String", # The HTTP request/response body as raw binary.
+  }
+
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "status": "A String", # Status of the operation.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "message": "A String", # Description of the operation.
+    "data": { # Details for the published API.
+      "snapshotModified": "A String", # Time the snapshot of the OpenAPI Specification was last modified in
+          # milliseconds since epoch.
+      "snapshotExists": True or False, # Boolean flag that specifies whether a snapshot of the OpenAPI Specification
+          # that is used to render API reference documentation exists.
+      "specId": "A String", # ID of the OpenAPI Specification.
+      "productExists": True or False, # Boolean flag that specifies whether the API product exists.
+      "edgeAPIProductName": "A String", # Name of the associated API product.
+      "id": "A String", # ID of the API.
+      "snapshotState": "A String", # Status of the snapshot of the OpenAPI Specification that is used
+          # to render API reference documentation.
+      "specModified": "A String", # Time the OpenAPI Specification was last modified in milliseconds
+          # since epoch.
+      "title": "A String", # Title of the API.
+      "snapshotOutdated": True or False, # Boolean flag that specifies whether the snapshot of the OpenAPI
+          # Specification is out of date.
+      "snapshotSourceMissing": True or False, # Boolean flag that specifies whether the snapshot of the OpenAPI
+          # Specification is missing.
+      "description": "A String", # Description of the API.
+      "requireCallbackUrl": True or False, # Boolean flag that specifies whether a callback URL is required.
+      "apiId": "A String", # ID of the API.
+      "visibility": True or False, # Boolean flag that specifies whether the API is visible to all users
+          # (public).
+      "siteId": "A String", # Name of the portal.
+      "enrollment": "A String", # Not used by Apigee hybrid.
+      "modified": "A String", # Time the API was last modified in milliseconds since epoch.
+      "specTitle": "A String", # Title of the OpenAPI Specification.
+      "anonAllowed": True or False, # Boolean flag that specifies whether all or only registered
+          # users can access the API.
+      "imageUrl": "A String", # URL of the image used for the API in the API catalog.
+      "specContent": "A String", # OpenAPI Specification content.
+    },
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="update">update(name, body=None, x__xgafv=None)</code>
+  <pre>Updates the details or specification for a published API.
+
+Args:
+  name: string, Required. ID of the published API. Use the following structure in your request:
+  `organizations/{org}/sites/{site}/apidocs/{apidoc}` (required)
+  body: object, The request body.
+    The object takes the form of:
+
+{
+  "snapshotModified": "A String", # Time the snapshot of the OpenAPI Specification was last modified in
+      # milliseconds since epoch.
+  "snapshotExists": True or False, # Boolean flag that specifies whether a snapshot of the OpenAPI Specification
+      # that is used to render API reference documentation exists.
+  "specId": "A String", # ID of the OpenAPI Specification.
+  "productExists": True or False, # Boolean flag that specifies whether the API product exists.
+  "edgeAPIProductName": "A String", # Name of the associated API product.
+  "id": "A String", # ID of the API.
+  "snapshotState": "A String", # Status of the snapshot of the OpenAPI Specification that is used
+      # to render API reference documentation.
+  "specModified": "A String", # Time the OpenAPI Specification was last modified in milliseconds
+      # since epoch.
+  "title": "A String", # Title of the API.
+  "snapshotOutdated": True or False, # Boolean flag that specifies whether the snapshot of the OpenAPI
+      # Specification is out of date.
+  "snapshotSourceMissing": True or False, # Boolean flag that specifies whether the snapshot of the OpenAPI
+      # Specification is missing.
+  "description": "A String", # Description of the API.
+  "requireCallbackUrl": True or False, # Boolean flag that specifies whether a callback URL is required.
+  "apiId": "A String", # ID of the API.
+  "visibility": True or False, # Boolean flag that specifies whether the API is visible to all users
+      # (public).
+  "siteId": "A String", # Name of the portal.
+  "enrollment": "A String", # Not used by Apigee hybrid.
+  "modified": "A String", # Time the API was last modified in milliseconds since epoch.
+  "specTitle": "A String", # Title of the OpenAPI Specification.
+  "anonAllowed": True or False, # Boolean flag that specifies whether all or only registered
+      # users can access the API.
+  "imageUrl": "A String", # URL of the image used for the API in the API catalog.
+  "specContent": "A String", # OpenAPI Specification content.
+}
+
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "status": "A String", # Status of the operation.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "message": "A String", # Description of the operation.
+    "data": { # Details for the published API.
+      "snapshotModified": "A String", # Time the snapshot of the OpenAPI Specification was last modified in
+          # milliseconds since epoch.
+      "snapshotExists": True or False, # Boolean flag that specifies whether a snapshot of the OpenAPI Specification
+          # that is used to render API reference documentation exists.
+      "specId": "A String", # ID of the OpenAPI Specification.
+      "productExists": True or False, # Boolean flag that specifies whether the API product exists.
+      "edgeAPIProductName": "A String", # Name of the associated API product.
+      "id": "A String", # ID of the API.
+      "snapshotState": "A String", # Status of the snapshot of the OpenAPI Specification that is used
+          # to render API reference documentation.
+      "specModified": "A String", # Time the OpenAPI Specification was last modified in milliseconds
+          # since epoch.
+      "title": "A String", # Title of the API.
+      "snapshotOutdated": True or False, # Boolean flag that specifies whether the snapshot of the OpenAPI
+          # Specification is out of date.
+      "snapshotSourceMissing": True or False, # Boolean flag that specifies whether the snapshot of the OpenAPI
+          # Specification is missing.
+      "description": "A String", # Description of the API.
+      "requireCallbackUrl": True or False, # Boolean flag that specifies whether a callback URL is required.
+      "apiId": "A String", # ID of the API.
+      "visibility": True or False, # Boolean flag that specifies whether the API is visible to all users
+          # (public).
+      "siteId": "A String", # Name of the portal.
+      "enrollment": "A String", # Not used by Apigee hybrid.
+      "modified": "A String", # Time the API was last modified in milliseconds since epoch.
+      "specTitle": "A String", # Title of the OpenAPI Specification.
+      "anonAllowed": True or False, # Boolean flag that specifies whether all or only registered
+          # users can access the API.
+      "imageUrl": "A String", # URL of the image used for the API in the API catalog.
+      "specContent": "A String", # OpenAPI Specification content.
+    },
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+</body></html>

@@ -1,0 +1,708 @@
+<html><body>
+<style>
+
+body, h1, h2, h3, div, span, p, pre, a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  font-size: 13px;
+  padding: 1em;
+}
+
+h1 {
+  font-size: 26px;
+  margin-bottom: 1em;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 1em;
+}
+
+h3 {
+  font-size: 20px;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+pre, code {
+  line-height: 1.5;
+  font-family: Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Lucida Console', monospace;
+}
+
+pre {
+  margin-top: 0.5em;
+}
+
+h1, h2, h3, p {
+  font-family: Arial, sans serif;
+}
+
+h1, h2, h3 {
+  border-bottom: solid #CCC 1px;
+}
+
+.toc_element {
+  margin-top: 0.5em;
+}
+
+.firstline {
+  margin-left: 2 em;
+}
+
+.method  {
+  margin-top: 1em;
+  border: solid 1px #CCC;
+  padding: 1em;
+  background: #EEE;
+}
+
+.details {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+</style>
+
+<h1><a href="translate_v3.html">Cloud Translation API</a> . <a href="translate_v3.projects.html">projects</a> . <a href="translate_v3.projects.locations.html">locations</a></h1>
+<h2>Instance Methods</h2>
+<p class="toc_element">
+  <code><a href="translate_v3.projects.locations.glossaries.html">glossaries()</a></code>
+</p>
+<p class="firstline">Returns the glossaries Resource.</p>
+
+<p class="toc_element">
+  <code><a href="translate_v3.projects.locations.operations.html">operations()</a></code>
+</p>
+<p class="firstline">Returns the operations Resource.</p>
+
+<p class="toc_element">
+  <code><a href="#batchTranslateText">batchTranslateText(parent, body=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Translates a large volume of text in asynchronous batch mode.</p>
+<p class="toc_element">
+  <code><a href="#detectLanguage">detectLanguage(parent, body=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Detects the language of text within a request.</p>
+<p class="toc_element">
+  <code><a href="#get">get(name, x__xgafv=None)</a></code></p>
+<p class="firstline">Gets information about a location.</p>
+<p class="toc_element">
+  <code><a href="#getSupportedLanguages">getSupportedLanguages(parent, displayLanguageCode=None, x__xgafv=None, model=None)</a></code></p>
+<p class="firstline">Returns a list of supported languages for translation.</p>
+<p class="toc_element">
+  <code><a href="#list">list(name, pageToken=None, x__xgafv=None, pageSize=None, filter=None)</a></code></p>
+<p class="firstline">Lists information about the supported locations for this service.</p>
+<p class="toc_element">
+  <code><a href="#list_next">list_next(previous_request, previous_response)</a></code></p>
+<p class="firstline">Retrieves the next page of results.</p>
+<p class="toc_element">
+  <code><a href="#translateText">translateText(parent, body=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Translates input text and returns translated text.</p>
+<h3>Method Details</h3>
+<div class="method">
+    <code class="details" id="batchTranslateText">batchTranslateText(parent, body=None, x__xgafv=None)</code>
+  <pre>Translates a large volume of text in asynchronous batch mode.
+This function provides real-time output as the inputs are being processed.
+If caller cancels a request, the partial results (for an input file, it's
+all or nothing) may still be available on the specified output location.
+
+This call returns immediately and you can
+use google.longrunning.Operation.name to poll the status of the call.
+
+Args:
+  parent: string, Required. Location to make a call. Must refer to a caller's project.
+
+Format: `projects/{project-number-or-id}/locations/{location-id}`.
+
+The `global` location is not supported for batch translation.
+
+Only AutoML Translation models or glossaries within the same region (have
+the same location-id) can be used, otherwise an INVALID_ARGUMENT (400)
+error is returned. (required)
+  body: object, The request body.
+    The object takes the form of:
+
+{ # The batch translation request.
+    "sourceLanguageCode": "A String", # Required. Source language code.
+    "glossaries": { # Optional. Glossaries to be applied for translation.
+        # It's keyed by target language code.
+      "a_key": { # Configures which glossary should be used for a specific target language,
+          # and defines options for applying that glossary.
+        "glossary": "A String", # Required. The `glossary` to be applied for this translation.
+            #
+            # The format depends on glossary:
+            #
+            # - User provided custom glossary:
+            #   `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`
+        "ignoreCase": True or False, # Optional. Indicates match is case-insensitive.
+            # Default value is false if missing.
+      },
+    },
+    "models": { # Optional. The models to use for translation. Map's key is target language
+        # code. Map's value is model name. Value can be a built-in general model,
+        # or an AutoML Translation model.
+        # 
+        # The value format depends on model type:
+        # 
+        # - AutoML Translation models:
+        #   `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}`
+        # 
+        # - General (built-in) models:
+        #   `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,
+        #   `projects/{project-number-or-id}/locations/{location-id}/models/general/base`
+        # 
+        # 
+        # If the map is empty or a specific model is
+        # not requested for a language pair, then default google model (nmt) is used.
+      "a_key": "A String",
+    },
+    "outputConfig": { # Output configuration for BatchTranslateText request. # Required. Output configuration.
+        # If 2 input configs match to the same file (that is, same input path),
+        # we don't generate output for duplicate inputs.
+      "gcsDestination": { # The Google Cloud Storage location for the output content. # Google Cloud Storage destination for output content.
+          # For every single input file (for example, gs://a/b/c.[extension]), we
+          # generate at most 2 * n output files. (n is the # of target_language_codes
+          # in the BatchTranslateTextRequest).
+          #
+          # Output files (tsv) generated are compliant with RFC 4180 except that
+          # record delimiters are '\n' instead of '\r\n'. We don't provide any way to
+          # change record delimiters.
+          #
+          # While the input files are being processed, we write/update an index file
+          # 'index.csv'  under 'output_uri_prefix' (for example,
+          # gs://translation-test/index.csv) The index file is generated/updated as
+          # new files are being translated. The format is:
+          #
+          # input_file,target_language_code,translations_file,errors_file,
+          # glossary_translations_file,glossary_errors_file
+          #
+          # input_file is one file we matched using gcs_source.input_uri.
+          # target_language_code is provided in the request.
+          # translations_file contains the translations. (details provided below)
+          # errors_file contains the errors during processing of the file. (details
+          # below). Both translations_file and errors_file could be empty
+          # strings if we have no content to output.
+          # glossary_translations_file and glossary_errors_file are always empty
+          # strings if the input_file is tsv. They could also be empty if we have no
+          # content to output.
+          #
+          # Once a row is present in index.csv, the input/output matching never
+          # changes. Callers should also expect all the content in input_file are
+          # processed and ready to be consumed (that is, no partial output file is
+          # written).
+          #
+          # The format of translations_file (for target language code 'trg') is:
+          # gs://translation_test/a_b_c_'trg'_translations.[extension]
+          #
+          # If the input file extension is tsv, the output has the following
+          # columns:
+          # Column 1: ID of the request provided in the input, if it's not
+          # provided in the input, then the input row number is used (0-based).
+          # Column 2: source sentence.
+          # Column 3: translation without applying a glossary. Empty string if there
+          # is an error.
+          # Column 4 (only present if a glossary is provided in the request):
+          # translation after applying the glossary. Empty string if there is an
+          # error applying the glossary. Could be same string as column 3 if there is
+          # no glossary applied.
+          #
+          # If input file extension is a txt or html, the translation is directly
+          # written to the output file. If glossary is requested, a separate
+          # glossary_translations_file has format of
+          # gs://translation_test/a_b_c_'trg'_glossary_translations.[extension]
+          #
+          # The format of errors file (for target language code 'trg') is:
+          # gs://translation_test/a_b_c_'trg'_errors.[extension]
+          #
+          # If the input file extension is tsv, errors_file contains the following:
+          # Column 1: ID of the request provided in the input, if it's not
+          # provided in the input, then the input row number is used (0-based).
+          # Column 2: source sentence.
+          # Column 3: Error detail for the translation. Could be empty.
+          # Column 4 (only present if a glossary is provided in the request):
+          # Error when applying the glossary.
+          #
+          # If the input file extension is txt or html, glossary_error_file will be
+          # generated that contains error details. glossary_error_file has format of
+          # gs://translation_test/a_b_c_'trg'_glossary_errors.[extension]
+        "outputUriPrefix": "A String", # Required. The bucket used in 'output_uri_prefix' must exist and there must be no
+            # files under 'output_uri_prefix'. 'output_uri_prefix' must end with "/" and
+            # start with "gs://". One 'output_uri_prefix' can only be used by one batch
+            # translation job at a time. Otherwise an INVALID_ARGUMENT (400) error is
+            #  returned.
+      },
+    },
+    "labels": { # Optional. The labels with user-defined metadata for the request.
+        # 
+        # Label keys and values can be no longer than 63 characters
+        # (Unicode codepoints), can only contain lowercase letters, numeric
+        # characters, underscores and dashes. International characters are allowed.
+        # Label values are optional. Label keys must start with a letter.
+        # 
+        # See https://cloud.google.com/translate/docs/advanced/labels for more
+        # information.
+      "a_key": "A String",
+    },
+    "inputConfigs": [ # Required. Input configurations.
+        # The total number of files matched should be &lt;= 1000.
+        # The total content size should be &lt;= 100M Unicode codepoints.
+        # The files must use UTF-8 encoding.
+      { # Input configuration for BatchTranslateText request.
+        "mimeType": "A String", # Optional. Can be "text/plain" or "text/html".
+            # For `.tsv`, "text/html" is used if mime_type is missing.
+            # For `.html`, this field must be "text/html" or empty.
+            # For `.txt`, this field must be "text/plain" or empty.
+        "gcsSource": { # The Google Cloud Storage location for the input content. # Required. Google Cloud Storage location for the source input.
+            # This can be a single file (for example,
+            # `gs://translation-test/input.tsv`) or a wildcard (for example,
+            # `gs://translation-test/*`). If a file extension is `.tsv`, it can
+            # contain either one or two columns. The first column (optional) is the id
+            # of the text request. If the first column is missing, we use the row
+            # number (0-based) from the input file as the ID in the output file. The
+            # second column is the actual text to be
+            #  translated. We recommend each row be &lt;= 10K Unicode codepoints,
+            # otherwise an error might be returned.
+            # Note that the input tsv must be RFC 4180 compliant.
+            #
+            # You could use https://github.com/Clever/csvlint to check potential
+            # formatting errors in your tsv file.
+            # csvlint --delimiter='\t' your_input_file.tsv
+            #
+            # The other supported file extensions are `.txt` or `.html`, which is
+            # treated as a single large chunk of text.
+          "inputUri": "A String", # Required. Source data URI. For example, `gs://my_bucket/my_object`.
+        },
+      },
+    ],
+    "targetLanguageCodes": [ # Required. Specify up to 10 language codes here.
+      "A String",
+    ],
+  }
+
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    { # This resource represents a long-running operation that is the result of a
+      # network API call.
+    "metadata": { # Service-specific metadata associated with the operation.  It typically
+        # contains progress information and common metadata such as create time.
+        # Some services might not provide such metadata.  Any method that returns a
+        # long-running operation should document the metadata type, if any.
+      "a_key": "", # Properties of the object. Contains field @type with type URL.
+    },
+    "done": True or False, # If the value is `false`, it means the operation is still in progress.
+        # If `true`, the operation is completed, and either `error` or `response` is
+        # available.
+    "response": { # The normal response of the operation in case of success.  If the original
+        # method returns no data on success, such as `Delete`, the response is
+        # `google.protobuf.Empty`.  If the original method is standard
+        # `Get`/`Create`/`Update`, the response should be the resource.  For other
+        # methods, the response should have the type `XxxResponse`, where `Xxx`
+        # is the original method name.  For example, if the original method name
+        # is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
+      "a_key": "", # Properties of the object. Contains field @type with type URL.
+    },
+    "name": "A String", # The server-assigned name, which is only unique within the same service that
+        # originally returns it. If you use the default HTTP mapping, the
+        # `name` should be a resource name ending with `operations/{unique_id}`.
+    "error": { # The `Status` type defines a logical error model that is suitable for # The error result of the operation in case of failure or cancellation.
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        # three pieces of data: error code, error message, and error details.
+        #
+        # You can find out more about this error model and how to work with it in the
+        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      "message": "A String", # A developer-facing error message, which should be in English. Any
+          # user-facing error message should be localized and sent in the
+          # google.rpc.Status.details field, or localized by the client.
+      "code": 42, # The status code, which should be an enum value of google.rpc.Code.
+      "details": [ # A list of messages that carry the error details.  There is a common set of
+          # message types for APIs to use.
+        {
+          "a_key": "", # Properties of the object. Contains field @type with type URL.
+        },
+      ],
+    },
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="detectLanguage">detectLanguage(parent, body=None, x__xgafv=None)</code>
+  <pre>Detects the language of text within a request.
+
+Args:
+  parent: string, Required. Project or location to make a call. Must refer to a caller's
+project.
+
+Format: `projects/{project-number-or-id}/locations/{location-id}` or
+`projects/{project-number-or-id}`.
+
+For global calls, use `projects/{project-number-or-id}/locations/global` or
+`projects/{project-number-or-id}`.
+
+Only models within the same region (has same location-id) can be used.
+Otherwise an INVALID_ARGUMENT (400) error is returned. (required)
+  body: object, The request body.
+    The object takes the form of:
+
+{ # The request message for language detection.
+    "content": "A String", # The content of the input stored as a string.
+    "mimeType": "A String", # Optional. The format of the source text, for example, "text/html",
+        # "text/plain". If left blank, the MIME type defaults to "text/html".
+    "model": "A String", # Optional. The language detection model to be used.
+        # 
+        # Format:
+        # `projects/{project-number-or-id}/locations/{location-id}/models/language-detection/{model-id}`
+        # 
+        # Only one language detection model is currently supported:
+        # `projects/{project-number-or-id}/locations/{location-id}/models/language-detection/default`.
+        # 
+        # If not specified, the default model is used.
+    "labels": { # Optional. The labels with user-defined metadata for the request.
+        # 
+        # Label keys and values can be no longer than 63 characters
+        # (Unicode codepoints), can only contain lowercase letters, numeric
+        # characters, underscores and dashes. International characters are allowed.
+        # Label values are optional. Label keys must start with a letter.
+        # 
+        # See https://cloud.google.com/translate/docs/advanced/labels for more
+        # information.
+      "a_key": "A String",
+    },
+  }
+
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    { # The response message for language detection.
+    "languages": [ # A list of detected languages sorted by detection confidence in descending
+        # order. The most probable language first.
+      { # The response message for language detection.
+        "languageCode": "A String", # The BCP-47 language code of source content in the request, detected
+            # automatically.
+        "confidence": 3.14, # The confidence of the detection result for this language.
+      },
+    ],
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="get">get(name, x__xgafv=None)</code>
+  <pre>Gets information about a location.
+
+Args:
+  name: string, Resource name for the location. (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    { # A resource that represents Google Cloud Platform location.
+    "displayName": "A String", # The friendly name for this location, typically a nearby city name.
+        # For example, "Tokyo".
+    "labels": { # Cross-service attributes for the location. For example
+        #
+        #     {"cloud.googleapis.com/region": "us-east1"}
+      "a_key": "A String",
+    },
+    "locationId": "A String", # The canonical id for this location. For example: `"us-east1"`.
+    "name": "A String", # Resource name for the location, which may vary between implementations.
+        # For example: `"projects/example-project/locations/us-east1"`
+    "metadata": { # Service-specific metadata. For example the available capacity at the given
+        # location.
+      "a_key": "", # Properties of the object. Contains field @type with type URL.
+    },
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="getSupportedLanguages">getSupportedLanguages(parent, displayLanguageCode=None, x__xgafv=None, model=None)</code>
+  <pre>Returns a list of supported languages for translation.
+
+Args:
+  parent: string, Required. Project or location to make a call. Must refer to a caller's
+project.
+
+Format: `projects/{project-number-or-id}` or
+`projects/{project-number-or-id}/locations/{location-id}`.
+
+For global calls, use `projects/{project-number-or-id}/locations/global` or
+`projects/{project-number-or-id}`.
+
+Non-global location is required for AutoML models.
+
+Only models within the same region (have same location-id) can be used,
+otherwise an INVALID_ARGUMENT (400) error is returned. (required)
+  displayLanguageCode: string, Optional. The language to use to return localized, human readable names
+of supported languages. If missing, then display names are not returned
+in a response.
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+  model: string, Optional. Get supported languages of this model.
+
+The format depends on model type:
+
+- AutoML Translation models:
+  `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}`
+
+- General (built-in) models:
+  `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,
+  `projects/{project-number-or-id}/locations/{location-id}/models/general/base`
+
+
+Returns languages supported by the specified model.
+If missing, we get supported languages of Google general base (PBMT) model.
+
+Returns:
+  An object of the form:
+
+    { # The response message for discovering supported languages.
+    "languages": [ # A list of supported language responses. This list contains an entry
+        # for each language the Translation API supports.
+      { # A single supported language response corresponds to information related
+          # to one supported language.
+        "languageCode": "A String", # Supported language code, generally consisting of its ISO 639-1
+            # identifier, for example, 'en', 'ja'. In certain cases, BCP-47 codes
+            # including language and region identifiers are returned (for example,
+            # 'zh-TW' and 'zh-CN')
+        "supportTarget": True or False, # Can be used as target language.
+        "displayName": "A String", # Human readable name of the language localized in the display language
+            # specified in the request.
+        "supportSource": True or False, # Can be used as source language.
+      },
+    ],
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="list">list(name, pageToken=None, x__xgafv=None, pageSize=None, filter=None)</code>
+  <pre>Lists information about the supported locations for this service.
+
+Args:
+  name: string, The resource that owns the locations collection, if applicable. (required)
+  pageToken: string, The standard list page token.
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+  pageSize: integer, The standard list page size.
+  filter: string, The standard list filter.
+
+Returns:
+  An object of the form:
+
+    { # The response message for Locations.ListLocations.
+    "nextPageToken": "A String", # The standard List next-page token.
+    "locations": [ # A list of locations that matches the specified filter in the request.
+      { # A resource that represents Google Cloud Platform location.
+        "displayName": "A String", # The friendly name for this location, typically a nearby city name.
+            # For example, "Tokyo".
+        "labels": { # Cross-service attributes for the location. For example
+            #
+            #     {"cloud.googleapis.com/region": "us-east1"}
+          "a_key": "A String",
+        },
+        "locationId": "A String", # The canonical id for this location. For example: `"us-east1"`.
+        "name": "A String", # Resource name for the location, which may vary between implementations.
+            # For example: `"projects/example-project/locations/us-east1"`
+        "metadata": { # Service-specific metadata. For example the available capacity at the given
+            # location.
+          "a_key": "", # Properties of the object. Contains field @type with type URL.
+        },
+      },
+    ],
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="list_next">list_next(previous_request, previous_response)</code>
+  <pre>Retrieves the next page of results.
+
+Args:
+  previous_request: The request for the previous page. (required)
+  previous_response: The response from the request for the previous page. (required)
+
+Returns:
+  A request object that you can call 'execute()' on to request the next
+  page. Returns None if there are no more items in the collection.
+    </pre>
+</div>
+
+<div class="method">
+    <code class="details" id="translateText">translateText(parent, body=None, x__xgafv=None)</code>
+  <pre>Translates input text and returns translated text.
+
+Args:
+  parent: string, Required. Project or location to make a call. Must refer to a caller's
+project.
+
+Format: `projects/{project-number-or-id}` or
+`projects/{project-number-or-id}/locations/{location-id}`.
+
+For global calls, use `projects/{project-number-or-id}/locations/global` or
+`projects/{project-number-or-id}`.
+
+Non-global location is required for requests using AutoML models or
+custom glossaries.
+
+Models and glossaries must be within the same region (have same
+location-id), otherwise an INVALID_ARGUMENT (400) error is returned. (required)
+  body: object, The request body.
+    The object takes the form of:
+
+{ # The request message for synchronous translation.
+    "mimeType": "A String", # Optional. The format of the source text, for example, "text/html",
+        #  "text/plain". If left blank, the MIME type defaults to "text/html".
+    "sourceLanguageCode": "A String", # Optional. The BCP-47 language code of the input text if
+        # known, for example, "en-US" or "sr-Latn". Supported language codes are
+        # listed in Language Support. If the source language isn't specified, the API
+        # attempts to identify the source language automatically and returns the
+        # source language within the response.
+    "targetLanguageCode": "A String", # Required. The BCP-47 language code to use for translation of the input
+        # text, set to one of the language codes listed in Language Support.
+    "labels": { # Optional. The labels with user-defined metadata for the request.
+        # 
+        # Label keys and values can be no longer than 63 characters
+        # (Unicode codepoints), can only contain lowercase letters, numeric
+        # characters, underscores and dashes. International characters are allowed.
+        # Label values are optional. Label keys must start with a letter.
+        # 
+        # See https://cloud.google.com/translate/docs/advanced/labels for more
+        # information.
+      "a_key": "A String",
+    },
+    "glossaryConfig": { # Configures which glossary should be used for a specific target language, # Optional. Glossary to be applied. The glossary must be
+        # within the same region (have the same location-id) as the model, otherwise
+        # an INVALID_ARGUMENT (400) error is returned.
+        # and defines options for applying that glossary.
+      "glossary": "A String", # Required. The `glossary` to be applied for this translation.
+          #
+          # The format depends on glossary:
+          #
+          # - User provided custom glossary:
+          #   `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`
+      "ignoreCase": True or False, # Optional. Indicates match is case-insensitive.
+          # Default value is false if missing.
+    },
+    "model": "A String", # Optional. The `model` type requested for this translation.
+        # 
+        # The format depends on model type:
+        # 
+        # - AutoML Translation models:
+        #   `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}`
+        # 
+        # - General (built-in) models:
+        #   `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,
+        #   `projects/{project-number-or-id}/locations/{location-id}/models/general/base`
+        # 
+        # 
+        # For global (non-regionalized) requests, use `location-id` `global`.
+        # For example,
+        # `projects/{project-number-or-id}/locations/global/models/general/nmt`.
+        # 
+        # If missing, the system decides which google base model to use.
+    "contents": [ # Required. The content of the input in string format.
+        # We recommend the total content be less than 30k codepoints.
+        # Use BatchTranslateText for larger text.
+      "A String",
+    ],
+  }
+
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "translations": [ # Text translation responses with no glossary applied.
+        # This field has the same length as
+        # `contents`.
+      { # A single translation response.
+        "translatedText": "A String", # Text translated into the target language.
+        "model": "A String", # Only present when `model` is present in the request.
+            # `model` here is normalized to have project number.
+            #
+            # For example:
+            # If the `model` requested in TranslationTextRequest is
+            # `projects/{project-id}/locations/{location-id}/models/general/nmt` then
+            # `model` here would be normalized to
+            # `projects/{project-number}/locations/{location-id}/models/general/nmt`.
+        "glossaryConfig": { # Configures which glossary should be used for a specific target language, # The `glossary_config` used for this translation.
+            # and defines options for applying that glossary.
+          "glossary": "A String", # Required. The `glossary` to be applied for this translation.
+              #
+              # The format depends on glossary:
+              #
+              # - User provided custom glossary:
+              #   `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`
+          "ignoreCase": True or False, # Optional. Indicates match is case-insensitive.
+              # Default value is false if missing.
+        },
+        "detectedLanguageCode": "A String", # The BCP-47 language code of source text in the initial request, detected
+            # automatically, if no source language was passed within the initial
+            # request. If the source language was passed, auto-detection of the language
+            # does not occur and this field is empty.
+      },
+    ],
+    "glossaryTranslations": [ # Text translation responses if a glossary is provided in the request.
+        # This can be the same as
+        # `translations` if no terms apply.
+        # This field has the same length as
+        # `contents`.
+      { # A single translation response.
+        "translatedText": "A String", # Text translated into the target language.
+        "model": "A String", # Only present when `model` is present in the request.
+            # `model` here is normalized to have project number.
+            #
+            # For example:
+            # If the `model` requested in TranslationTextRequest is
+            # `projects/{project-id}/locations/{location-id}/models/general/nmt` then
+            # `model` here would be normalized to
+            # `projects/{project-number}/locations/{location-id}/models/general/nmt`.
+        "glossaryConfig": { # Configures which glossary should be used for a specific target language, # The `glossary_config` used for this translation.
+            # and defines options for applying that glossary.
+          "glossary": "A String", # Required. The `glossary` to be applied for this translation.
+              #
+              # The format depends on glossary:
+              #
+              # - User provided custom glossary:
+              #   `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`
+          "ignoreCase": True or False, # Optional. Indicates match is case-insensitive.
+              # Default value is false if missing.
+        },
+        "detectedLanguageCode": "A String", # The BCP-47 language code of source text in the initial request, detected
+            # automatically, if no source language was passed within the initial
+            # request. If the source language was passed, auto-detection of the language
+            # does not occur and this field is empty.
+      },
+    ],
+  }</pre>
+</div>
+
+</body></html>

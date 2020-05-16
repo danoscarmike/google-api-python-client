@@ -1,0 +1,252 @@
+<html><body>
+<style>
+
+body, h1, h2, h3, div, span, p, pre, a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  font-size: 13px;
+  padding: 1em;
+}
+
+h1 {
+  font-size: 26px;
+  margin-bottom: 1em;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 1em;
+}
+
+h3 {
+  font-size: 20px;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+pre, code {
+  line-height: 1.5;
+  font-family: Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Lucida Console', monospace;
+}
+
+pre {
+  margin-top: 0.5em;
+}
+
+h1, h2, h3, p {
+  font-family: Arial, sans serif;
+}
+
+h1, h2, h3 {
+  border-bottom: solid #CCC 1px;
+}
+
+.toc_element {
+  margin-top: 0.5em;
+}
+
+.firstline {
+  margin-left: 2 em;
+}
+
+.method  {
+  margin-top: 1em;
+  border: solid 1px #CCC;
+  padding: 1em;
+  background: #EEE;
+}
+
+.details {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+</style>
+
+<h1><a href="apigee_v1.html">Apigee API</a> . <a href="apigee_v1.organizations.html">organizations</a> . <a href="apigee_v1.organizations.apps.html">apps</a></h1>
+<h2>Instance Methods</h2>
+<p class="toc_element">
+  <code><a href="#get">get(name, x__xgafv=None)</a></code></p>
+<p class="firstline">Gets the app profile for the specified app ID.</p>
+<p class="toc_element">
+  <code><a href="#list">list(parent, includeCred=None, startKey=None, x__xgafv=None, apiProduct=None, rows=None, apptype=None, status=None, expand=None, ids=None, keyStatus=None)</a></code></p>
+<p class="firstline">Lists IDs of apps within an organization that have the specified app status</p>
+<h3>Method Details</h3>
+<div class="method">
+    <code class="details" id="get">get(name, x__xgafv=None)</code>
+  <pre>Gets the app profile for the specified app ID.
+
+Args:
+  name: string, Required. App ID in the following format:
+ `organizations/{org}/apps/{app}` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "status": "A String", # Status of the credential.
+    "scopes": [ # Scopes to apply to the app. The specified scope names must already
+        # exist on the API product that you associate with the app.
+      "A String",
+    ],
+    "name": "A String", # Name of the app.
+    "apiProducts": [ # List of API products associated with the app.
+      {
+        "status": "A String", # Status of the API product.
+        "apiproduct": "A String", # Name of the API product.
+      },
+    ],
+    "companyName": "A String", # Name of the company that owns the app.
+    "developerId": "A String", # ID  of the developer.
+    "lastModifiedAt": "A String", # Output only. Last modified time as milliseconds since epoch.
+    "appId": "A String", # ID of the app.
+    "credentials": [ # Output only. Set of credentials for the app. Credentials are API
+        # key/secret pairs associated with API products.
+      {
+        "status": "A String", # Status of the credential.
+        "scopes": [ # List of scopes to apply to the app. Specified scopes must already
+            # exist on the API product that you associate with the app.
+          "A String",
+        ],
+        "apiProducts": [ # List of API products this credential can be used for.
+          {
+            "status": "A String", # Status of the API product.
+            "apiproduct": "A String", # Name of the API product.
+          },
+        ],
+        "expiresAt": "A String", # Time the credential will expire in milliseconds since epoch.
+        "consumerKey": "A String", # Consumer key.
+        "issuedAt": "A String", # Time the credential was issued in milliseconds since epoch.
+        "attributes": [ # List of attributes associated with this credential.
+          { # Key-value pair to store extra metadata.
+            "name": "A String", # API key of the attribute.
+            "value": "A String", # Value of the attribute.
+          },
+        ],
+        "consumerSecret": "A String", # Secret key.
+      },
+    ],
+    "keyExpiresIn": "A String", # Duration, in milliseconds, of the consumer key that will
+        # be generated for the app. The default value, -1, indicates an
+        # infinite validity period. Once set, the expiration can't be updated.
+        # json key: keyExpiresIn
+    "attributes": [ # List of attributes.
+      { # Key-value pair to store extra metadata.
+        "name": "A String", # API key of the attribute.
+        "value": "A String", # Value of the attribute.
+      },
+    ],
+    "createdAt": "A String", # Output only. Unix time when the app was created.
+    "callbackUrl": "A String", # Callback URL used by OAuth 2.0 authorization servers to communicate
+        # authorization codes back to apps.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="list">list(parent, includeCred=None, startKey=None, x__xgafv=None, apiProduct=None, rows=None, apptype=None, status=None, expand=None, ids=None, keyStatus=None)</code>
+  <pre>Lists IDs of apps within an organization that have the specified app status
+(approved or revoked) or are of the specified app type
+(developer or company).
+
+Args:
+  parent: string, Required. Resource path of the parent in the following format:
+ `organizations/{org}` (required)
+  includeCred: boolean, Optional. Flag that specifies whether to include credentials in the
+response.
+  startKey: string, Returns the list of apps starting from the specified app ID.
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+  apiProduct: string, API product.
+  rows: string, Optional. Maximum number of app IDs to return. Defaults to 10000.
+  apptype: string, Optional. Filter by the type of the app. Valid values are `company` or
+`developer`. Defaults to `developer`.
+  status: string, Optional. Filter by the status of the app. Valid values are `approved`
+or `revoked`. Defaults to `approved`.
+  expand: boolean, Optional. Flag that specifies whether to return an expanded list of
+apps for the organization. Defaults to `false`.
+  ids: string, Optional. Comma-separated list of app IDs on which to filter.
+  keyStatus: string, Optional. Key status of the app. Valid values include `approved` or
+`revoked`. Defaults to `approved`.
+
+Returns:
+  An object of the form:
+
+    {
+    "app": [
+      {
+        "status": "A String", # Status of the credential.
+        "scopes": [ # Scopes to apply to the app. The specified scope names must already
+            # exist on the API product that you associate with the app.
+          "A String",
+        ],
+        "name": "A String", # Name of the app.
+        "apiProducts": [ # List of API products associated with the app.
+          {
+            "status": "A String", # Status of the API product.
+            "apiproduct": "A String", # Name of the API product.
+          },
+        ],
+        "companyName": "A String", # Name of the company that owns the app.
+        "developerId": "A String", # ID  of the developer.
+        "lastModifiedAt": "A String", # Output only. Last modified time as milliseconds since epoch.
+        "appId": "A String", # ID of the app.
+        "credentials": [ # Output only. Set of credentials for the app. Credentials are API
+            # key/secret pairs associated with API products.
+          {
+            "status": "A String", # Status of the credential.
+            "scopes": [ # List of scopes to apply to the app. Specified scopes must already
+                # exist on the API product that you associate with the app.
+              "A String",
+            ],
+            "apiProducts": [ # List of API products this credential can be used for.
+              {
+                "status": "A String", # Status of the API product.
+                "apiproduct": "A String", # Name of the API product.
+              },
+            ],
+            "expiresAt": "A String", # Time the credential will expire in milliseconds since epoch.
+            "consumerKey": "A String", # Consumer key.
+            "issuedAt": "A String", # Time the credential was issued in milliseconds since epoch.
+            "attributes": [ # List of attributes associated with this credential.
+              { # Key-value pair to store extra metadata.
+                "name": "A String", # API key of the attribute.
+                "value": "A String", # Value of the attribute.
+              },
+            ],
+            "consumerSecret": "A String", # Secret key.
+          },
+        ],
+        "keyExpiresIn": "A String", # Duration, in milliseconds, of the consumer key that will
+            # be generated for the app. The default value, -1, indicates an
+            # infinite validity period. Once set, the expiration can't be updated.
+            # json key: keyExpiresIn
+        "attributes": [ # List of attributes.
+          { # Key-value pair to store extra metadata.
+            "name": "A String", # API key of the attribute.
+            "value": "A String", # Value of the attribute.
+          },
+        ],
+        "createdAt": "A String", # Output only. Unix time when the app was created.
+        "callbackUrl": "A String", # Callback URL used by OAuth 2.0 authorization servers to communicate
+            # authorization codes back to apps.
+      },
+    ],
+  }</pre>
+</div>
+
+</body></html>

@@ -1,0 +1,598 @@
+<html><body>
+<style>
+
+body, h1, h2, h3, div, span, p, pre, a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  font-size: 13px;
+  padding: 1em;
+}
+
+h1 {
+  font-size: 26px;
+  margin-bottom: 1em;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 1em;
+}
+
+h3 {
+  font-size: 20px;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+pre, code {
+  line-height: 1.5;
+  font-family: Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Lucida Console', monospace;
+}
+
+pre {
+  margin-top: 0.5em;
+}
+
+h1, h2, h3, p {
+  font-family: Arial, sans serif;
+}
+
+h1, h2, h3 {
+  border-bottom: solid #CCC 1px;
+}
+
+.toc_element {
+  margin-top: 0.5em;
+}
+
+.firstline {
+  margin-left: 2 em;
+}
+
+.method  {
+  margin-top: 1em;
+  border: solid 1px #CCC;
+  padding: 1em;
+  background: #EEE;
+}
+
+.details {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+</style>
+
+<h1><a href="apigee_v1.html">Apigee API</a> . <a href="apigee_v1.organizations.html">organizations</a> . <a href="apigee_v1.organizations.companies.html">companies</a> . <a href="apigee_v1.organizations.companies.apps.html">apps</a></h1>
+<h2>Instance Methods</h2>
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.companies.apps.keys.html">keys()</a></code>
+</p>
+<p class="firstline">Returns the keys Resource.</p>
+
+<p class="toc_element">
+  <code><a href="#create">create(parent, body=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Creates an app for a company.</p>
+<p class="toc_element">
+  <code><a href="#delete">delete(name, x__xgafv=None)</a></code></p>
+<p class="firstline">Deletes a company app.</p>
+<p class="toc_element">
+  <code><a href="#get">get(name, x__xgafv=None)</a></code></p>
+<p class="firstline">Gets the profile of a specific company app.</p>
+<p class="toc_element">
+  <code><a href="#list">list(parent, count=None, startKey=None, x__xgafv=None, expand=None)</a></code></p>
+<p class="firstline">List company apps in an organization. You can optionally expand the</p>
+<p class="toc_element">
+  <code><a href="#update">update(name, body=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Updates an existing company app.</p>
+<h3>Method Details</h3>
+<div class="method">
+    <code class="details" id="create">create(parent, body=None, x__xgafv=None)</code>
+  <pre>Creates an app for a company.
+
+Args:
+  parent: string, Resource path of the parent: `organizations/{org}/companies/{company_name}` (required)
+  body: object, The request body.
+    The object takes the form of:
+
+{
+    "status": "A String", # The status of the credential.
+    "scopes": [ # The scopes to apply to the app. The specified scope names must already
+        # exist on the API product that you associate with the app.
+      "A String",
+    ],
+    "name": "A String", # The resoure id of the app.
+        # JSON key: name
+    "companyName": "A String", # The name of the company owns the app
+    "apiProducts": [ # Any API Products the app consumes
+      "A String",
+    ],
+    "lastModifiedAt": "A String", # Output only. Modified time as milliseconds since epoch.
+        # json key: lastModifiedAt
+    "appFamily": "A String",
+    "appId": "A String", # The id of the app.
+    "credentials": [ # Output only. A set of credentials for the app
+        # credentials are key/secret pairs
+      {
+        "status": "A String", # Status of the credential.
+        "scopes": [ # List of scopes to apply to the app. Specified scopes must already
+            # exist on the API product that you associate with the app.
+          "A String",
+        ],
+        "apiProducts": [ # List of API products this credential can be used for.
+          {
+            "status": "A String", # Status of the API product.
+            "apiproduct": "A String", # Name of the API product.
+          },
+        ],
+        "expiresAt": "A String", # Time the credential will expire in milliseconds since epoch.
+        "consumerKey": "A String", # Consumer key.
+        "issuedAt": "A String", # Time the credential was issued in milliseconds since epoch.
+        "attributes": [ # List of attributes associated with this credential.
+          { # Key-value pair to store extra metadata.
+            "name": "A String", # API key of the attribute.
+            "value": "A String", # Value of the attribute.
+          },
+        ],
+        "consumerSecret": "A String", # Secret key.
+      },
+    ],
+    "keyExpiresIn": "A String", # A setting, in milliseconds, for the lifetime of the consumer key that will
+        # be generated for the developer app. The default value, -1, indicates an
+        # infinite validity period. Once set, the expiration can't be updated.
+        # json key: keyExpiresIn
+    "attributes": [ # A list of attributes.
+      { # Key-value pair to store extra metadata.
+        "name": "A String", # API key of the attribute.
+        "value": "A String", # Value of the attribute.
+      },
+    ],
+    "createdAt": "A String", # Output only. created time of this environment as milliseconds since epoch.
+        # JSON key: createdAt
+    "callbackUrl": "A String", # The callbackUrl is used by OAuth 2.0 authorization servers to communicate
+        # authorization codes back to apps.
+  }
+
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+      "status": "A String", # The status of the credential.
+      "scopes": [ # The scopes to apply to the app. The specified scope names must already
+          # exist on the API product that you associate with the app.
+        "A String",
+      ],
+      "name": "A String", # The resoure id of the app.
+          # JSON key: name
+      "companyName": "A String", # The name of the company owns the app
+      "apiProducts": [ # Any API Products the app consumes
+        "A String",
+      ],
+      "lastModifiedAt": "A String", # Output only. Modified time as milliseconds since epoch.
+          # json key: lastModifiedAt
+      "appFamily": "A String",
+      "appId": "A String", # The id of the app.
+      "credentials": [ # Output only. A set of credentials for the app
+          # credentials are key/secret pairs
+        {
+          "status": "A String", # Status of the credential.
+          "scopes": [ # List of scopes to apply to the app. Specified scopes must already
+              # exist on the API product that you associate with the app.
+            "A String",
+          ],
+          "apiProducts": [ # List of API products this credential can be used for.
+            {
+              "status": "A String", # Status of the API product.
+              "apiproduct": "A String", # Name of the API product.
+            },
+          ],
+          "expiresAt": "A String", # Time the credential will expire in milliseconds since epoch.
+          "consumerKey": "A String", # Consumer key.
+          "issuedAt": "A String", # Time the credential was issued in milliseconds since epoch.
+          "attributes": [ # List of attributes associated with this credential.
+            { # Key-value pair to store extra metadata.
+              "name": "A String", # API key of the attribute.
+              "value": "A String", # Value of the attribute.
+            },
+          ],
+          "consumerSecret": "A String", # Secret key.
+        },
+      ],
+      "keyExpiresIn": "A String", # A setting, in milliseconds, for the lifetime of the consumer key that will
+          # be generated for the developer app. The default value, -1, indicates an
+          # infinite validity period. Once set, the expiration can't be updated.
+          # json key: keyExpiresIn
+      "attributes": [ # A list of attributes.
+        { # Key-value pair to store extra metadata.
+          "name": "A String", # API key of the attribute.
+          "value": "A String", # Value of the attribute.
+        },
+      ],
+      "createdAt": "A String", # Output only. created time of this environment as milliseconds since epoch.
+          # JSON key: createdAt
+      "callbackUrl": "A String", # The callbackUrl is used by OAuth 2.0 authorization servers to communicate
+          # authorization codes back to apps.
+    }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="delete">delete(name, x__xgafv=None)</code>
+  <pre>Deletes a company app.
+
+Args:
+  name: string, name of the app resource:
+`organizations/{org}/companies/{company_name}/apps/{app_name}` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+      "status": "A String", # The status of the credential.
+      "scopes": [ # The scopes to apply to the app. The specified scope names must already
+          # exist on the API product that you associate with the app.
+        "A String",
+      ],
+      "name": "A String", # The resoure id of the app.
+          # JSON key: name
+      "companyName": "A String", # The name of the company owns the app
+      "apiProducts": [ # Any API Products the app consumes
+        "A String",
+      ],
+      "lastModifiedAt": "A String", # Output only. Modified time as milliseconds since epoch.
+          # json key: lastModifiedAt
+      "appFamily": "A String",
+      "appId": "A String", # The id of the app.
+      "credentials": [ # Output only. A set of credentials for the app
+          # credentials are key/secret pairs
+        {
+          "status": "A String", # Status of the credential.
+          "scopes": [ # List of scopes to apply to the app. Specified scopes must already
+              # exist on the API product that you associate with the app.
+            "A String",
+          ],
+          "apiProducts": [ # List of API products this credential can be used for.
+            {
+              "status": "A String", # Status of the API product.
+              "apiproduct": "A String", # Name of the API product.
+            },
+          ],
+          "expiresAt": "A String", # Time the credential will expire in milliseconds since epoch.
+          "consumerKey": "A String", # Consumer key.
+          "issuedAt": "A String", # Time the credential was issued in milliseconds since epoch.
+          "attributes": [ # List of attributes associated with this credential.
+            { # Key-value pair to store extra metadata.
+              "name": "A String", # API key of the attribute.
+              "value": "A String", # Value of the attribute.
+            },
+          ],
+          "consumerSecret": "A String", # Secret key.
+        },
+      ],
+      "keyExpiresIn": "A String", # A setting, in milliseconds, for the lifetime of the consumer key that will
+          # be generated for the developer app. The default value, -1, indicates an
+          # infinite validity period. Once set, the expiration can't be updated.
+          # json key: keyExpiresIn
+      "attributes": [ # A list of attributes.
+        { # Key-value pair to store extra metadata.
+          "name": "A String", # API key of the attribute.
+          "value": "A String", # Value of the attribute.
+        },
+      ],
+      "createdAt": "A String", # Output only. created time of this environment as milliseconds since epoch.
+          # JSON key: createdAt
+      "callbackUrl": "A String", # The callbackUrl is used by OAuth 2.0 authorization servers to communicate
+          # authorization codes back to apps.
+    }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="get">get(name, x__xgafv=None)</code>
+  <pre>Gets the profile of a specific company app.
+
+Args:
+  name: string, name of the app resource:
+`organizations/{org}/companies/{company_name}/apps/{app_name}` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+      "status": "A String", # The status of the credential.
+      "scopes": [ # The scopes to apply to the app. The specified scope names must already
+          # exist on the API product that you associate with the app.
+        "A String",
+      ],
+      "name": "A String", # The resoure id of the app.
+          # JSON key: name
+      "companyName": "A String", # The name of the company owns the app
+      "apiProducts": [ # Any API Products the app consumes
+        "A String",
+      ],
+      "lastModifiedAt": "A String", # Output only. Modified time as milliseconds since epoch.
+          # json key: lastModifiedAt
+      "appFamily": "A String",
+      "appId": "A String", # The id of the app.
+      "credentials": [ # Output only. A set of credentials for the app
+          # credentials are key/secret pairs
+        {
+          "status": "A String", # Status of the credential.
+          "scopes": [ # List of scopes to apply to the app. Specified scopes must already
+              # exist on the API product that you associate with the app.
+            "A String",
+          ],
+          "apiProducts": [ # List of API products this credential can be used for.
+            {
+              "status": "A String", # Status of the API product.
+              "apiproduct": "A String", # Name of the API product.
+            },
+          ],
+          "expiresAt": "A String", # Time the credential will expire in milliseconds since epoch.
+          "consumerKey": "A String", # Consumer key.
+          "issuedAt": "A String", # Time the credential was issued in milliseconds since epoch.
+          "attributes": [ # List of attributes associated with this credential.
+            { # Key-value pair to store extra metadata.
+              "name": "A String", # API key of the attribute.
+              "value": "A String", # Value of the attribute.
+            },
+          ],
+          "consumerSecret": "A String", # Secret key.
+        },
+      ],
+      "keyExpiresIn": "A String", # A setting, in milliseconds, for the lifetime of the consumer key that will
+          # be generated for the developer app. The default value, -1, indicates an
+          # infinite validity period. Once set, the expiration can't be updated.
+          # json key: keyExpiresIn
+      "attributes": [ # A list of attributes.
+        { # Key-value pair to store extra metadata.
+          "name": "A String", # API key of the attribute.
+          "value": "A String", # Value of the attribute.
+        },
+      ],
+      "createdAt": "A String", # Output only. created time of this environment as milliseconds since epoch.
+          # JSON key: createdAt
+      "callbackUrl": "A String", # The callbackUrl is used by OAuth 2.0 authorization servers to communicate
+          # authorization codes back to apps.
+    }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="list">list(parent, count=None, startKey=None, x__xgafv=None, expand=None)</code>
+  <pre>List company apps in an organization. You can optionally expand the
+response to include the profile for each app.
+
+Args:
+  parent: string, The name of a company resource:
+`organizations/{org}/companies/{company_name}` (required)
+  count: string, Limits the list to the number you specify. The limit is 100.
+  startKey: string, Lets you return a list of app starting with a specific app name in the
+list.
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+  expand: boolean, Set expand to true to return a full profile
+
+Returns:
+  An object of the form:
+
+    {
+    "app": [ # A list of apps for a company.
+      {
+          "status": "A String", # The status of the credential.
+          "scopes": [ # The scopes to apply to the app. The specified scope names must already
+              # exist on the API product that you associate with the app.
+            "A String",
+          ],
+          "name": "A String", # The resoure id of the app.
+              # JSON key: name
+          "companyName": "A String", # The name of the company owns the app
+          "apiProducts": [ # Any API Products the app consumes
+            "A String",
+          ],
+          "lastModifiedAt": "A String", # Output only. Modified time as milliseconds since epoch.
+              # json key: lastModifiedAt
+          "appFamily": "A String",
+          "appId": "A String", # The id of the app.
+          "credentials": [ # Output only. A set of credentials for the app
+              # credentials are key/secret pairs
+            {
+              "status": "A String", # Status of the credential.
+              "scopes": [ # List of scopes to apply to the app. Specified scopes must already
+                  # exist on the API product that you associate with the app.
+                "A String",
+              ],
+              "apiProducts": [ # List of API products this credential can be used for.
+                {
+                  "status": "A String", # Status of the API product.
+                  "apiproduct": "A String", # Name of the API product.
+                },
+              ],
+              "expiresAt": "A String", # Time the credential will expire in milliseconds since epoch.
+              "consumerKey": "A String", # Consumer key.
+              "issuedAt": "A String", # Time the credential was issued in milliseconds since epoch.
+              "attributes": [ # List of attributes associated with this credential.
+                { # Key-value pair to store extra metadata.
+                  "name": "A String", # API key of the attribute.
+                  "value": "A String", # Value of the attribute.
+                },
+              ],
+              "consumerSecret": "A String", # Secret key.
+            },
+          ],
+          "keyExpiresIn": "A String", # A setting, in milliseconds, for the lifetime of the consumer key that will
+              # be generated for the developer app. The default value, -1, indicates an
+              # infinite validity period. Once set, the expiration can't be updated.
+              # json key: keyExpiresIn
+          "attributes": [ # A list of attributes.
+            { # Key-value pair to store extra metadata.
+              "name": "A String", # API key of the attribute.
+              "value": "A String", # Value of the attribute.
+            },
+          ],
+          "createdAt": "A String", # Output only. created time of this environment as milliseconds since epoch.
+              # JSON key: createdAt
+          "callbackUrl": "A String", # The callbackUrl is used by OAuth 2.0 authorization servers to communicate
+              # authorization codes back to apps.
+        },
+    ],
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="update">update(name, body=None, x__xgafv=None)</code>
+  <pre>Updates an existing company app.
+
+Args:
+  name: string, Resource path of the app:
+`organizations/{org}/companies/{company_name}/apps/{app_name}` (required)
+  body: object, The request body.
+    The object takes the form of:
+
+{
+    "status": "A String", # The status of the credential.
+    "scopes": [ # The scopes to apply to the app. The specified scope names must already
+        # exist on the API product that you associate with the app.
+      "A String",
+    ],
+    "name": "A String", # The resoure id of the app.
+        # JSON key: name
+    "companyName": "A String", # The name of the company owns the app
+    "apiProducts": [ # Any API Products the app consumes
+      "A String",
+    ],
+    "lastModifiedAt": "A String", # Output only. Modified time as milliseconds since epoch.
+        # json key: lastModifiedAt
+    "appFamily": "A String",
+    "appId": "A String", # The id of the app.
+    "credentials": [ # Output only. A set of credentials for the app
+        # credentials are key/secret pairs
+      {
+        "status": "A String", # Status of the credential.
+        "scopes": [ # List of scopes to apply to the app. Specified scopes must already
+            # exist on the API product that you associate with the app.
+          "A String",
+        ],
+        "apiProducts": [ # List of API products this credential can be used for.
+          {
+            "status": "A String", # Status of the API product.
+            "apiproduct": "A String", # Name of the API product.
+          },
+        ],
+        "expiresAt": "A String", # Time the credential will expire in milliseconds since epoch.
+        "consumerKey": "A String", # Consumer key.
+        "issuedAt": "A String", # Time the credential was issued in milliseconds since epoch.
+        "attributes": [ # List of attributes associated with this credential.
+          { # Key-value pair to store extra metadata.
+            "name": "A String", # API key of the attribute.
+            "value": "A String", # Value of the attribute.
+          },
+        ],
+        "consumerSecret": "A String", # Secret key.
+      },
+    ],
+    "keyExpiresIn": "A String", # A setting, in milliseconds, for the lifetime of the consumer key that will
+        # be generated for the developer app. The default value, -1, indicates an
+        # infinite validity period. Once set, the expiration can't be updated.
+        # json key: keyExpiresIn
+    "attributes": [ # A list of attributes.
+      { # Key-value pair to store extra metadata.
+        "name": "A String", # API key of the attribute.
+        "value": "A String", # Value of the attribute.
+      },
+    ],
+    "createdAt": "A String", # Output only. created time of this environment as milliseconds since epoch.
+        # JSON key: createdAt
+    "callbackUrl": "A String", # The callbackUrl is used by OAuth 2.0 authorization servers to communicate
+        # authorization codes back to apps.
+  }
+
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+      "status": "A String", # The status of the credential.
+      "scopes": [ # The scopes to apply to the app. The specified scope names must already
+          # exist on the API product that you associate with the app.
+        "A String",
+      ],
+      "name": "A String", # The resoure id of the app.
+          # JSON key: name
+      "companyName": "A String", # The name of the company owns the app
+      "apiProducts": [ # Any API Products the app consumes
+        "A String",
+      ],
+      "lastModifiedAt": "A String", # Output only. Modified time as milliseconds since epoch.
+          # json key: lastModifiedAt
+      "appFamily": "A String",
+      "appId": "A String", # The id of the app.
+      "credentials": [ # Output only. A set of credentials for the app
+          # credentials are key/secret pairs
+        {
+          "status": "A String", # Status of the credential.
+          "scopes": [ # List of scopes to apply to the app. Specified scopes must already
+              # exist on the API product that you associate with the app.
+            "A String",
+          ],
+          "apiProducts": [ # List of API products this credential can be used for.
+            {
+              "status": "A String", # Status of the API product.
+              "apiproduct": "A String", # Name of the API product.
+            },
+          ],
+          "expiresAt": "A String", # Time the credential will expire in milliseconds since epoch.
+          "consumerKey": "A String", # Consumer key.
+          "issuedAt": "A String", # Time the credential was issued in milliseconds since epoch.
+          "attributes": [ # List of attributes associated with this credential.
+            { # Key-value pair to store extra metadata.
+              "name": "A String", # API key of the attribute.
+              "value": "A String", # Value of the attribute.
+            },
+          ],
+          "consumerSecret": "A String", # Secret key.
+        },
+      ],
+      "keyExpiresIn": "A String", # A setting, in milliseconds, for the lifetime of the consumer key that will
+          # be generated for the developer app. The default value, -1, indicates an
+          # infinite validity period. Once set, the expiration can't be updated.
+          # json key: keyExpiresIn
+      "attributes": [ # A list of attributes.
+        { # Key-value pair to store extra metadata.
+          "name": "A String", # API key of the attribute.
+          "value": "A String", # Value of the attribute.
+        },
+      ],
+      "createdAt": "A String", # Output only. created time of this environment as milliseconds since epoch.
+          # JSON key: createdAt
+      "callbackUrl": "A String", # The callbackUrl is used by OAuth 2.0 authorization servers to communicate
+          # authorization codes back to apps.
+    }</pre>
+</div>
+
+</body></html>

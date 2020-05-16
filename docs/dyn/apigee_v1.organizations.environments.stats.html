@@ -1,0 +1,272 @@
+<html><body>
+<style>
+
+body, h1, h2, h3, div, span, p, pre, a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  font-size: 13px;
+  padding: 1em;
+}
+
+h1 {
+  font-size: 26px;
+  margin-bottom: 1em;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 1em;
+}
+
+h3 {
+  font-size: 20px;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+pre, code {
+  line-height: 1.5;
+  font-family: Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Lucida Console', monospace;
+}
+
+pre {
+  margin-top: 0.5em;
+}
+
+h1, h2, h3, p {
+  font-family: Arial, sans serif;
+}
+
+h1, h2, h3 {
+  border-bottom: solid #CCC 1px;
+}
+
+.toc_element {
+  margin-top: 0.5em;
+}
+
+.firstline {
+  margin-left: 2 em;
+}
+
+.method  {
+  margin-top: 1em;
+  border: solid 1px #CCC;
+  padding: 1em;
+  background: #EEE;
+}
+
+.details {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+</style>
+
+<h1><a href="apigee_v1.html">Apigee API</a> . <a href="apigee_v1.organizations.html">organizations</a> . <a href="apigee_v1.organizations.environments.html">environments</a> . <a href="apigee_v1.organizations.environments.stats.html">stats</a></h1>
+<h2>Instance Methods</h2>
+<p class="toc_element">
+  <code><a href="#get">get(name, tsAscending=None, x__xgafv=None, tzo=None, realtime=None, select=None, limit=None, accuracy=None, sort=None, aggTable=None, sonar=None, topk=None, offset=None, timeUnit=None, timeRange=None, filter=None, sortby=None)</a></code></p>
+<p class="firstline">Retrieve metrics grouped by dimensions.</p>
+<h3>Method Details</h3>
+<div class="method">
+    <code class="details" id="get">get(name, tsAscending=None, x__xgafv=None, tzo=None, realtime=None, select=None, limit=None, accuracy=None, sort=None, aggTable=None, sonar=None, topk=None, offset=None, timeUnit=None, timeRange=None, filter=None, sortby=None)</code>
+  <pre>Retrieve metrics grouped by dimensions.
+The types of metrics you can retrieve include traffic, message counts,
+API call latency, response size, and cache hits and counts.
+Dimensions let you view metrics in meaningful groups.
+The stats api does accept dimensions as path params. The dimensions are
+optional in which case the metrics are computed on the entire data
+for the given timerange.
+
+Args:
+  name: string, Required. The organization and environment name for which the interactive
+query will be executed. Must be of the form
+  `organizations/{organization_id}/environments/{environment_id/stats/{dimensions}`
+Dimensions let you view metrics in meaningful groupings. E.g. apiproxy,
+target_host. The value of dimensions should be comma separated list as
+shown below
+`organizations/{org}/environments/{env}/stats/apiproxy,request_verb` (required)
+  tsAscending: boolean, Lists timestamps in ascending order if set to true. Recommend setting
+this value to true if you are using sortby with sort=DESC.
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+  tzo: string, This parameters contains the timezone offset value
+  realtime: boolean, Legacy field: not used anymore
+  select: string, The select parameter contains a comma separated list of metrics
+E.g. sum(message_count),sum(error_count)
+  limit: string, This parameter is used to limit the number of result items.
+Default and the max value is 14400
+  accuracy: string, Legacy field. not used anymore
+This field is present to support UI calls which still use this parameter
+  sort: string, This parameter specifies if the sort order should be ascending or
+descending Supported values are DESC and ASC.
+  aggTable: string, If customers want to query custom aggregate tables, then this parameter
+can be used to specify the table name. If this parameter is skipped, then
+Edge Query will try to retrieve the data from fact tables which will be
+expensive.
+  sonar: boolean, This parameter routes the query to api monitoring service for last hour
+  topk: string, Take 'top k' results from results, for example, to return the top 5
+results 'topk=5'.
+  offset: string, Use offset with limit to enable pagination of results. For example,
+to display results 11-20, set limit to '10' and offset to '10'.
+  timeUnit: string, A value of second, minute, hour, day, week, month.
+Time Unit specifies the granularity of metrics returned.
+  timeRange: string, Time interval for the interactive query.
+Time range is specified as start~end E.g. 04/15/2017 00:00~05/15/2017 23:59
+  filter: string, Enables drill-down on specific dimension values
+  sortby: string, Comma separated list of columns to sort the final result.
+
+Returns:
+  An object of the form:
+
+    { # This message type encapsulates a stats response
+    "environments": [
+      { # This message type encapsulates the environment wrapper
+          #     "environments": [
+          #      {
+          #          "metrics": [
+          #              {
+          #                  "name": "sum(message_count)",
+          #                  "values": [
+          #                      "2.52056245E8"
+          #                  ]
+          #              }
+          #          ],
+          #          "name": "prod"
+          #      }
+          #  ]
+        "metrics": [ # In the final response, only one of the following fields will be present
+            # based on the dimensions provided. If no dimensions are provided, then
+            # only a top level metrics is provided. If dimensions are included, then
+            # there will be a top level dimensions field under environments which will
+            # contain metrics values and the dimension name.
+            # Example:
+            #      "environments": [
+            #       {
+            #          "dimensions": [
+            #              {
+            #                  "metrics": [
+            #                      {
+            #                          "name": "sum(message_count)",
+            #                          "values": [
+            #                              "2.14049521E8"
+            #                          ]
+            #                      }
+            #                  ],
+            #                  "name": "nit_proxy"
+            #              }
+            #            ],
+            #            "name": "prod"
+            #        }
+            #     ]
+            #
+            #     OR
+            #     "environments": [
+            #            {
+            #                "metrics": [
+            #                    {
+            #                        "name": "sum(message_count)",
+            #                         "values": [
+            #                            "2.19026331E8"
+            #                        ]
+            #                    }
+            #                ],
+            #                "name": "prod"
+            #            }
+            #        ]
+            # This field contains the list of metric values
+          { # This message type encapsulates the metric data point
+              # Example
+              # {
+              #    "name": "sum(message_count)",
+              #    "values" : [ {
+              #                   "timestamp": 1549004400000,
+              #                   "value": "39.0"
+              #                 },
+              #                 {
+              #                   "timestamp" : 1548997200000,
+              #                   "value" : "0.0"
+              #                 } ]
+              # }
+              # or
+              # {
+              #     "name": "sum(message_count)",
+              #     "values" : ["39.0"]
+              # }
+            "values": [ # List of metric values
+                # Possible value format
+                # "values":["39.0"] or
+                # "values":[ { "value": "39.0", "timestamp": 1232434354} ]
+              "",
+            ],
+            "name": "A String", # This field contains the metric name
+          },
+        ],
+        "dimensions": [ # This field contains the list of metrics grouped under dimensions
+          { # This message type encapsulates a metric grouped by dimension
+            "metrics": [ # This field contains a list of metrics
+              { # This message type encapsulates the metric data point
+                  # Example
+                  # {
+                  #    "name": "sum(message_count)",
+                  #    "values" : [ {
+                  #                   "timestamp": 1549004400000,
+                  #                   "value": "39.0"
+                  #                 },
+                  #                 {
+                  #                   "timestamp" : 1548997200000,
+                  #                   "value" : "0.0"
+                  #                 } ]
+                  # }
+                  # or
+                  # {
+                  #     "name": "sum(message_count)",
+                  #     "values" : ["39.0"]
+                  # }
+                "values": [ # List of metric values
+                    # Possible value format
+                    # "values":["39.0"] or
+                    # "values":[ { "value": "39.0", "timestamp": 1232434354} ]
+                  "",
+                ],
+                "name": "A String", # This field contains the metric name
+              },
+            ],
+            "name": "A String", # This field contains the name of the dimension
+          },
+        ],
+        "name": "A String",
+      },
+    ],
+    "metaData": { # This message type encapsulates additional information about query execution # This field contains the metadata information
+      "notices": [ # List of additional information such as data source, if result was
+          # truncated etc.
+          # E.g
+          # "notices": [
+          #              "Source:Postgres",
+          #              "PG Host:uappg0rw.e2e.apigeeks.net",
+          #              "query served by:4b64601e-40de-4eb1-bfb9-eeee7ac929ed",
+          #              "Table used: edge.api.uapgroup2.agg_api"
+          #   ]
+        "A String",
+      ],
+      "errors": [ # List of error messages as strings
+        "A String",
+      ],
+    },
+  }</pre>
+</div>
+
+</body></html>

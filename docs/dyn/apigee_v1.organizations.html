@@ -1,0 +1,776 @@
+<html><body>
+<style>
+
+body, h1, h2, h3, div, span, p, pre, a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  font-size: 13px;
+  padding: 1em;
+}
+
+h1 {
+  font-size: 26px;
+  margin-bottom: 1em;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 1em;
+}
+
+h3 {
+  font-size: 20px;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+pre, code {
+  line-height: 1.5;
+  font-family: Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Lucida Console', monospace;
+}
+
+pre {
+  margin-top: 0.5em;
+}
+
+h1, h2, h3, p {
+  font-family: Arial, sans serif;
+}
+
+h1, h2, h3 {
+  border-bottom: solid #CCC 1px;
+}
+
+.toc_element {
+  margin-top: 0.5em;
+}
+
+.firstline {
+  margin-left: 2 em;
+}
+
+.method  {
+  margin-top: 1em;
+  border: solid 1px #CCC;
+  padding: 1em;
+  background: #EEE;
+}
+
+.details {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+</style>
+
+<h1><a href="apigee_v1.html">Apigee API</a> . <a href="apigee_v1.organizations.html">organizations</a></h1>
+<h2>Instance Methods</h2>
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.apiproducts.html">apiproducts()</a></code>
+</p>
+<p class="firstline">Returns the apiproducts Resource.</p>
+
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.apis.html">apis()</a></code>
+</p>
+<p class="firstline">Returns the apis Resource.</p>
+
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.apps.html">apps()</a></code>
+</p>
+<p class="firstline">Returns the apps Resource.</p>
+
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.companies.html">companies()</a></code>
+</p>
+<p class="firstline">Returns the companies Resource.</p>
+
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.consumerresources.html">consumerresources()</a></code>
+</p>
+<p class="firstline">Returns the consumerresources Resource.</p>
+
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.consumers.html">consumers()</a></code>
+</p>
+<p class="firstline">Returns the consumers Resource.</p>
+
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.deployments.html">deployments()</a></code>
+</p>
+<p class="firstline">Returns the deployments Resource.</p>
+
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.developers.html">developers()</a></code>
+</p>
+<p class="firstline">Returns the developers Resource.</p>
+
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.environments.html">environments()</a></code>
+</p>
+<p class="firstline">Returns the environments Resource.</p>
+
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.keyvaluemaps.html">keyvaluemaps()</a></code>
+</p>
+<p class="firstline">Returns the keyvaluemaps Resource.</p>
+
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.operations.html">operations()</a></code>
+</p>
+<p class="firstline">Returns the operations Resource.</p>
+
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.portals.html">portals()</a></code>
+</p>
+<p class="firstline">Returns the portals Resource.</p>
+
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.providers.html">providers()</a></code>
+</p>
+<p class="firstline">Returns the providers Resource.</p>
+
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.reports.html">reports()</a></code>
+</p>
+<p class="firstline">Returns the reports Resource.</p>
+
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.sharedflows.html">sharedflows()</a></code>
+</p>
+<p class="firstline">Returns the sharedflows Resource.</p>
+
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.sites.html">sites()</a></code>
+</p>
+<p class="firstline">Returns the sites Resource.</p>
+
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.system.html">system()</a></code>
+</p>
+<p class="firstline">Returns the system Resource.</p>
+
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.zones.html">zones()</a></code>
+</p>
+<p class="firstline">Returns the zones Resource.</p>
+
+<p class="toc_element">
+  <code><a href="#create">create(body=None, parent=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Creates an Apigee organization. See</p>
+<p class="toc_element">
+  <code><a href="#get">get(name, x__xgafv=None)</a></code></p>
+<p class="firstline">Gets the profile for an Apigee organization.</p>
+<p class="toc_element">
+  <code><a href="#getMetrics">getMetrics(parent, x__xgafv=None)</a></code></p>
+<p class="firstline">Gets metrics for an organization.</p>
+<p class="toc_element">
+  <code><a href="#getSites">getSites(parent, domain=None, zmsId=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Lists details for all portals.</p>
+<p class="toc_element">
+  <code><a href="#getSyncAuthorization">getSyncAuthorization(name, body=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Lists the service accounts with the permissions required to allow</p>
+<p class="toc_element">
+  <code><a href="#getSystem">getSystem(parent, x__xgafv=None)</a></code></p>
+<p class="firstline">Gets the current state of the portal application.</p>
+<p class="toc_element">
+  <code><a href="#list">list(parent, x__xgafv=None)</a></code></p>
+<p class="firstline">Lists the Apigee organizations and associated GCP projects that you have</p>
+<p class="toc_element">
+  <code><a href="#setSyncAuthorization">setSyncAuthorization(name, body=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Sets the permissions required to allow the Synchronizer to download</p>
+<p class="toc_element">
+  <code><a href="#update">update(name, body=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Updates the properties for an Apigee organization. No other fields in the</p>
+<h3>Method Details</h3>
+<div class="method">
+    <code class="details" id="create">create(body=None, parent=None, x__xgafv=None)</code>
+  <pre>Creates an Apigee organization. See
+[Create an
+organization](https://docs.apigee.com/hybrid/latest/precog-provision).
+
+Args:
+  body: object, The request body.
+    The object takes the form of:
+
+{
+  "customerName": "A String", # Not used by Apigee.
+  "description": "A String", # Description of the Apigee organization.
+  "displayName": "A String",
+  "subscriptionType": "A String", # Output only. Subscription type of the Apigee organization. Valid values include trial
+      # (free, limited, and for evaluation purposes only) or paid (full
+      # subscription has been purchased). See
+      # [Apigee pricing](https://cloud.google.com/apigee/pricing/).
+  "environments": [ # Output only. List of environments in the Apigee organization.
+    "A String",
+  ],
+  "name": "A String", # Required. Name of the Apigee organization.
+  "lastModifiedAt": "A String", # Output only. Time that the Apigee organization was last modified in milliseconds
+      # since epoch.
+  "attributes": [ # Not used by Apigee.
+    "A String",
+  ],
+  "analyticsRegion": "A String", # Required. Primary GCP region for analytics data storage. For valid values, see
+      # [Create an
+      # organization](https://docs.apigee.com/hybrid/latest/precog-provision).
+  "type": "A String", # Not used by Apigee.
+  "properties": { # Message for compatibility with legacy Edge specification for Java Properties # Properties defined in the Apigee organization profile.
+      # object in JSON.
+    "property": [ # List of all properties in the object
+      { # A single property entry in the Properties message.
+        "name": "A String", # The property key
+        "value": "A String", # The property value
+      },
+    ],
+  },
+  "createdAt": "A String", # Output only. Time that the Apigee organization was created in milliseconds since epoch.
+  "runtimeType": "A String", # Output only. Runtime type of the Apigee organization based on the Apigee subscription
+      # purchased.
+}
+
+  parent: string, Required. Name of the GCP project in which to associate the Apigee organization.
+Pass the information as a query parameter using the following structure
+in your request:
+  `projects/&lt;project&gt;`
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    { # This resource represents a long-running operation that is the result of a
+      # network API call.
+    "error": { # The `Status` type defines a logical error model that is suitable for # The error result of the operation in case of failure or cancellation.
+        # different programming environments, including REST APIs and RPC APIs. It is
+        # used by [gRPC](https://github.com/grpc). Each `Status` message contains
+        # three pieces of data: error code, error message, and error details.
+        #
+        # You can find out more about this error model and how to work with it in the
+        # [API Design Guide](https://cloud.google.com/apis/design/errors).
+      "message": "A String", # A developer-facing error message, which should be in English. Any
+          # user-facing error message should be localized and sent in the
+          # google.rpc.Status.details field, or localized by the client.
+      "code": 42, # The status code, which should be an enum value of google.rpc.Code.
+      "details": [ # A list of messages that carry the error details.  There is a common set of
+          # message types for APIs to use.
+        {
+          "a_key": "", # Properties of the object. Contains field @type with type URL.
+        },
+      ],
+    },
+    "done": True or False, # If the value is `false`, it means the operation is still in progress.
+        # If `true`, the operation is completed, and either `error` or `response` is
+        # available.
+    "response": { # The normal response of the operation in case of success.  If the original
+        # method returns no data on success, such as `Delete`, the response is
+        # `google.protobuf.Empty`.  If the original method is standard
+        # `Get`/`Create`/`Update`, the response should be the resource.  For other
+        # methods, the response should have the type `XxxResponse`, where `Xxx`
+        # is the original method name.  For example, if the original method name
+        # is `TakeSnapshot()`, the inferred response type is
+        # `TakeSnapshotResponse`.
+      "a_key": "", # Properties of the object. Contains field @type with type URL.
+    },
+    "name": "A String", # The server-assigned name, which is only unique within the same service that
+        # originally returns it. If you use the default HTTP mapping, the
+        # `name` should be a resource name ending with `operations/{unique_id}`.
+    "metadata": { # Service-specific metadata associated with the operation.  It typically
+        # contains progress information and common metadata such as create time.
+        # Some services might not provide such metadata.  Any method that returns a
+        # long-running operation should document the metadata type, if any.
+      "a_key": "", # Properties of the object. Contains field @type with type URL.
+    },
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="get">get(name, x__xgafv=None)</code>
+  <pre>Gets the profile for an Apigee organization.
+See
+[Organizations](https://docs.apigee.com/hybrid/latest/terminology#organizations).
+
+Args:
+  name: string, Required. Apigee organization name in the following format:
+  `organizations/{org}` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "customerName": "A String", # Not used by Apigee.
+    "description": "A String", # Description of the Apigee organization.
+    "displayName": "A String",
+    "subscriptionType": "A String", # Output only. Subscription type of the Apigee organization. Valid values include trial
+        # (free, limited, and for evaluation purposes only) or paid (full
+        # subscription has been purchased). See
+        # [Apigee pricing](https://cloud.google.com/apigee/pricing/).
+    "environments": [ # Output only. List of environments in the Apigee organization.
+      "A String",
+    ],
+    "name": "A String", # Required. Name of the Apigee organization.
+    "lastModifiedAt": "A String", # Output only. Time that the Apigee organization was last modified in milliseconds
+        # since epoch.
+    "attributes": [ # Not used by Apigee.
+      "A String",
+    ],
+    "analyticsRegion": "A String", # Required. Primary GCP region for analytics data storage. For valid values, see
+        # [Create an
+        # organization](https://docs.apigee.com/hybrid/latest/precog-provision).
+    "type": "A String", # Not used by Apigee.
+    "properties": { # Message for compatibility with legacy Edge specification for Java Properties # Properties defined in the Apigee organization profile.
+        # object in JSON.
+      "property": [ # List of all properties in the object
+        { # A single property entry in the Properties message.
+          "name": "A String", # The property key
+          "value": "A String", # The property value
+        },
+      ],
+    },
+    "createdAt": "A String", # Output only. Time that the Apigee organization was created in milliseconds since epoch.
+    "runtimeType": "A String", # Output only. Runtime type of the Apigee organization based on the Apigee subscription
+        # purchased.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="getMetrics">getMetrics(parent, x__xgafv=None)</code>
+  <pre>Gets metrics for an organization.
+
+Args:
+  parent: string, Required. Name of the Apigee organization. Use the following structure in
+your request:
+  `organizations/{org}` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "status": "A String", # Status of the operation.
+    "message": "A String", # Description of the operation.
+    "data": { # Object containing metrics related to the organization.
+      "totalNumberOfSites": "A String", # Total number of portals.
+    },
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="getSites">getSites(parent, domain=None, zmsId=None, x__xgafv=None)</code>
+  <pre>Lists details for all portals.
+
+Args:
+  parent: string, Required. Name of the Apigee organization. Use the following structure in your
+request:
+  `organizations/{org}` (required)
+  domain: string, A parameter
+  zmsId: string, A parameter
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "status": "A String", # Status of the operation.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "message": "A String", # Description of the operation.
+    "data": [ # Details for the portals.
+      {
+        "currentURL": "A String", # URL currently in use by the portal.
+        "altLogoUrl": "A String", # Logo image used on mobile devices.
+        "analyticsScript": "A String", # Custom HTML/JS analytics script added before the &lt;body&gt; tag on all pages
+            # of the site.
+        "orgName": "A String", # Name of the Apigee organization.
+        "customDomain": "A String", # Custom domain (if applicable).
+        "iconUrl": "A String", # Not used by Apigee hybrid.
+        "trashedOn": "A String", # Time the portal was deleted in milliseconds since epoch.
+        "migrationSrcSiteId": "A String", # Not used by Apigee hybrid.
+        "migrationDestSiteId": "A String", # Not used by Apigee hybrid.
+        "anonAllowedByDefault": True or False, # Boolean flag that sets the default visibility for pages and API products
+            # that are published on the portal. When set to`true`, allows access by
+            # all users (public).
+        "iconBg": "A String", # Not used by Apigee hybrid.
+        "itSecretKey": "A String", # Not used by Apigee hybrid.
+        "id": "A String", # ID of the portal.
+        "analyticsTrackingId": "A String",
+        "zoneId": "A String", # ID of the identity zone.
+        "themeVersion": "A String", # Version of the theme used by the portal. (Internal use only.)
+        "theme": "A String", # Name of the theme used on the portal (apigee).
+        "https": True or False, # Boolean flag that specifies whether the URL will be HTTPS.
+        "stylesheetDirty": True or False, # Boolean flag that specifies whether the custom CSS needs to be
+            # recalculated.
+        "siteDomainSuffix": "A String", # Suffix for the portal domain. By default, this is set to ".apigee.io".
+        "customDomainEnabled": True or False, # Not used currently by Apigee hybrid.
+        "status": "A String", # Status of the portal indicating whether the portal is published (Active) or
+            # unpublished (Inactive).
+        "direction": "A String", # Type of writing system, such as left-to-right (ltr).
+        "description": "A String", # Description of the portal.
+        "defaultURL": "A String", # Default URL to access the portal.
+        "trashedBy": "A String", # Name of the user that deleted the portal.
+        "idpEnabled": True or False, # Boolean flag that specifies whether an identity provider has been enabled.
+        "showSettings": True or False, # Not used by Apigee hybrid.
+        "defaultDomain": "A String", # Default domain for the portal.
+        "name": "A String", # Name of the portal.
+        "approvedEmails": "A String", # List of emails that are allowed to sign up on the portal.
+        "portalVersion": 42, # Version of the portal.
+        "lastLogin": "A String", # Time that a user last signed in to the portal in milliseconds since epoch.
+        "language": "A String", # Language for the portal (such as "en").
+        "created": "A String", # Time the portal was created in milliseconds since epoch.
+        "lastModified": "A String", # Time the portal was last modified in milliseconds since epoch.
+        "teams": [ # Not used by Apigee hybrid.
+          "A String",
+        ],
+        "lastPublished": "A String", # Time the portal was last published in milliseconds since epoch.
+        "trashed": True or False, # Boolean flag that specifies whether the portal has been deleted.
+        "currentDomain": "A String", # Domain name currently in use by the portal.
+        "logoUrl": "A String", # Logo image used on desktop devices.
+        "timeZone": "A String", # Time zone.
+        "customerId": "A String", # Not used by Apigee hybrid.
+        "fileLimit": 42, # Maximimum number of file assets that can be uploaded.
+      },
+    ],
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="getSyncAuthorization">getSyncAuthorization(name, body=None, x__xgafv=None)</code>
+  <pre>Lists the service accounts with the permissions required to allow
+the Synchronizer to download environment data from the control plane.
+
+An ETag is returned in the response to `getSyncAuthorization`.
+Pass that ETag when calling [setSyncAuthorization](setSyncAuthorization)
+to ensure that you are updating the correct version. If you don't pass the
+ETag in the call to `setSyncAuthorization`, then the existing authorization
+is overwritten indiscriminately.
+
+For more information, see
+[Enable Synchronizer
+access](https://docs.apigee.com/hybrid/latest/synchronizer-access#enable-synchronizer-access).
+
+**Note**: Available to Apigee hybrid only.
+
+Args:
+  name: string, Required. Name of the Apigee organization. Use the following structure in your
+request:
+ `organizations/{org}` (required)
+  body: object, The request body.
+    The object takes the form of:
+
+{ # Request for
+      # GetSyncAuthorization.
+  }
+
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+      "etag": "A String", # Entity tag (ETag) used for optimistic concurrency control as a way to help
+          # prevent simultaneous updates from overwriting each other.
+          #
+          # For example, when you call  [getSyncAuthorization](getSyncAuthorization)
+          # an ETag is returned in the response. Pass that ETag when calling
+          # the [setSyncAuthorization](setSyncAuthorization) to ensure
+          # that you are updating the correct version. If you don't pass the
+          # ETag in the call to `setSyncAuthorization`, then the
+          # existing authorization is overwritten indiscriminately.
+          #
+          # **Note**: We strongly recommend that you use the ETag in the
+          # read-modify-write cycle to avoid race conditions.
+      "identities": [ # Required. Array of service accounts to grant access to control plane
+          # resources, each specified using the following
+          # format: `serviceAccount:`&lt;var&gt;service-account-name&lt;/var&gt;.
+          #
+          # The &lt;var&gt;service-account-name&lt;/var&gt; is formatted like an email address. For
+          # example:
+          # `my-synchronizer-manager-service_account@my_project_id.iam.gserviceaccount.com`
+          #
+          # You might specify multiple service accounts, for example, if you have
+          # multiple environments and wish to assign a unique service account to each
+          # one.
+          #
+          # The service accounts must have **Apigee Synchronizer Manager** role.
+          # See also [Create service
+          # accounts](https://docs.apigee.com/hybrid/latest/sa-about#create-the-service-accounts).
+        "A String",
+      ],
+    }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="getSystem">getSystem(parent, x__xgafv=None)</code>
+  <pre>Gets the current state of the portal application.
+
+Args:
+  parent: string, Required. Name of the Apigee organization. Use the following structure in
+your request:
+  `organizations/{org}` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "status": "A String", # Status of the operation.
+    "message": "A String", # Description of the operation.
+    "data": { # Details of the system state.
+      "systemStateAccessLevel": "A String", # System access level.
+      "systemAccessLevelMessage": "A String", # System access level message.
+      "systemAccessTtl": 42, # System access time-to-live (TTL).
+      "features": [ # List of portal features.
+        "A String",
+      ],
+    },
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="list">list(parent, x__xgafv=None)</code>
+  <pre>Lists the Apigee organizations and associated GCP projects that you have
+permission to access. See
+[Organizations](https://docs.apigee.com/hybrid/latest/terminology#organizations).
+
+Args:
+  parent: string, Required. Use the following structure in your request:
+  `organizations` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "organizations": [ # List of Apigee organizations and associated GCP projects.
+      {
+        "projectIds": [ # List of GCP projects associated with the Apigee organization.
+          "A String",
+        ],
+        "organization": "A String", # Name of the Apigee organization.
+      },
+    ],
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="setSyncAuthorization">setSyncAuthorization(name, body=None, x__xgafv=None)</code>
+  <pre>Sets the permissions required to allow the Synchronizer to download
+environment data from the control plane. You must call this API to enable
+proper functioning of hybrid.
+
+Pass the ETag when calling `setSyncAuthorization` to ensure that
+you are updating the correct version. To get an ETag,
+call [getSyncAuthorization](getSyncAuthorization).
+If you don't pass the ETag in the call to `setSyncAuthorization`, then the
+existing authorization is overwritten indiscriminately.
+
+For more information, see
+[Enable Synchronizer
+access](https://docs.apigee.com/hybrid/latest/synchronizer-access#enable-synchronizer-access).
+
+**Note**: Available to Apigee hybrid only.
+
+Args:
+  name: string, Required. Name of the Apigee organization. Use the following structure in your
+request:
+ `organizations/{org}` (required)
+  body: object, The request body.
+    The object takes the form of:
+
+{
+    "etag": "A String", # Entity tag (ETag) used for optimistic concurrency control as a way to help
+        # prevent simultaneous updates from overwriting each other.
+        # 
+        # For example, when you call  [getSyncAuthorization](getSyncAuthorization)
+        # an ETag is returned in the response. Pass that ETag when calling
+        # the [setSyncAuthorization](setSyncAuthorization) to ensure
+        # that you are updating the correct version. If you don't pass the
+        # ETag in the call to `setSyncAuthorization`, then the
+        # existing authorization is overwritten indiscriminately.
+        # 
+        # **Note**: We strongly recommend that you use the ETag in the
+        # read-modify-write cycle to avoid race conditions.
+    "identities": [ # Required. Array of service accounts to grant access to control plane
+        # resources, each specified using the following
+        # format: `serviceAccount:`&lt;var&gt;service-account-name&lt;/var&gt;.
+        # 
+        # The &lt;var&gt;service-account-name&lt;/var&gt; is formatted like an email address. For
+        # example:
+        # `my-synchronizer-manager-service_account@my_project_id.iam.gserviceaccount.com`
+        # 
+        # You might specify multiple service accounts, for example, if you have
+        # multiple environments and wish to assign a unique service account to each
+        # one.
+        # 
+        # The service accounts must have **Apigee Synchronizer Manager** role.
+        # See also [Create service
+        # accounts](https://docs.apigee.com/hybrid/latest/sa-about#create-the-service-accounts).
+      "A String",
+    ],
+  }
+
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+      "etag": "A String", # Entity tag (ETag) used for optimistic concurrency control as a way to help
+          # prevent simultaneous updates from overwriting each other.
+          #
+          # For example, when you call  [getSyncAuthorization](getSyncAuthorization)
+          # an ETag is returned in the response. Pass that ETag when calling
+          # the [setSyncAuthorization](setSyncAuthorization) to ensure
+          # that you are updating the correct version. If you don't pass the
+          # ETag in the call to `setSyncAuthorization`, then the
+          # existing authorization is overwritten indiscriminately.
+          #
+          # **Note**: We strongly recommend that you use the ETag in the
+          # read-modify-write cycle to avoid race conditions.
+      "identities": [ # Required. Array of service accounts to grant access to control plane
+          # resources, each specified using the following
+          # format: `serviceAccount:`&lt;var&gt;service-account-name&lt;/var&gt;.
+          #
+          # The &lt;var&gt;service-account-name&lt;/var&gt; is formatted like an email address. For
+          # example:
+          # `my-synchronizer-manager-service_account@my_project_id.iam.gserviceaccount.com`
+          #
+          # You might specify multiple service accounts, for example, if you have
+          # multiple environments and wish to assign a unique service account to each
+          # one.
+          #
+          # The service accounts must have **Apigee Synchronizer Manager** role.
+          # See also [Create service
+          # accounts](https://docs.apigee.com/hybrid/latest/sa-about#create-the-service-accounts).
+        "A String",
+      ],
+    }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="update">update(name, body=None, x__xgafv=None)</code>
+  <pre>Updates the properties for an Apigee organization. No other fields in the
+organization profile will be updated.
+
+Args:
+  name: string, Required. Apigee organization name in the following format:
+  `organizations/{org}` (required)
+  body: object, The request body.
+    The object takes the form of:
+
+{
+  "customerName": "A String", # Not used by Apigee.
+  "description": "A String", # Description of the Apigee organization.
+  "displayName": "A String",
+  "subscriptionType": "A String", # Output only. Subscription type of the Apigee organization. Valid values include trial
+      # (free, limited, and for evaluation purposes only) or paid (full
+      # subscription has been purchased). See
+      # [Apigee pricing](https://cloud.google.com/apigee/pricing/).
+  "environments": [ # Output only. List of environments in the Apigee organization.
+    "A String",
+  ],
+  "name": "A String", # Required. Name of the Apigee organization.
+  "lastModifiedAt": "A String", # Output only. Time that the Apigee organization was last modified in milliseconds
+      # since epoch.
+  "attributes": [ # Not used by Apigee.
+    "A String",
+  ],
+  "analyticsRegion": "A String", # Required. Primary GCP region for analytics data storage. For valid values, see
+      # [Create an
+      # organization](https://docs.apigee.com/hybrid/latest/precog-provision).
+  "type": "A String", # Not used by Apigee.
+  "properties": { # Message for compatibility with legacy Edge specification for Java Properties # Properties defined in the Apigee organization profile.
+      # object in JSON.
+    "property": [ # List of all properties in the object
+      { # A single property entry in the Properties message.
+        "name": "A String", # The property key
+        "value": "A String", # The property value
+      },
+    ],
+  },
+  "createdAt": "A String", # Output only. Time that the Apigee organization was created in milliseconds since epoch.
+  "runtimeType": "A String", # Output only. Runtime type of the Apigee organization based on the Apigee subscription
+      # purchased.
+}
+
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    {
+    "customerName": "A String", # Not used by Apigee.
+    "description": "A String", # Description of the Apigee organization.
+    "displayName": "A String",
+    "subscriptionType": "A String", # Output only. Subscription type of the Apigee organization. Valid values include trial
+        # (free, limited, and for evaluation purposes only) or paid (full
+        # subscription has been purchased). See
+        # [Apigee pricing](https://cloud.google.com/apigee/pricing/).
+    "environments": [ # Output only. List of environments in the Apigee organization.
+      "A String",
+    ],
+    "name": "A String", # Required. Name of the Apigee organization.
+    "lastModifiedAt": "A String", # Output only. Time that the Apigee organization was last modified in milliseconds
+        # since epoch.
+    "attributes": [ # Not used by Apigee.
+      "A String",
+    ],
+    "analyticsRegion": "A String", # Required. Primary GCP region for analytics data storage. For valid values, see
+        # [Create an
+        # organization](https://docs.apigee.com/hybrid/latest/precog-provision).
+    "type": "A String", # Not used by Apigee.
+    "properties": { # Message for compatibility with legacy Edge specification for Java Properties # Properties defined in the Apigee organization profile.
+        # object in JSON.
+      "property": [ # List of all properties in the object
+        { # A single property entry in the Properties message.
+          "name": "A String", # The property key
+          "value": "A String", # The property value
+        },
+      ],
+    },
+    "createdAt": "A String", # Output only. Time that the Apigee organization was created in milliseconds since epoch.
+    "runtimeType": "A String", # Output only. Runtime type of the Apigee organization based on the Apigee subscription
+        # purchased.
+  }</pre>
+</div>
+
+</body></html>

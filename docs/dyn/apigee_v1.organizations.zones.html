@@ -1,0 +1,642 @@
+<html><body>
+<style>
+
+body, h1, h2, h3, div, span, p, pre, a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  font-size: 13px;
+  padding: 1em;
+}
+
+h1 {
+  font-size: 26px;
+  margin-bottom: 1em;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 1em;
+}
+
+h3 {
+  font-size: 20px;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+pre, code {
+  line-height: 1.5;
+  font-family: Monaco, 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Lucida Console', monospace;
+}
+
+pre {
+  margin-top: 0.5em;
+}
+
+h1, h2, h3, p {
+  font-family: Arial, sans serif;
+}
+
+h1, h2, h3 {
+  border-bottom: solid #CCC 1px;
+}
+
+.toc_element {
+  margin-top: 0.5em;
+}
+
+.firstline {
+  margin-left: 2 em;
+}
+
+.method  {
+  margin-top: 1em;
+  border: solid 1px #CCC;
+  padding: 1em;
+  background: #EEE;
+}
+
+.details {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+</style>
+
+<h1><a href="apigee_v1.html">Apigee API</a> . <a href="apigee_v1.organizations.html">organizations</a> . <a href="apigee_v1.organizations.zones.html">zones</a></h1>
+<h2>Instance Methods</h2>
+<p class="toc_element">
+  <code><a href="apigee_v1.organizations.zones.identity_providers.html">identity_providers()</a></code>
+</p>
+<p class="firstline">Returns the identity_providers Resource.</p>
+
+<p class="toc_element">
+  <code><a href="#certificate">certificate(parent, body=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Validates a certificate in a zone.</p>
+<p class="toc_element">
+  <code><a href="#get">get(name, x__xgafv=None)</a></code></p>
+<p class="firstline">Gets a zone.</p>
+<p class="toc_element">
+  <code><a href="#list">list(parent, x__xgafv=None)</a></code></p>
+<p class="firstline">Lists the zones for an Apigee organization.</p>
+<p class="toc_element">
+  <code><a href="#update">update(name, body=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Updates a zone.</p>
+<h3>Method Details</h3>
+<div class="method">
+    <code class="details" id="certificate">certificate(parent, body=None, x__xgafv=None)</code>
+  <pre>Validates a certificate in a zone.
+
+Args:
+  parent: string, Required. Name of the Apigee organization. Use the following structure in your
+request:
+  `organizations/{org}` (required)
+  body: object, The request body.
+    The object takes the form of:
+
+{ # Request message for the VerifyCertificate RPC.
+    "requestType": "A String", # Type of verification.
+    "certificate": "A String", # Details of the certificate.
+  }
+
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    { # Response message for the VerifyCertificate RPC.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "status": "A String", # Status of the operation.
+    "message": "A String", # Description of the operation.
+    "data": { # SAML certificate and metadata. # Details of the certificate.
+      "certificate": "A String", # SAML certificate.
+      "issuer": "A String", # Issuer of the SAML certificate.
+      "validTo": "A String", # Time the certificate expires in milliseconds since epoch.
+      "valid": True or False, # Boolean flag that specifies whether the certificate is valid.
+      "fingerprint": { # Fingerprint details of a SAML certificate. # Fingerprint of this SAML certificate.
+        "sha256": "A String", # SHA256 fingerprint.
+        "sha1": "A String", # SHA1 fingerprint.
+      },
+      "message": "A String", # Message from the issuer.
+      "validFrom": "A String", # Time the certificate is valid in milliseconds since epoch.
+      "subject": "A String", # Subject of the message from the issuer.
+    },
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="get">get(name, x__xgafv=None)</code>
+  <pre>Gets a zone.
+
+Args:
+  name: string, Required. Name of the zone. Use the following structure in your request:
+  `organizations/{org}/zones/{zone}` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    { # Response message for the GetZone RPC.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "status": "A String", # Status of the operation.
+    "message": "A String", # Description of the operation.
+    "data": { # Details of the zone.
+      "portals": [ # List of portals associated with the zone.
+        "A String",
+      ],
+      "links": { # Links used by a zone. # Links in the UI used by the zone.
+        "selfService": { # Link in the UI to create an account in the zone.
+          "passwd": "A String", # Link in the UI to reset the password for the zone.
+          "signup": "A String", # Link in the UI to create an account in the zone.
+          "selfServiceLinksEnabled": True or False, # Boolean flag that specifies whether self-service links are enabled.
+        },
+        "homeRedirect": "A String", # URL used to navigate back to the home page.
+        "logout": { # Links and information used when signing out of zone. # Information required for redirection after sign out.
+          "redirectUrl": "A String", # URL to which users are directed when signing out of zone.
+          "redirectParameterName": "A String", # URI parameter for the sign-out redirection.
+          "whitelist": "A String", # Comma-delimited string of email addresses and domains that can create
+              # accounts on your portal.
+          "disabledRedirectParameter": True or False, # Boolean flag that specifies whether the redirect parameter is disabled.
+        },
+      },
+      "customEmailTemplates": { # Email templates used by a zone. # Email templates used by the zone. Email templates enable a user to
+          # customize the emails that are sent by a zone for different actions
+          # including: account verification, password reset, and account creation.
+        "accountVerify": { # Template for an email. # Email template that is sent when a user needs to verify their email
+            # address.
+          "body": "A String", # Template for the body of the email.
+          "subject": "A String", # Template for the subject of the email.
+        },
+        "activate": { # Template for an email. # Email template used for activating a user's account.
+          "body": "A String", # Template for the body of the email.
+          "subject": "A String", # Template for the subject of the email.
+        },
+        "accountNotify": { # Template for an email. # Email template that is sent when a user registers an account.
+          "body": "A String", # Template for the body of the email.
+          "subject": "A String", # Template for the subject of the email.
+        },
+        "resetPassword": { # Template for an email. # Email template used for resetting a user's password.
+          "body": "A String", # Template for the body of the email.
+          "subject": "A String", # Template for the subject of the email.
+        },
+      },
+      "squareLogo": "A String", # Product logo PNG image (base64-encoded string).
+      "id": "A String", # ID of the zone.
+      "allowedDomains": { # List of individual email addresses (developer@some-company.com) or
+          # email domains (some-company.com, without the leading @) that can create
+          # accounts on your portal.
+        "whitelistedDomains": [ # Individual email addresses (developer@some-company.com) or
+            # email domains (some-company.com, without the leading @) that can create
+            # accounts on your portal.
+          "A String",
+        ],
+      },
+      "copyright": "A String", # Copyright information displayed on the sign in page for the zone to enable
+          # custom branding.
+      "manualApproval": True or False, # Boolean flag that specifies whether manual approval of users is required.
+      "zoneId": "A String", # ID of the zone.
+      "hostWhitelistedDomains": [ # List of portal URLs that are allowed to use this zone for sign in and zone
+          # redirection after successful sign in. This list is used as a security
+          # measure so that the zone only redirects to a predefined set of URLs
+          # that are configured when the zone or portal is created, and when a custom
+          # domain is set on a portal.
+        "A String",
+      ],
+      "samlConfig": { # SAML configuration used by the zone.
+        "a_key": "", # Properties of the object.
+      },
+      "description": "A String", # Description of the zone.
+      "companyName": "A String", # Company associated with the zone.
+      "customRegistrationFields": [ # Customized fields used on user registration form.
+        {
+          "active": True or False, # Boolean flag that specifies whether the field is enabled.
+          "required": True or False, # Boolean flag that specifies whether the field is required.
+          "fieldName": "A String", # Name of the custom field.
+          "fieldType": "A String", # Type of custom registration field.
+          "sortOrder": 42, # Sort order for the custom field.
+        },
+      ],
+      "smtpConfig": { # SMTP configuration for a zone. # SMTP configuration for the zone.
+        "serverPassword": "A String", # Password of the SMTP account.
+        "sender": "A String", # Email address used as the sender.
+        "serverUsername": "A String", # Username of the SMTP account.
+        "serverHost": "A String", # Hostname of the SMTP server, such as `smtp.gmail.com`.
+        "serverPort": "A String", # Port to be used, such as 465 if you are using TLS/SSL.
+        "secureAuthType": "A String", # Authorization type. Valid values include: SSL or TLS. Leave this field
+            # blank for no authorization.
+      },
+      "productLogo": "A String", # Product logo PNG image (base64-encoded string).
+      "active": True or False, # Boolean flag that specifies whether the zone is active.
+      "name": "A String", # Name of the zone.
+      "created": "A String", # Time the zone was created in milliseconds since epoch.
+      "accountCreationEmail": "A String", # Address to which notification emails are sent when a new account is
+          # created.
+      "modified": "A String", # Time the zone was last modified in milliseconds since epoch.
+      "tokenPolicy": { # Token policy for the zone.
+        "keys": { # Keys used by the token policy.
+          "a_key": "", # Properties of the object.
+        },
+        "refreshTokenValidity": "A String", # Duration in seconds that the refresh token will be valid after it is
+            # created.
+        "accessTokenValidity": "A String", # Duration in seconds that the access token will be valid after it is
+            # created.
+      },
+      "organization": "A String", # Apigee organization associated with the zone.
+      "footerLinks": { # Mapping of display text to URL for forming hyperlinks used in the footer.
+        "a_key": "A String",
+      },
+    },
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="list">list(parent, x__xgafv=None)</code>
+  <pre>Lists the zones for an Apigee organization.
+
+Args:
+  parent: string, Required. Name for the Apigee organization. Use the following structure in your
+request:
+  `organizations/{org}` (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    { # Response message for the ListZones RPC.
+    "status": "A String", # Status of the operation.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "message": "A String", # Description of the operation.
+    "data": { # Wrapper for the list of zones. # List of zones.
+      "zones": [ # List of zones.
+        {
+          "portals": [ # List of portals associated with the zone.
+            "A String",
+          ],
+          "links": { # Links used by a zone. # Links in the UI used by the zone.
+            "selfService": { # Link in the UI to create an account in the zone.
+              "passwd": "A String", # Link in the UI to reset the password for the zone.
+              "signup": "A String", # Link in the UI to create an account in the zone.
+              "selfServiceLinksEnabled": True or False, # Boolean flag that specifies whether self-service links are enabled.
+            },
+            "homeRedirect": "A String", # URL used to navigate back to the home page.
+            "logout": { # Links and information used when signing out of zone. # Information required for redirection after sign out.
+              "redirectUrl": "A String", # URL to which users are directed when signing out of zone.
+              "redirectParameterName": "A String", # URI parameter for the sign-out redirection.
+              "whitelist": "A String", # Comma-delimited string of email addresses and domains that can create
+                  # accounts on your portal.
+              "disabledRedirectParameter": True or False, # Boolean flag that specifies whether the redirect parameter is disabled.
+            },
+          },
+          "customEmailTemplates": { # Email templates used by a zone. # Email templates used by the zone. Email templates enable a user to
+              # customize the emails that are sent by a zone for different actions
+              # including: account verification, password reset, and account creation.
+            "accountVerify": { # Template for an email. # Email template that is sent when a user needs to verify their email
+                # address.
+              "body": "A String", # Template for the body of the email.
+              "subject": "A String", # Template for the subject of the email.
+            },
+            "activate": { # Template for an email. # Email template used for activating a user's account.
+              "body": "A String", # Template for the body of the email.
+              "subject": "A String", # Template for the subject of the email.
+            },
+            "accountNotify": { # Template for an email. # Email template that is sent when a user registers an account.
+              "body": "A String", # Template for the body of the email.
+              "subject": "A String", # Template for the subject of the email.
+            },
+            "resetPassword": { # Template for an email. # Email template used for resetting a user's password.
+              "body": "A String", # Template for the body of the email.
+              "subject": "A String", # Template for the subject of the email.
+            },
+          },
+          "squareLogo": "A String", # Product logo PNG image (base64-encoded string).
+          "id": "A String", # ID of the zone.
+          "allowedDomains": { # List of individual email addresses (developer@some-company.com) or
+              # email domains (some-company.com, without the leading @) that can create
+              # accounts on your portal.
+            "whitelistedDomains": [ # Individual email addresses (developer@some-company.com) or
+                # email domains (some-company.com, without the leading @) that can create
+                # accounts on your portal.
+              "A String",
+            ],
+          },
+          "copyright": "A String", # Copyright information displayed on the sign in page for the zone to enable
+              # custom branding.
+          "manualApproval": True or False, # Boolean flag that specifies whether manual approval of users is required.
+          "zoneId": "A String", # ID of the zone.
+          "hostWhitelistedDomains": [ # List of portal URLs that are allowed to use this zone for sign in and zone
+              # redirection after successful sign in. This list is used as a security
+              # measure so that the zone only redirects to a predefined set of URLs
+              # that are configured when the zone or portal is created, and when a custom
+              # domain is set on a portal.
+            "A String",
+          ],
+          "samlConfig": { # SAML configuration used by the zone.
+            "a_key": "", # Properties of the object.
+          },
+          "description": "A String", # Description of the zone.
+          "companyName": "A String", # Company associated with the zone.
+          "customRegistrationFields": [ # Customized fields used on user registration form.
+            {
+              "active": True or False, # Boolean flag that specifies whether the field is enabled.
+              "required": True or False, # Boolean flag that specifies whether the field is required.
+              "fieldName": "A String", # Name of the custom field.
+              "fieldType": "A String", # Type of custom registration field.
+              "sortOrder": 42, # Sort order for the custom field.
+            },
+          ],
+          "smtpConfig": { # SMTP configuration for a zone. # SMTP configuration for the zone.
+            "serverPassword": "A String", # Password of the SMTP account.
+            "sender": "A String", # Email address used as the sender.
+            "serverUsername": "A String", # Username of the SMTP account.
+            "serverHost": "A String", # Hostname of the SMTP server, such as `smtp.gmail.com`.
+            "serverPort": "A String", # Port to be used, such as 465 if you are using TLS/SSL.
+            "secureAuthType": "A String", # Authorization type. Valid values include: SSL or TLS. Leave this field
+                # blank for no authorization.
+          },
+          "productLogo": "A String", # Product logo PNG image (base64-encoded string).
+          "active": True or False, # Boolean flag that specifies whether the zone is active.
+          "name": "A String", # Name of the zone.
+          "created": "A String", # Time the zone was created in milliseconds since epoch.
+          "accountCreationEmail": "A String", # Address to which notification emails are sent when a new account is
+              # created.
+          "modified": "A String", # Time the zone was last modified in milliseconds since epoch.
+          "tokenPolicy": { # Token policy for the zone.
+            "keys": { # Keys used by the token policy.
+              "a_key": "", # Properties of the object.
+            },
+            "refreshTokenValidity": "A String", # Duration in seconds that the refresh token will be valid after it is
+                # created.
+            "accessTokenValidity": "A String", # Duration in seconds that the access token will be valid after it is
+                # created.
+          },
+          "organization": "A String", # Apigee organization associated with the zone.
+          "footerLinks": { # Mapping of display text to URL for forming hyperlinks used in the footer.
+            "a_key": "A String",
+          },
+        },
+      ],
+    },
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="update">update(name, body=None, x__xgafv=None)</code>
+  <pre>Updates a zone.
+
+Args:
+  name: string, Required. Name of the zone. Use the following structure in your request:
+  `organizations/{org}/zones/{zone}` (required)
+  body: object, The request body.
+    The object takes the form of:
+
+{
+  "portals": [ # List of portals associated with the zone.
+    "A String",
+  ],
+  "links": { # Links used by a zone. # Links in the UI used by the zone.
+    "selfService": { # Link in the UI to create an account in the zone.
+      "passwd": "A String", # Link in the UI to reset the password for the zone.
+      "signup": "A String", # Link in the UI to create an account in the zone.
+      "selfServiceLinksEnabled": True or False, # Boolean flag that specifies whether self-service links are enabled.
+    },
+    "homeRedirect": "A String", # URL used to navigate back to the home page.
+    "logout": { # Links and information used when signing out of zone. # Information required for redirection after sign out.
+      "redirectUrl": "A String", # URL to which users are directed when signing out of zone.
+      "redirectParameterName": "A String", # URI parameter for the sign-out redirection.
+      "whitelist": "A String", # Comma-delimited string of email addresses and domains that can create
+          # accounts on your portal.
+      "disabledRedirectParameter": True or False, # Boolean flag that specifies whether the redirect parameter is disabled.
+    },
+  },
+  "customEmailTemplates": { # Email templates used by a zone. # Email templates used by the zone. Email templates enable a user to
+      # customize the emails that are sent by a zone for different actions
+      # including: account verification, password reset, and account creation.
+    "accountVerify": { # Template for an email. # Email template that is sent when a user needs to verify their email
+        # address.
+      "body": "A String", # Template for the body of the email.
+      "subject": "A String", # Template for the subject of the email.
+    },
+    "activate": { # Template for an email. # Email template used for activating a user's account.
+      "body": "A String", # Template for the body of the email.
+      "subject": "A String", # Template for the subject of the email.
+    },
+    "accountNotify": { # Template for an email. # Email template that is sent when a user registers an account.
+      "body": "A String", # Template for the body of the email.
+      "subject": "A String", # Template for the subject of the email.
+    },
+    "resetPassword": { # Template for an email. # Email template used for resetting a user's password.
+      "body": "A String", # Template for the body of the email.
+      "subject": "A String", # Template for the subject of the email.
+    },
+  },
+  "squareLogo": "A String", # Product logo PNG image (base64-encoded string).
+  "id": "A String", # ID of the zone.
+  "allowedDomains": { # List of individual email addresses (developer@some-company.com) or
+      # email domains (some-company.com, without the leading @) that can create
+      # accounts on your portal.
+    "whitelistedDomains": [ # Individual email addresses (developer@some-company.com) or
+        # email domains (some-company.com, without the leading @) that can create
+        # accounts on your portal.
+      "A String",
+    ],
+  },
+  "copyright": "A String", # Copyright information displayed on the sign in page for the zone to enable
+      # custom branding.
+  "manualApproval": True or False, # Boolean flag that specifies whether manual approval of users is required.
+  "zoneId": "A String", # ID of the zone.
+  "hostWhitelistedDomains": [ # List of portal URLs that are allowed to use this zone for sign in and zone
+      # redirection after successful sign in. This list is used as a security
+      # measure so that the zone only redirects to a predefined set of URLs
+      # that are configured when the zone or portal is created, and when a custom
+      # domain is set on a portal.
+    "A String",
+  ],
+  "samlConfig": { # SAML configuration used by the zone.
+    "a_key": "", # Properties of the object.
+  },
+  "description": "A String", # Description of the zone.
+  "companyName": "A String", # Company associated with the zone.
+  "customRegistrationFields": [ # Customized fields used on user registration form.
+    {
+      "active": True or False, # Boolean flag that specifies whether the field is enabled.
+      "required": True or False, # Boolean flag that specifies whether the field is required.
+      "fieldName": "A String", # Name of the custom field.
+      "fieldType": "A String", # Type of custom registration field.
+      "sortOrder": 42, # Sort order for the custom field.
+    },
+  ],
+  "smtpConfig": { # SMTP configuration for a zone. # SMTP configuration for the zone.
+    "serverPassword": "A String", # Password of the SMTP account.
+    "sender": "A String", # Email address used as the sender.
+    "serverUsername": "A String", # Username of the SMTP account.
+    "serverHost": "A String", # Hostname of the SMTP server, such as `smtp.gmail.com`.
+    "serverPort": "A String", # Port to be used, such as 465 if you are using TLS/SSL.
+    "secureAuthType": "A String", # Authorization type. Valid values include: SSL or TLS. Leave this field
+        # blank for no authorization.
+  },
+  "productLogo": "A String", # Product logo PNG image (base64-encoded string).
+  "active": True or False, # Boolean flag that specifies whether the zone is active.
+  "name": "A String", # Name of the zone.
+  "created": "A String", # Time the zone was created in milliseconds since epoch.
+  "accountCreationEmail": "A String", # Address to which notification emails are sent when a new account is
+      # created.
+  "modified": "A String", # Time the zone was last modified in milliseconds since epoch.
+  "tokenPolicy": { # Token policy for the zone.
+    "keys": { # Keys used by the token policy.
+      "a_key": "", # Properties of the object.
+    },
+    "refreshTokenValidity": "A String", # Duration in seconds that the refresh token will be valid after it is
+        # created.
+    "accessTokenValidity": "A String", # Duration in seconds that the access token will be valid after it is
+        # created.
+  },
+  "organization": "A String", # Apigee organization associated with the zone.
+  "footerLinks": { # Mapping of display text to URL for forming hyperlinks used in the footer.
+    "a_key": "A String",
+  },
+}
+
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    { # Response message for the UpdateZone RPC.
+    "errorCode": "A String", # ID that can be used to find errors in the log files.
+    "status": "A String", # Status of the operation.
+    "message": "A String", # Description of the operation.
+    "data": { # Details of the zone.
+      "portals": [ # List of portals associated with the zone.
+        "A String",
+      ],
+      "links": { # Links used by a zone. # Links in the UI used by the zone.
+        "selfService": { # Link in the UI to create an account in the zone.
+          "passwd": "A String", # Link in the UI to reset the password for the zone.
+          "signup": "A String", # Link in the UI to create an account in the zone.
+          "selfServiceLinksEnabled": True or False, # Boolean flag that specifies whether self-service links are enabled.
+        },
+        "homeRedirect": "A String", # URL used to navigate back to the home page.
+        "logout": { # Links and information used when signing out of zone. # Information required for redirection after sign out.
+          "redirectUrl": "A String", # URL to which users are directed when signing out of zone.
+          "redirectParameterName": "A String", # URI parameter for the sign-out redirection.
+          "whitelist": "A String", # Comma-delimited string of email addresses and domains that can create
+              # accounts on your portal.
+          "disabledRedirectParameter": True or False, # Boolean flag that specifies whether the redirect parameter is disabled.
+        },
+      },
+      "customEmailTemplates": { # Email templates used by a zone. # Email templates used by the zone. Email templates enable a user to
+          # customize the emails that are sent by a zone for different actions
+          # including: account verification, password reset, and account creation.
+        "accountVerify": { # Template for an email. # Email template that is sent when a user needs to verify their email
+            # address.
+          "body": "A String", # Template for the body of the email.
+          "subject": "A String", # Template for the subject of the email.
+        },
+        "activate": { # Template for an email. # Email template used for activating a user's account.
+          "body": "A String", # Template for the body of the email.
+          "subject": "A String", # Template for the subject of the email.
+        },
+        "accountNotify": { # Template for an email. # Email template that is sent when a user registers an account.
+          "body": "A String", # Template for the body of the email.
+          "subject": "A String", # Template for the subject of the email.
+        },
+        "resetPassword": { # Template for an email. # Email template used for resetting a user's password.
+          "body": "A String", # Template for the body of the email.
+          "subject": "A String", # Template for the subject of the email.
+        },
+      },
+      "squareLogo": "A String", # Product logo PNG image (base64-encoded string).
+      "id": "A String", # ID of the zone.
+      "allowedDomains": { # List of individual email addresses (developer@some-company.com) or
+          # email domains (some-company.com, without the leading @) that can create
+          # accounts on your portal.
+        "whitelistedDomains": [ # Individual email addresses (developer@some-company.com) or
+            # email domains (some-company.com, without the leading @) that can create
+            # accounts on your portal.
+          "A String",
+        ],
+      },
+      "copyright": "A String", # Copyright information displayed on the sign in page for the zone to enable
+          # custom branding.
+      "manualApproval": True or False, # Boolean flag that specifies whether manual approval of users is required.
+      "zoneId": "A String", # ID of the zone.
+      "hostWhitelistedDomains": [ # List of portal URLs that are allowed to use this zone for sign in and zone
+          # redirection after successful sign in. This list is used as a security
+          # measure so that the zone only redirects to a predefined set of URLs
+          # that are configured when the zone or portal is created, and when a custom
+          # domain is set on a portal.
+        "A String",
+      ],
+      "samlConfig": { # SAML configuration used by the zone.
+        "a_key": "", # Properties of the object.
+      },
+      "description": "A String", # Description of the zone.
+      "companyName": "A String", # Company associated with the zone.
+      "customRegistrationFields": [ # Customized fields used on user registration form.
+        {
+          "active": True or False, # Boolean flag that specifies whether the field is enabled.
+          "required": True or False, # Boolean flag that specifies whether the field is required.
+          "fieldName": "A String", # Name of the custom field.
+          "fieldType": "A String", # Type of custom registration field.
+          "sortOrder": 42, # Sort order for the custom field.
+        },
+      ],
+      "smtpConfig": { # SMTP configuration for a zone. # SMTP configuration for the zone.
+        "serverPassword": "A String", # Password of the SMTP account.
+        "sender": "A String", # Email address used as the sender.
+        "serverUsername": "A String", # Username of the SMTP account.
+        "serverHost": "A String", # Hostname of the SMTP server, such as `smtp.gmail.com`.
+        "serverPort": "A String", # Port to be used, such as 465 if you are using TLS/SSL.
+        "secureAuthType": "A String", # Authorization type. Valid values include: SSL or TLS. Leave this field
+            # blank for no authorization.
+      },
+      "productLogo": "A String", # Product logo PNG image (base64-encoded string).
+      "active": True or False, # Boolean flag that specifies whether the zone is active.
+      "name": "A String", # Name of the zone.
+      "created": "A String", # Time the zone was created in milliseconds since epoch.
+      "accountCreationEmail": "A String", # Address to which notification emails are sent when a new account is
+          # created.
+      "modified": "A String", # Time the zone was last modified in milliseconds since epoch.
+      "tokenPolicy": { # Token policy for the zone.
+        "keys": { # Keys used by the token policy.
+          "a_key": "", # Properties of the object.
+        },
+        "refreshTokenValidity": "A String", # Duration in seconds that the refresh token will be valid after it is
+            # created.
+        "accessTokenValidity": "A String", # Duration in seconds that the access token will be valid after it is
+            # created.
+      },
+      "organization": "A String", # Apigee organization associated with the zone.
+      "footerLinks": { # Mapping of display text to URL for forming hyperlinks used in the footer.
+        "a_key": "A String",
+      },
+    },
+    "requestId": "A String", # ID that can be used to find request details in the log files.
+  }</pre>
+</div>
+
+</body></html>
